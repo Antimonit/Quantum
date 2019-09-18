@@ -19,6 +19,12 @@ internal class QubitTest {
     }
 
     @Test
+    fun `HALF Qubit measures randomly`() {
+        assertEquals(0.5, Qubit.HALF.probabilityZero, 1e-10)
+        assertEquals(0.5, Qubit.HALF.probabilityOne, 1e-10)
+    }
+
+    @Test
     fun `Measurement probabilities of qubits with negated alpha probabilities are equal`() {
         val a = Qubit(Complex.ONE, Complex.ZERO)
         val b = Qubit(Complex.ONE * -1.0, Complex.ZERO)
@@ -32,5 +38,17 @@ internal class QubitTest {
         val b = Qubit(Complex.ZERO, Complex.ONE * -1.0)
         assertEquals(a.probabilityZero, b.probabilityZero)
         assertEquals(a.probabilityOne, b.probabilityOne)
+    }
+
+    @Test
+    fun `Measurement probabilities of qubits with HALF probabilities are equal`() {
+        val qubits = listOf(
+            Qubit(Complex.HALF, Complex.HALF),
+            Qubit(Complex.HALF * -1.0, Complex.HALF),
+            Qubit(Complex.HALF, Complex.HALF * -1.0),
+            Qubit(Complex.HALF * -1.0, Complex.HALF * -1.0)
+        )
+        assertEquals(1, qubits.map(Qubit::probabilityZero).toSet().size)
+        assertEquals(1, qubits.map(Qubit::probabilityOne).toSet().size)
     }
 }

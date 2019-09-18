@@ -9,7 +9,9 @@ data class Complex(
 
     companion object {
         val ZERO = Complex(0.0, 0.0)
+        val HALF = Complex(sqrt(0.5), 0.0)
         val ONE = Complex(1.0, 0.0)
+        val I = Complex(0.0, 1.0)
     }
 
     operator fun unaryPlus() = Complex(re, im)

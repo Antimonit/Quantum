@@ -23,6 +23,7 @@ data class Qubit(
 
     companion object {
         val ZERO = Qubit(Complex.ONE, Complex.ZERO)
+        val HALF = Qubit(Complex.HALF, Complex.HALF)
         val ONE = Qubit(Complex.ZERO, Complex.ONE)
     }
 

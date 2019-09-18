@@ -10,6 +10,11 @@ repositories {
 
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
+    testImplementation("org.junit.jupiter:junit-jupiter:5.5.2")
+}
+
+tasks.test {
+    useJUnitPlatform()
 }
 
 tasks.withType<KotlinCompile> {

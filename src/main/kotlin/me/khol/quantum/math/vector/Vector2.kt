@@ -10,10 +10,15 @@ data class Vector2<S: Scalar<S>>(
     operator fun unaryPlus() = Vector2(x, y)
     operator fun unaryMinus() = Vector2(-x, -y)
 
-    operator fun plus(v: S) = Vector2(x + v, y + v)
-    operator fun minus(v: S) = Vector2(x - v, y - v)
-    operator fun times(v: S) = Vector2(x * v, y * v)
-    operator fun div(v: S) = Vector2(x / v, y / v)
+    operator fun plus(s: Double) = Vector2(x + s, y)
+    operator fun minus(s: Double) = Vector2(x - s, y)
+    operator fun times(s: Double) = Vector2(x * s, y * s)
+    operator fun div(s: Double) = Vector2(x / s, y / s)
+
+    operator fun plus(s: S) = Vector2(x + s, y + s)
+    operator fun minus(s: S) = Vector2(x - s, y - s)
+    operator fun times(s: S) = Vector2(x * s, y * s)
+    operator fun div(s: S) = Vector2(x / s, y / s)
 
     operator fun plus(v: Vector2<S>) = Vector2(x + v.x, y + v.y)
     operator fun minus(v: Vector2<S>) = Vector2(x - v.x, y - v.y)

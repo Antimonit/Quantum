@@ -17,13 +17,15 @@ data class Complex(
     override operator fun unaryPlus() = Complex(re, im)
     override operator fun unaryMinus() = Complex(-re, -im)
 
+    override operator fun plus(s: Double) = Complex(re + s, im)
+    override operator fun minus(s: Double) = Complex(re - s, im)
+    override operator fun times(s: Double) = Complex(re * s, im * s)
+    override operator fun div(s: Double) = Complex(re / s, im / s)
+
     override operator fun plus(s: Complex) = Complex(re + s.re, im + s.im)
     override operator fun minus(s: Complex) = Complex(re - s.re, im - s.im)
     override operator fun times(s: Complex) = Complex(re * s.re - im * s.im, re * s.im + im * s.re)
     override operator fun div(s: Complex) = Complex(re * s.re + im * s.im, re * s.im - im * s.re) / s.square
-
-    operator fun times(s: Double) = Complex(re * s, im * s)
-    operator fun div(s: Double) = Complex(re / s, im / s)
 
     val reciprocal: Complex
         get() = Complex(re / square, -im / square)

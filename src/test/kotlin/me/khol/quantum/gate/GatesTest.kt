@@ -28,6 +28,11 @@ internal class GatesTest {
         `gate is reversible`(gateIdentity)
     }
 
+    @Test
+    fun `Hadamard gate is reversible`() {
+        `gate is reversible`(gateHadamard)
+    }
+
     private fun `gate is reversible`(gate: Matrix22<Complex>) {
         val input = Complex2(Complex.ONE, Complex.ZERO)
         val transformed = gate * input

@@ -7,6 +7,11 @@ data class Complex(
     val im: Double
 ) {
 
+    companion object {
+        val ZERO = Complex(0.0, 0.0)
+        val ONE = Complex(1.0, 0.0)
+    }
+
     operator fun unaryPlus() = Complex(re, im)
     operator fun unaryMinus() = Complex(-re, -im)
 

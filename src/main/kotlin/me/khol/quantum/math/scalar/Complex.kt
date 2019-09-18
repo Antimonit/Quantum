@@ -5,7 +5,7 @@ import kotlin.math.sqrt
 data class Complex(
     val re: Double,
     val im: Double
-) {
+): Scalar<Complex> {
 
     companion object {
         val ZERO = Complex(0.0, 0.0)
@@ -14,13 +14,13 @@ data class Complex(
         val I = Complex(0.0, 1.0)
     }
 
-    operator fun unaryPlus() = Complex(re, im)
-    operator fun unaryMinus() = Complex(-re, -im)
+    override operator fun unaryPlus() = Complex(re, im)
+    override operator fun unaryMinus() = Complex(-re, -im)
 
-    operator fun plus(s: Complex) = Complex(re + s.re, im + s.im)
-    operator fun minus(s: Complex) = Complex(re - s.re, im - s.im)
-    operator fun times(s: Complex) = Complex(re * s.re - im * s.im, re * s.im + im * s.re)
-    operator fun div(s: Complex) = Complex(re * s.re + im * s.im, re * s.im - im * s.re) / s.square
+    override operator fun plus(s: Complex) = Complex(re + s.re, im + s.im)
+    override operator fun minus(s: Complex) = Complex(re - s.re, im - s.im)
+    override operator fun times(s: Complex) = Complex(re * s.re - im * s.im, re * s.im + im * s.re)
+    override operator fun div(s: Complex) = Complex(re * s.re + im * s.im, re * s.im - im * s.re) / s.square
 
     operator fun times(s: Double) = Complex(re * s, im * s)
     operator fun div(s: Double) = Complex(re / s, im / s)

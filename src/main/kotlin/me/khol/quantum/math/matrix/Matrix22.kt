@@ -1,4 +1,8 @@
-package me.khol.quantum.math
+package me.khol.quantum.math.matrix
+
+import me.khol.quantum.math.vector.Vector2
+import me.khol.quantum.math.scalar.Scalar
+import me.khol.quantum.math.vector.dot
 
 data class Matrix22<S: Scalar<S>>(
     val x: Vector2<S>,

@@ -1,6 +1,6 @@
 package me.khol.quantum
 
-import me.khol.quantum.math.Complex
+import me.khol.quantum.math.scalar.Complex
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 

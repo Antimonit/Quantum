@@ -1,4 +1,4 @@
-package me.khol.quantum.math
+package me.khol.quantum.math.scalar
 
 interface Scalar<S : Scalar<S>> {
 

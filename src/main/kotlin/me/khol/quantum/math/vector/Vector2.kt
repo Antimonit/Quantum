@@ -1,4 +1,6 @@
-package me.khol.quantum.math
+package me.khol.quantum.math.vector
+
+import me.khol.quantum.math.scalar.Scalar
 
 data class Vector2<S: Scalar<S>>(
     val x: S,

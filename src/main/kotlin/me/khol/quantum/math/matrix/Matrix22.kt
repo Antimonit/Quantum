@@ -15,7 +15,7 @@ data class Matrix22<S: Scalar<S>>(
     operator fun plus(s: Double) = Matrix22(x + s, y + s)
     operator fun minus(s: Double) = Matrix22(x - s, y - s)
     operator fun times(s: Double) = Matrix22(x * s, y * s)
-    operator fun div(s: Double) = Matrix22(x * s, y * s)
+    operator fun div(s: Double) = Matrix22(x / s, y / s)
 
     operator fun plus(v: S) = Matrix22(x + v, y + v)
     operator fun minus(v: S) = Matrix22(x - v, y - v)

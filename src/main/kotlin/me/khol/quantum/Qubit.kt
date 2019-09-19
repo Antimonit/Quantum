@@ -1,7 +1,7 @@
 package me.khol.quantum
 
 import me.khol.quantum.math.scalar.Complex
-import me.khol.quantum.math.scalar.equals
+import me.khol.quantum.math.scalar.Number
 
 /**
  * Quantum bit is described by:
@@ -28,15 +28,15 @@ data class Qubit(
     }
 
     init {
-        if (!equals(alpha.square + beta.square, 1.0)) {
+        if (alpha.square + beta.square != Number.ONE) {
             throw IllegalStateException("Invalid qubit definition for α=$alpha β=$beta. " +
                 "α^2 + β^2 = ${alpha.square} + ${beta.square} = ${alpha.square + beta.square}")
         }
     }
 
-    val probabilityZero: Double
+    val probabilityZero: Number
         get() = alpha.square
 
-    val probabilityOne: Double
+    val probabilityOne: Number
         get() = beta.square
 }

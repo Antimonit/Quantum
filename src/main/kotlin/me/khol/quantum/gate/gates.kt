@@ -4,8 +4,9 @@ import me.khol.quantum.math.matrix.Complex22
 import me.khol.quantum.math.scalar.Complex.Companion.ONE
 import me.khol.quantum.math.scalar.Complex.Companion.ZERO
 import me.khol.quantum.math.scalar.Complex.Companion.I
+import me.khol.quantum.math.scalar.Number
+import me.khol.quantum.math.scalar.sqrt
 import me.khol.quantum.math.vector.Complex2
-import kotlin.math.sqrt
 
 val gateX = Complex22(
     Complex2(ZERO, ONE),
@@ -30,4 +31,4 @@ val gateIdentity = Complex22(
 val gateHadamard = Complex22(
     Complex2(ONE, ONE),
     Complex2(ONE, -ONE)
-) * sqrt(0.5)
+) * sqrt(Number.HALF)

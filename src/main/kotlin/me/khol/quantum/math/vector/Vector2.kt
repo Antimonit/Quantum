@@ -1,6 +1,7 @@
 package me.khol.quantum.math.vector
 
 import me.khol.quantum.math.scalar.Scalar
+import me.khol.quantum.math.scalar.Number
 
 data class Vector2<S: Scalar<S>>(
     val x: S,
@@ -10,10 +11,10 @@ data class Vector2<S: Scalar<S>>(
     operator fun unaryPlus() = Vector2(x, y)
     operator fun unaryMinus() = Vector2(-x, -y)
 
-    operator fun plus(s: Double) = Vector2(x + s, y)
-    operator fun minus(s: Double) = Vector2(x - s, y)
-    operator fun times(s: Double) = Vector2(x * s, y * s)
-    operator fun div(s: Double) = Vector2(x / s, y / s)
+    operator fun plus(s: Number) = Vector2(x + s, y)
+    operator fun minus(s: Number) = Vector2(x - s, y)
+    operator fun times(s: Number) = Vector2(x * s, y * s)
+    operator fun div(s: Number) = Vector2(x / s, y / s)
 
     operator fun plus(s: S) = Vector2(x + s, y + s)
     operator fun minus(s: S) = Vector2(x - s, y - s)

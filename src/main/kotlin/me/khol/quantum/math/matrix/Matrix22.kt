@@ -2,9 +2,10 @@ package me.khol.quantum.math.matrix
 
 import me.khol.quantum.math.vector.Vector2
 import me.khol.quantum.math.scalar.Scalar
+import me.khol.quantum.math.scalar.Number
 import me.khol.quantum.math.vector.dot
 
-data class Matrix22<S: Scalar<S>>(
+data class Matrix22<S : Scalar<S>>(
     val x: Vector2<S>,
     val y: Vector2<S>
 ) {
@@ -12,10 +13,10 @@ data class Matrix22<S: Scalar<S>>(
     operator fun unaryPlus() = Matrix22(x, y)
     operator fun unaryMinus() = Matrix22(-x, -y)
 
-    operator fun plus(s: Double) = Matrix22(x + s, y + s)
-    operator fun minus(s: Double) = Matrix22(x - s, y - s)
-    operator fun times(s: Double) = Matrix22(x * s, y * s)
-    operator fun div(s: Double) = Matrix22(x / s, y / s)
+    operator fun plus(s: Number): Matrix22<S> = Matrix22(x + s, y + s)
+    operator fun minus(s: Number): Matrix22<S> = Matrix22(x - s, y - s)
+    operator fun times(s: Number): Matrix22<S> = Matrix22(x * s, y * s)
+    operator fun div(s: Number): Matrix22<S> = Matrix22(x / s, y / s)
 
     operator fun plus(v: S) = Matrix22(x + v, y + v)
     operator fun minus(v: S) = Matrix22(x - v, y - v)

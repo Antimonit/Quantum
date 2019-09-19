@@ -1,5 +1,7 @@
 package me.khol.quantum.math.scalar
 
+import java.lang.String.format
+import kotlin.math.abs
 import kotlin.math.sqrt
 
 data class Complex(
@@ -38,4 +40,26 @@ data class Complex(
 
     val module: Double
         get() = sqrt(square)
+
+    override fun toString(): String = format("(%.3f, %.3fj)", re, im)
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as Complex
+
+        if (!equals(re, other.re)) return false
+        if (!equals(im, other.im)) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = re.hashCode()
+        result = 31 * result + im.hashCode()
+        return result
+    }
 }
+
+fun equals(a: Double, b: Double) = abs(a - b) < 1e-10

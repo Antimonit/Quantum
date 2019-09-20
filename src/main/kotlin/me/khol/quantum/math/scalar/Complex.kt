@@ -39,5 +39,5 @@ data class Complex(
     val module: Number
         get() = sqrt(square)
 
-    override fun toString(): String = format("(%.3f, %.3fj)", re, im)
+    override fun toString(): String = format("(%.3f, %.3fj)", re.value, im.value)
 }

@@ -47,7 +47,7 @@ class Matrix {
     }
 
     operator fun times(other: Number): Matrix = new(cols, rows) {
-        elementMultiply(matrix, other.toDouble(), other.toDouble(), it)
+        elementMultiply(matrix, other.toDouble(), 0.0, it)
     }
 
     operator fun times(other: Complex): Matrix = new(rows, cols) {

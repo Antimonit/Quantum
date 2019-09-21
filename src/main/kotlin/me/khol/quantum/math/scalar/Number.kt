@@ -3,7 +3,7 @@ package me.khol.quantum.math.scalar
 import kotlin.math.abs
 import kotlin.math.sqrt
 
-class Number(val value: Double) : Scalar<Number> {
+data class Number(val value: Double) : Scalar<Number> {
 
     companion object {
         val ZERO = Number(0.0)
@@ -32,6 +32,10 @@ class Number(val value: Double) : Scalar<Number> {
 
     override fun hashCode(): Int {
         return value.hashCode()
+    }
+
+    override fun toString(): String {
+        return value.toString()
     }
 }
 

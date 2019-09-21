@@ -1,42 +1,40 @@
 package me.khol.quantum.gate
 
-import me.khol.quantum.math.matrix.Matrix22
-import me.khol.quantum.math.scalar.Complex
-import me.khol.quantum.math.vector.Complex2
-import org.junit.jupiter.api.Assertions.*
+import me.khol.quantum.math.ejml.Complex
+import me.khol.quantum.math.ejml.Matrix
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.DisplayName
+import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 
-internal class GatesTest {
+@DisplayName("Gate is reversible")
+@Nested
+class ReversibleGates {
 
+    @DisplayName("X")
     @Test
-    fun `X gate is reversible`() {
-        `gate is reversible`(gateX)
-    }
+    fun x() = isReversible(gateX)
 
+    @DisplayName("Y")
     @Test
-    fun `Y gate is reversible`() {
-        `gate is reversible`(gateY)
-    }
+    fun y() = isReversible(gateY)
 
+    @DisplayName("Z")
     @Test
-    fun `Z gate is reversible`() {
-        `gate is reversible`(gateZ)
-    }
+    fun z() = isReversible(gateZ)
 
+    @DisplayName("Identity")
     @Test
-    fun `Identity gate is reversible`() {
-        `gate is reversible`(gateIdentity)
-    }
+    fun identity() = isReversible(gateIdentity)
 
+    @DisplayName("Hadamard")
     @Test
-    fun `Hadamard gate is reversible`() {
-        `gate is reversible`(gateHadamard)
-    }
+    fun hadamard() = isReversible(gateHadamard)
 
-    private fun `gate is reversible`(gate: Matrix22<Complex>) {
-        val input = Complex2(Complex.ONE, Complex.ZERO)
-        val transformed = gate * input
-        val output = gate * transformed
+    private fun isReversible(gate: Matrix) {
+        val input = Matrix(arrayOf(arrayOf(Complex.ONE, Complex.ZERO)))
+        val transformed = input * gate
+        val output = transformed * gate
         assertEquals(input, output)
     }
 }

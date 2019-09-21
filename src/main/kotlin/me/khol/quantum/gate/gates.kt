@@ -1,34 +1,42 @@
 package me.khol.quantum.gate
 
-import me.khol.quantum.math.matrix.Complex22
-import me.khol.quantum.math.scalar.Complex.Companion.ONE
-import me.khol.quantum.math.scalar.Complex.Companion.ZERO
-import me.khol.quantum.math.scalar.Complex.Companion.I
-import me.khol.quantum.math.scalar.Number
-import me.khol.quantum.math.scalar.sqrt
-import me.khol.quantum.math.vector.Complex2
+import me.khol.quantum.math.ejml.Complex.Companion.I
+import me.khol.quantum.math.ejml.Complex.Companion.ONE
+import me.khol.quantum.math.ejml.Complex.Companion.ZERO
+import me.khol.quantum.math.ejml.Matrix
+import kotlin.math.sqrt
 
-val gateX = Complex22(
-    Complex2(ZERO, ONE),
-    Complex2(ONE, ZERO)
+val gateX = Matrix(
+    arrayOf(
+        arrayOf(ZERO, ONE),
+        arrayOf(ONE, ZERO)
+    )
 )
 
-val gateY = Complex22(
-    Complex2(ZERO, -I),
-    Complex2(I, ZERO)
+val gateY = Matrix(
+    arrayOf(
+        arrayOf(ZERO, -I),
+        arrayOf(I, ZERO)
+    )
 )
 
-val gateZ = Complex22(
-    Complex2(ONE, ZERO),
-    Complex2(ZERO, -ONE)
+val gateZ = Matrix(
+    arrayOf(
+        arrayOf(ONE, ZERO),
+        arrayOf(ZERO, -ONE)
+    )
 )
 
-val gateIdentity = Complex22(
-    Complex2(ONE, ZERO),
-    Complex2(ZERO, ONE)
+val gateIdentity = Matrix(
+    arrayOf(
+        arrayOf(ONE, ZERO),
+        arrayOf(ZERO, ONE)
+    )
 )
 
-val gateHadamard = Complex22(
-    Complex2(ONE, ONE),
-    Complex2(ONE, -ONE)
-) * sqrt(Number.HALF)
+val gateHadamard = Matrix(
+    arrayOf(
+        arrayOf(ONE, ONE),
+        arrayOf(ONE, -ONE)
+    )
+) * sqrt(0.5)

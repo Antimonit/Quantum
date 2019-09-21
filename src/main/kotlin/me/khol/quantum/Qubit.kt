@@ -1,7 +1,7 @@
 package me.khol.quantum
 
-import me.khol.quantum.math.scalar.Complex
-import me.khol.quantum.math.scalar.Number
+import me.khol.quantum.math.ejml.Complex
+import kotlin.math.abs
 
 /**
  * Quantum bit is described by:
@@ -23,20 +23,19 @@ data class Qubit(
 
     companion object {
         val ZERO = Qubit(Complex.ONE, Complex.ZERO)
-        val HALF = Qubit(Complex.HALF, Complex.HALF)
         val ONE = Qubit(Complex.ZERO, Complex.ONE)
     }
 
     init {
-        if (alpha.square + beta.square != Number.ONE) {
+        if (abs(alpha.square + beta.square - 1.0) >= 1e-10) {
             throw IllegalStateException("Invalid qubit definition for α=$alpha β=$beta. " +
                 "α^2 + β^2 = ${alpha.square} + ${beta.square} = ${alpha.square + beta.square}")
         }
     }
 
-    val probabilityZero: Number
+    val probabilityZero: Double
         get() = alpha.square
 
-    val probabilityOne: Number
+    val probabilityOne: Double
         get() = beta.square
 }

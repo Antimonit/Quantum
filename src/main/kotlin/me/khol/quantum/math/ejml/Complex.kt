@@ -11,8 +11,8 @@ class Complex {
         val I = Complex(0, 1)
     }
 
-    constructor(real: Number, imaginary: Number = 0) {
-        this.complex = Complex_F64(real.toDouble(), imaginary.toDouble())
+    constructor(re: Number = 0, im: Number = 0) {
+        this.complex = Complex_F64(re.toDouble(), im.toDouble())
     }
 
     constructor(complex: Complex_F64) {

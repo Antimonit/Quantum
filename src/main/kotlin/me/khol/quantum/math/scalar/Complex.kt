@@ -27,17 +27,13 @@ data class Complex(
     override operator fun times(s: Complex) = Complex(re * s.re - im * s.im, re * s.im + im * s.re)
     override operator fun div(s: Complex) = Complex(re * s.re + im * s.im, re * s.im - im * s.re) / s.square
 
-    val reciprocal: Complex
-        get() = Complex(re / square, -im / square)
+    val reciprocal: Complex by lazy { Complex(re / square, -im / square) }
 
-    val conjugate: Complex
-        get() = Complex(re, -im)
+    val conjugate: Complex by lazy { Complex(re, -im) }
 
-    val square: Number
-        get() = re * re + im * im
+    val square: Number by lazy { re * re + im * im }
 
-    val module: Number
-        get() = sqrt(square)
+    val module: Number by lazy { sqrt(square) }
 
     override fun toString(): String = format("(%.3f, %.3fj)", re.value, im.value)
 }

@@ -1,6 +1,6 @@
 package me.khol.quantum
 
-import me.khol.quantum.math.ejml.Complex
+import me.khol.quantum.math.Complex
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import kotlin.math.sqrt

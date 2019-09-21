@@ -1,7 +1,7 @@
 package me.khol.quantum.gate
 
-import me.khol.quantum.math.ejml.Complex
-import me.khol.quantum.math.ejml.Matrix
+import me.khol.quantum.math.Complex
+import me.khol.quantum.math.Matrix
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Nested

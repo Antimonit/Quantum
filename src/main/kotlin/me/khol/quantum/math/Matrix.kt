@@ -1,4 +1,4 @@
-package me.khol.quantum.math.ejml
+package me.khol.quantum.math
 
 import org.ejml.data.ZMatrixRMaj
 import org.ejml.dense.row.CommonOps_ZDRM.*

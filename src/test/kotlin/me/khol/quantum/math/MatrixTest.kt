@@ -1,4 +1,4 @@
-package me.khol.quantum.math.ejml
+package me.khol.quantum.math
 
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.DisplayName

@@ -1,9 +1,9 @@
 package me.khol.quantum.gate
 
-import me.khol.quantum.math.ejml.Complex.Companion.I
-import me.khol.quantum.math.ejml.Complex.Companion.ONE
-import me.khol.quantum.math.ejml.Complex.Companion.ZERO
-import me.khol.quantum.math.ejml.Matrix
+import me.khol.quantum.math.Complex.Companion.I
+import me.khol.quantum.math.Complex.Companion.ONE
+import me.khol.quantum.math.Complex.Companion.ZERO
+import me.khol.quantum.math.Matrix
 import kotlin.math.sqrt
 
 val gateX = Matrix(

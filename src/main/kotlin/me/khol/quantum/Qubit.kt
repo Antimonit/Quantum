@@ -1,6 +1,6 @@
 package me.khol.quantum
 
-import me.khol.quantum.math.ejml.Complex
+import me.khol.quantum.math.Complex
 import kotlin.math.abs
 
 /**

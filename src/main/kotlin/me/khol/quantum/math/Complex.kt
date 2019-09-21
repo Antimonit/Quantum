@@ -1,4 +1,4 @@
-package me.khol.quantum.math.ejml
+package me.khol.quantum.math
 
 import org.ejml.data.Complex_F64
 import java.lang.String.format

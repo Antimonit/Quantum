@@ -46,8 +46,8 @@ class Matrix {
         subtract(this.matrix, other.matrix, it)
     }
 
-    operator fun times(other: Double): Matrix = new(cols, rows) {
-        elementMultiply(matrix, other, other, it)
+    operator fun times(other: Number): Matrix = new(cols, rows) {
+        elementMultiply(matrix, other.toDouble(), other.toDouble(), it)
     }
 
     operator fun times(other: Complex): Matrix = new(rows, cols) {

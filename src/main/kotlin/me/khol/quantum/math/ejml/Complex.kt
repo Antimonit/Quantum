@@ -39,4 +39,19 @@ class Complex {
     val module: Double get() = complex.magnitude
 
     override fun toString(): String = format("(%.3f, %.3fj)", re, im)
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+        other as Complex
+        if (re != other.re) return false
+        if (im != other.im) return false
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = re.hashCode()
+        result = 31 * result + im.hashCode()
+        return result
+    }
 }

@@ -58,6 +58,10 @@ class Matrix {
         transpose(matrix, it)
     }
 
+    fun conjugate(): Matrix = new(rows, cols) {
+        conjugate(matrix, it)
+    }
+
     private fun new(row: Int, col: Int, action: (ZMatrixRMaj) -> Unit): Matrix {
         val result = ZMatrixRMaj(row, col)
         action(result)

@@ -21,6 +21,9 @@ class Matrix {
         this.matrix = matrix
     }
 
+    constructor(numRows: Int, numCols: Int, v: List<Complex>)
+        : this(numRows, numCols, *v.toTypedArray())
+
     constructor(numRows: Int, numCols: Int, vararg v: Complex) {
         matrix = ZMatrixRMaj(numRows, numCols, true, *v.flat())
     }
@@ -59,6 +62,17 @@ class Matrix {
 
     fun conjugate(): Matrix = new(rows, cols) {
         conjugate(matrix, it)
+    }
+
+    infix fun tensor(other: Matrix): Matrix {
+        if (this.cols != 1 || other.cols != 1) {
+            // TODO: Allow row vectors as well.
+            error("Tensor product is possible only for column vectors.")
+        }
+
+        val a = this.col(0)
+        val b = other.col(0)
+        return Matrix(a.size * b.size, 1, a.flatMap { x -> b.map { y -> x * y } })
     }
 
     private fun new(row: Int, col: Int, action: (ZMatrixRMaj) -> Unit): Matrix {

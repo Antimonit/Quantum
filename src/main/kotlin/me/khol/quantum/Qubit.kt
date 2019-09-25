@@ -1,6 +1,7 @@
 package me.khol.quantum
 
 import me.khol.quantum.math.Complex
+import me.khol.quantum.math.Matrix
 import kotlin.math.abs
 
 /**
@@ -38,4 +39,7 @@ data class Qubit(
 
     val probabilityOne: Double
         get() = beta.square
+
+    val ket by lazy { Matrix(2, 1, alpha, beta) }
+    val bra by lazy { Matrix(1, 2, alpha, beta) }
 }

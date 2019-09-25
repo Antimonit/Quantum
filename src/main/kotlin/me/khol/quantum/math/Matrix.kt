@@ -1,6 +1,7 @@
 package me.khol.quantum.math
 
 import org.ejml.data.ZMatrixRMaj
+import org.ejml.dense.row.CommonOps_ZDRM
 import org.ejml.dense.row.CommonOps_ZDRM.*
 import kotlin.math.abs
 
@@ -8,13 +9,7 @@ class Matrix {
 
     companion object {
 
-        fun identity(size: Int) = Matrix(
-            Array(size) { row ->
-                Array(size) { col ->
-                    if (row == col) Complex.ONE else Complex.ZERO
-                }
-            }
-        )
+        fun identity(size: Int) = Matrix(CommonOps_ZDRM.identity(size))
     }
 
     private val matrix: ZMatrixRMaj
@@ -33,6 +28,10 @@ class Matrix {
     constructor(m: Array<Array<Complex>>) {
         matrix = ZMatrixRMaj(m.map { it.flat() }.toTypedArray())
     }
+
+    operator fun unaryPlus(): Matrix = this * 1
+
+    operator fun unaryMinus(): Matrix = this * -1
 
     operator fun times(other: Matrix): Matrix = new(this.rows, other.cols) {
         mult(this.matrix, other.matrix, it)

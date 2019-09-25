@@ -48,7 +48,7 @@ class Matrix {
         subtract(this.matrix, other.matrix, it)
     }
 
-    operator fun times(other: Number): Matrix = new(cols, rows) {
+    operator fun times(other: Number): Matrix = new(rows, cols) {
         elementMultiply(matrix, other.toDouble(), 0.0, it)
     }
 

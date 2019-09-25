@@ -65,14 +65,11 @@ class Matrix {
     }
 
     infix fun tensor(other: Matrix): Matrix {
-        if (this.cols != 1 || other.cols != 1) {
-            // TODO: Allow row vectors as well.
-            error("Tensor product is possible only for column vectors.")
-        }
-
-        val a = this.col(0)
-        val b = other.col(0)
-        return Matrix(a.size * b.size, 1, a.flatMap { x -> b.map { y -> x * y } })
+        return Matrix(Array(this.rows * other.rows) { row ->
+            Array(this.cols * other.cols) { col ->
+                this[row / other.rows, col / other.cols] * other[row % other.rows, col % other.cols]
+            }
+        })
     }
 
     private fun new(row: Int, col: Int, action: (ZMatrixRMaj) -> Unit): Matrix {

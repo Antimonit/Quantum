@@ -42,6 +42,15 @@ class GateTest {
         assertEquals(matrix * adjoint, adjoint * matrix)
     }
 
+    /**
+     * All linear operators that correspond to quantum logic gates must be unitary.
+     *
+     * That is, if a complex matrix U is unitary, then it must be true that inverse of U is
+     * equal to conjugate transpose of U.
+     *
+     * Unitary operators preserve the inner product of two vectors, geometrically
+     * preserving the lengths of the vectors and the angle between them:
+     */
     @DisplayName("Gates should be unitary")
     @ParameterizedTest
     @ValueSource(classes = [

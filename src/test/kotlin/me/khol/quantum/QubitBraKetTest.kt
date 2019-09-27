@@ -55,28 +55,28 @@ internal class QubitBraKetTest {
         @Test
         fun tensorZeroZero() = assertEquals(
             Matrix(4, 1, Complex.ONE, Complex.ZERO, Complex.ZERO, Complex.ZERO),
-            ZERO.ket tensor ZERO.ket
+            ZERO x ZERO
         )
 
         @DisplayName("Tensor |01>")
         @Test
         fun tensorZeroOne() = assertEquals(
             Matrix(4, 1, Complex.ZERO, Complex.ONE, Complex.ZERO, Complex.ZERO),
-            ZERO.ket tensor ONE.ket
+            ZERO x ONE
         )
 
         @DisplayName("Tensor |10>")
         @Test
         fun tensorOneZero() = assertEquals(
             Matrix(4, 1, Complex.ZERO, Complex.ZERO, Complex.ONE, Complex.ZERO),
-            ONE.ket tensor ZERO.ket
+            ONE x ZERO
         )
 
         @DisplayName("Tensor |11>")
         @Test
         fun tensorOneOne() = assertEquals(
             Matrix(4, 1, Complex.ZERO, Complex.ZERO, Complex.ZERO, Complex.ONE),
-            ONE.ket tensor ONE.ket
+            ONE x ONE
         )
     }
 }

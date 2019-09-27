@@ -42,4 +42,28 @@ data class Qubit(
 
     val ket by lazy { Matrix(2, 1, alpha, beta) }
     val bra by lazy { Matrix(1, 2, alpha, beta) }
+
+    /**
+     * Calculates the dot product of this and [other] qubits.
+     * This results into 1x1 matrix.
+     */
+    infix fun dot(other: Qubit): Matrix {
+        return this.bra tensor other.ket
+    }
+
+    /**
+     * Calculates the cross product of this and [other] qubits.
+     * This results into 2x2 matrix.
+     */
+    infix fun cross(other: Qubit): Matrix {
+        return this.ket tensor other.bra
+    }
+
+    /**
+     * Calculates the tensor product of this and [other] qubits
+     * This results into 4x1 matrix.
+     */
+    infix fun x(other: Qubit): Matrix {
+        return this.ket tensor other.ket
+    }
 }

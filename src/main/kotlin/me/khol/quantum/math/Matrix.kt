@@ -5,7 +5,7 @@ import org.ejml.dense.row.CommonOps_ZDRM
 import org.ejml.dense.row.CommonOps_ZDRM.*
 import kotlin.math.abs
 
-class Matrix {
+class Matrix : Iterable<Complex> {
 
     companion object {
 
@@ -96,6 +96,16 @@ class Matrix {
                 this[row, col]
             }
         }
+    }
+
+    override fun iterator(): Iterator<Complex> {
+        return MatrixIterator(this)
+    }
+
+    private class MatrixIterator(private val matrix: Matrix) : Iterator<Complex> {
+        private var index = 0
+        override fun hasNext() = index < matrix.cols * matrix.rows
+        override fun next() = matrix[index % matrix.rows, index / matrix.rows].also { index++ }
     }
 
     override fun toString(): String {

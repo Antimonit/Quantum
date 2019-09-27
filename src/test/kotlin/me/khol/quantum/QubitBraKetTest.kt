@@ -35,6 +35,16 @@ internal class QubitBraKetTest {
             Matrix(2, 1, Complex.ZERO, Complex.ZERO),
             (ZERO.ket * ONE.bra) * ZERO.ket
         )
+
+        @DisplayName("(|x><x|)*|x> = |x>*(<x|x>)")
+        @Test
+        fun associativeQubits() {
+            val qubit = Qubit(Complex(0.8, 0.0), Complex(0.0, 0.6))
+            assertEquals(
+                (qubit.ket * qubit.bra) * qubit.ket,
+                qubit.ket * (qubit.bra * qubit.ket)
+            )
+        }
     }
 
     @DisplayName("Tensor product of two qubits")

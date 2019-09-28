@@ -9,16 +9,16 @@ private typealias C = Complex
 internal class MatrixTest {
 
     private val a = Matrix(
-        arrayOf(
-            arrayOf(C(2), C(3)),
-            arrayOf(C(4), C(5))
+        listOf(
+            listOf(C(2), C(3)),
+            listOf(C(4), C(5))
         )
     )
 
     private val b = Matrix(
-        arrayOf(
-            arrayOf(C(3), C(2)),
-            arrayOf(C(1), C(0))
+        listOf(
+            listOf(C(3), C(2)),
+            listOf(C(1), C(0))
         )
     )
 
@@ -26,9 +26,9 @@ internal class MatrixTest {
     @Test
     fun matrixTimesMatrix() {
         val c = Matrix(
-            arrayOf(
-                arrayOf(C(9), C(4)),
-                arrayOf(C(17), C(8))
+            listOf(
+                listOf(C(9), C(4)),
+                listOf(C(17), C(8))
             )
         )
         assertEquals(c, a * b)
@@ -38,9 +38,9 @@ internal class MatrixTest {
     @Test
     fun matrixPlusMatrix() {
         val c = Matrix(
-            arrayOf(
-                arrayOf(C(5), C(5)),
-                arrayOf(C(5), C(5))
+            listOf(
+                listOf(C(5), C(5)),
+                listOf(C(5), C(5))
             )
         )
         assertEquals(c, a + b)
@@ -50,9 +50,9 @@ internal class MatrixTest {
     @Test
     fun matrixMinusMatrix() {
         val c = Matrix(
-            arrayOf(
-                arrayOf(C(-1), C(1)),
-                arrayOf(C(3), C(5))
+            listOf(
+                listOf(C(-1), C(1)),
+                listOf(C(3), C(5))
             )
         )
         assertEquals(c, a - b)
@@ -62,9 +62,9 @@ internal class MatrixTest {
     @Test
     fun matrixTimesNumber() {
         val c = Matrix(
-            arrayOf(
-                arrayOf(C(6), C(9)),
-                arrayOf(C(12), C(15))
+            listOf(
+                listOf(C(6), C(9)),
+                listOf(C(12), C(15))
             )
         )
         assertEquals(c, a * 3)
@@ -74,9 +74,9 @@ internal class MatrixTest {
     @Test
     fun matrixTimesComplex() {
         val c = Matrix(
-            arrayOf(
-                arrayOf(C(2, 4), C(3, 6)),
-                arrayOf(C(4, 8), C(5, 10))
+            listOf(
+                listOf(C(2, 4), C(3, 6)),
+                listOf(C(4, 8), C(5, 10))
             )
         )
         assertEquals(c, a * C(1, 2))
@@ -86,9 +86,9 @@ internal class MatrixTest {
     @Test
     fun transposeSquareMatrix() {
         val c = Matrix(
-            arrayOf(
-                arrayOf(C(2), C(4)),
-                arrayOf(C(3), C(5))
+            listOf(
+                listOf(C(2), C(4)),
+                listOf(C(3), C(5))
             )
         )
         assertEquals(c, a.transpose())
@@ -98,14 +98,14 @@ internal class MatrixTest {
     @Test
     fun transposeRectangularMatrix() {
         val c = Matrix(
-            arrayOf(
-                arrayOf(C(1), C(4))
+            listOf(
+                listOf(C(1), C(4))
             )
         )
         val d = Matrix(
-            arrayOf(
-                arrayOf(C(1)),
-                arrayOf(C(4))
+            listOf(
+                listOf(C(1)),
+                listOf(C(4))
             )
         )
         assertEquals(d, c.transpose())

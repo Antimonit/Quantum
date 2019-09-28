@@ -8,9 +8,9 @@ object GateHadamard : Gate {
 
     override val qubits = 1
     override val matrix = Matrix(
-        arrayOf(
-            arrayOf(ONE, ONE),
-            arrayOf(ONE, -ONE)
+        listOf(
+            listOf(ONE, ONE),
+            listOf(ONE, -ONE)
         )
     ) * sqrt(0.5)
 }

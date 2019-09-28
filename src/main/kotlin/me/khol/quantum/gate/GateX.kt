@@ -8,9 +8,9 @@ object GateX : Gate {
 
     override val qubits = 1
     override val matrix = Matrix(
-        arrayOf(
-            arrayOf(ZERO, ONE),
-            arrayOf(ONE, ZERO)
+        listOf(
+            listOf(ZERO, ONE),
+            listOf(ONE, ZERO)
         )
     )
 }

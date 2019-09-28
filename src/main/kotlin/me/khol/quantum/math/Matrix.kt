@@ -25,10 +25,10 @@ class Matrix : Iterable<Complex> {
         : this(numRows, numCols, *v.toTypedArray())
 
     constructor(numRows: Int, numCols: Int, vararg v: Complex) {
-        matrix = ZMatrixRMaj(numRows, numCols, true, *v.flat())
+        matrix = ZMatrixRMaj(numRows, numCols, true, *v.toList().flat())
     }
 
-    constructor(m: Array<Array<Complex>>) {
+    constructor(m: List<List<Complex>>) {
         matrix = ZMatrixRMaj(m.map { it.flat() }.toTypedArray())
     }
 
@@ -65,8 +65,8 @@ class Matrix : Iterable<Complex> {
     }
 
     infix fun tensor(other: Matrix): Matrix {
-        return Matrix(Array(this.rows * other.rows) { row ->
-            Array(this.cols * other.cols) { col ->
+        return Matrix(List(this.rows * other.rows) { row ->
+            List(this.cols * other.cols) { col ->
                 this[row / other.rows, col / other.cols] * other[row % other.rows, col % other.cols]
             }
         })
@@ -82,17 +82,17 @@ class Matrix : Iterable<Complex> {
         return Complex(matrix.getReal(row, col), matrix.getImag(row, col))
     }
 
-    fun row(row: Int): Array<Complex> {
-        return Array(cols) { col -> get(row, col) }
+    fun row(row: Int): List<Complex> {
+        return List(cols) { col -> get(row, col) }
     }
 
-    fun col(col: Int): Array<Complex> {
-        return Array(rows) { row -> get(row, col) }
+    fun col(col: Int): List<Complex> {
+        return List(rows) { row -> get(row, col) }
     }
 
-    fun toArrayArray(): Array<Array<Complex>> {
-        return Array(rows) { row ->
-            Array(cols) { col ->
+    fun toListList(): List<List<Complex>> {
+        return List(rows) { row ->
+            List(cols) { col ->
                 this[row, col]
             }
         }
@@ -109,7 +109,7 @@ class Matrix : Iterable<Complex> {
     }
 
     override fun toString(): String {
-        return toArrayArray().joinToString("\n") { it.joinToString(" ", "| ", " |") }
+        return toListList().joinToString("\n") { it.joinToString(" ", "| ", " |") }
     }
 
     override fun equals(other: Any?): Boolean {
@@ -124,6 +124,6 @@ class Matrix : Iterable<Complex> {
     }
 }
 
-private fun Array<out Complex>.flat() = flatMap { it.flat() }.toDoubleArray()
+private fun List<Complex>.flat() = flatMap { it.flat() }.toDoubleArray()
 private fun Complex.flat() = listOf(re, im)
 

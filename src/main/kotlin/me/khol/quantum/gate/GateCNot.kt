@@ -8,11 +8,11 @@ object GateCNot : Gate {
 
     override val qubits = 2
     override val matrix = Matrix(
-        arrayOf(
-            arrayOf(ONE, ZERO, ZERO, ZERO),
-            arrayOf(ZERO, ONE, ZERO, ZERO),
-            arrayOf(ZERO, ZERO, ZERO, ONE),
-            arrayOf(ZERO, ZERO, ONE, ZERO)
+        listOf(
+            listOf(ONE, ZERO, ZERO, ZERO),
+            listOf(ZERO, ONE, ZERO, ZERO),
+            listOf(ZERO, ZERO, ZERO, ONE),
+            listOf(ZERO, ZERO, ONE, ZERO)
         )
     )
 }

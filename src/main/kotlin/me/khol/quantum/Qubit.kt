@@ -24,6 +24,8 @@ class Qubit(
     val beta: Complex
 ) {
 
+    constructor(matrix: Matrix) : this(matrix[0, 0], matrix[0, 1])
+
     companion object {
         val ZERO = Qubit(Complex.ONE, Complex.ZERO)
         val ONE = Qubit(Complex.ZERO, Complex.ONE)

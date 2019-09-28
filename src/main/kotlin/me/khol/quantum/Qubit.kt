@@ -17,7 +17,7 @@ import kotlin.math.abs
  *  * (0,1) point corresponds |1>
  *  * other points on a unit circle represents x|0> + y|1>
  */
-data class Qubit(
+class Qubit(
     val alpha: Complex,
     val beta: Complex
 ) : Matrix(2, 1, alpha, beta) {

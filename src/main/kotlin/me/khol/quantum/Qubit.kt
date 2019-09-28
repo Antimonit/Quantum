@@ -20,7 +20,7 @@ import kotlin.math.abs
 data class Qubit(
     val alpha: Complex,
     val beta: Complex
-) {
+) : Matrix(2, 1, alpha, beta) {
 
     companion object {
         val ZERO = Qubit(Complex.ONE, Complex.ZERO)
@@ -28,9 +28,9 @@ data class Qubit(
     }
 
     init {
-        if (abs(alpha.square + beta.square - 1.0) >= 1e-10) {
-            throw IllegalStateException("Invalid qubit definition for α=$alpha β=$beta. " +
-                "α^2 + β^2 = ${alpha.square} + ${beta.square} = ${alpha.square + beta.square}")
+        check(abs(alpha.square + beta.square - 1.0) < 1e-10) {
+            "Invalid qubit definition for α=$alpha β=$beta. " +
+                "α^2 + β^2 = ${alpha.square} + ${beta.square} = ${alpha.square + beta.square}"
         }
     }
 
@@ -40,8 +40,8 @@ data class Qubit(
     val probabilityOne: Double
         get() = beta.square
 
-    val ket by lazy { Matrix(2, 1, alpha, beta) }
-    val bra by lazy { Matrix(1, 2, alpha, beta) }
+    val ket by lazy { this }
+    val bra by lazy { transpose() }
 
     /**
      * Calculates the dot product of this and [other] qubits.

@@ -5,24 +5,28 @@ import org.ejml.dense.row.CommonOps_ZDRM
 import org.ejml.dense.row.CommonOps_ZDRM.*
 import kotlin.math.abs
 
-class Matrix : Iterable<Complex> {
+open class Matrix : Iterable<Complex> {
 
     companion object {
 
         fun identity(size: Int) = Matrix(CommonOps_ZDRM.identity(size))
     }
 
-    private val matrix: ZMatrixRMaj
+    protected val matrix: ZMatrixRMaj
 
     val cols: Int get() = matrix.numCols
     val rows: Int get() = matrix.numRows
+
+    constructor(matrix: Matrix) {
+        this.matrix = matrix.matrix
+    }
 
     constructor(matrix: ZMatrixRMaj) {
         this.matrix = matrix
     }
 
     constructor(numRows: Int, numCols: Int, v: List<Complex>)
-        : this(numRows, numCols, *v.toTypedArray())
+            : this(numRows, numCols, *v.toTypedArray())
 
     constructor(numRows: Int, numCols: Int, vararg v: Complex) {
         matrix = ZMatrixRMaj(numRows, numCols, true, *v.toList().flat())
@@ -114,8 +118,7 @@ class Matrix : Iterable<Complex> {
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
-        if (javaClass != other?.javaClass) return false
-        other as Matrix
+        if (other !is Matrix) return false
         return this.matrix.data.zip(other.matrix.data).all { (a, b) -> abs(a - b) < 1e-10 }
     }
 

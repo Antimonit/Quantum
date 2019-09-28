@@ -47,6 +47,42 @@ internal class QubitBraKetTest {
         }
     }
 
+    @DisplayName("Multiplication of Ket and Bra vectors with mathematical operators")
+    @Nested
+    class QubitMultiplicationWithOperatorsTest {
+
+        @DisplayName("|0><0| + |1><1| = I")
+        @Test
+        fun ketsAndBras() = assertEquals(
+            Matrix.identity(2),
+            (ZERO cross ZERO) + (ONE cross ONE)
+        )
+
+        @DisplayName("(|0><1|)*|1> = |0>")
+        @Test
+        fun mapsToZeroQubit() = assertEquals(
+            ZERO,
+            (ZERO cross ONE) * ONE
+        )
+
+        @DisplayName("(|0><1|)*|0> = 0")
+        @Test
+        fun mapsToZero() = assertEquals(
+            Matrix(2, 1, Complex.ZERO, Complex.ZERO),
+            (ZERO cross ONE) * ZERO
+        )
+
+        @DisplayName("(|x><x|)*|x> = |x>*(<x|x>)")
+        @Test
+        fun associativeQubits() {
+            val qubit = Qubit(Complex(0.8, 0.0), Complex(0.0, 0.6))
+            assertEquals(
+                (qubit cross qubit) * qubit,
+                qubit * (qubit dot qubit)
+            )
+        }
+    }
+
     @DisplayName("Tensor product of two qubits")
     @Nested
     class TensorProductTest {

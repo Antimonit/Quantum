@@ -48,7 +48,7 @@ class Qubit(
      * This results into 1x1 matrix.
      */
     infix fun dot(other: Qubit): Matrix {
-        return this.bra tensor other.ket
+        return this.bra * other.ket
     }
 
     /**
@@ -56,7 +56,7 @@ class Qubit(
      * This results into 2x2 matrix.
      */
     infix fun cross(other: Qubit): Matrix {
-        return this.ket tensor other.bra
+        return this.ket * other.bra
     }
 
     /**

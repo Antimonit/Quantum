@@ -3,6 +3,8 @@ package me.khol.quantum
 import me.khol.quantum.math.Complex
 import me.khol.quantum.math.Matrix
 import kotlin.math.abs
+import kotlin.math.sqrt
+import kotlin.random.Random
 
 /**
  * Quantum bit is described by:
@@ -25,6 +27,15 @@ class Qubit(
     companion object {
         val ZERO = Qubit(Complex.ONE, Complex.ZERO)
         val ONE = Qubit(Complex.ZERO, Complex.ONE)
+
+        fun random(): Qubit {
+            val values = List(4) { Random.nextDouble() }
+            val sum = values.sum()
+            val normalized = values.map { sqrt(it / sum) }
+            val alpha = Complex(normalized[0], normalized[1])
+            val beta = Complex(normalized[2], normalized[3])
+            return Qubit(alpha, beta)
+        }
     }
 
     init {

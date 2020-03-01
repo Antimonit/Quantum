@@ -66,4 +66,11 @@ internal class QubitTest {
         assertEquals(1, qubits.map(Qubit::probabilityZero).toSet().size)
         assertEquals(1, qubits.map(Qubit::probabilityOne).toSet().size)
     }
+
+    @Test
+    fun `Random qubit is always valid`() {
+        repeat(100) {
+            Qubit.random()
+        }
+    }
 }

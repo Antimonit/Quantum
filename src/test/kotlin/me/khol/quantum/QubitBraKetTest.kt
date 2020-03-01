@@ -13,7 +13,7 @@ internal class QubitBraKetTest {
 
     @DisplayName("Multiplication of Ket and Bra vectors")
     @Nested
-    class QubitMultiplicationTest {
+    inner class QubitMultiplicationTest {
 
         @DisplayName("|0><0| + |1><1| = I")
         @Test
@@ -49,7 +49,7 @@ internal class QubitBraKetTest {
 
     @DisplayName("Multiplication of Ket and Bra vectors with mathematical operators")
     @Nested
-    class QubitMultiplicationWithOperatorsTest {
+    inner class QubitMultiplicationWithOperatorsTest {
 
         @DisplayName("|0><0| + |1><1| = I")
         @Test
@@ -85,7 +85,7 @@ internal class QubitBraKetTest {
 
     @DisplayName("Tensor product of two qubits")
     @Nested
-    class TensorProductTest {
+    inner class TensorProductTest {
 
         @DisplayName("Tensor |00>")
         @Test

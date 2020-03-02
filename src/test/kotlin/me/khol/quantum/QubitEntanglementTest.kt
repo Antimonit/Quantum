@@ -14,14 +14,12 @@ internal class QubitEntanglementTest {
     /**
      * Bell states are two-qubit states that are maximally entangled.
      *
-     * Just like in a real world, we cannot simply create a Bell state by putting two untentangled
-     * qubits into a register. To create a Bell state we must first apply some transformations to
-     * them that will put them into a superposition and then entangle them.
+     * We cannot simply create a Bell state by putting two untentangled qubits into a register.
+     * To create a Bell state we must first apply some transformations to the qubits that will put
+     * them into a superposition and then entangle them.
      *
-     * That is why we don't create [Register]s representations of the Bell states below but rather
-     * their probability matrices. In the tests we verify that after applying some transformations
-     * to the registers, their measurement probabilities will match the probabilities of these
-     * matrices.
+     * Here we cheat a little bit by constructing Bell states' probability matrices first and then
+     * constructing the [Register] from them.
      */
     val φ_plus = Register(((ZERO x ZERO) + (ONE x ONE)) * sqrt(0.5))
     val φ_minus = Register(((ZERO x ZERO) - (ONE x ONE)) * sqrt(0.5))
@@ -35,7 +33,7 @@ internal class QubitEntanglementTest {
      */
     @Test
     fun φ_plusEntanglement() {
-        assertEquals(φ_plus.matrix, hadamardEntanglement(ZERO, ZERO))
+        assertEquals(φ_plus, hadamardEntanglement(ZERO, ZERO))
     }
 
     /**
@@ -45,7 +43,7 @@ internal class QubitEntanglementTest {
      */
     @Test
     fun φ_minusEntanglement() {
-        assertEquals(φ_minus.matrix, hadamardEntanglement(ONE, ZERO))
+        assertEquals(φ_minus, hadamardEntanglement(ONE, ZERO))
     }
 
     /**
@@ -55,7 +53,7 @@ internal class QubitEntanglementTest {
      */
     @Test
     fun ψ_plusEntanglement() {
-        assertEquals(ψ_plus.matrix, hadamardEntanglement(ZERO, ONE))
+        assertEquals(ψ_plus, hadamardEntanglement(ZERO, ONE))
     }
 
     /**
@@ -65,7 +63,7 @@ internal class QubitEntanglementTest {
      */
     @Test
     fun ψ_minusEntanglement() {
-        assertEquals(ψ_minus.matrix, hadamardEntanglement(ONE, ONE))
+        assertEquals(ψ_minus, hadamardEntanglement(ONE, ONE))
     }
 
     /**
@@ -75,7 +73,7 @@ internal class QubitEntanglementTest {
      *                  |       | result
      * |bottom> ------|CNOT|--- |
      */
-    private fun hadamardEntanglement(top: Qubit, bottom: Qubit): Matrix {
-        return GateCNot.matrix * Register(Qubit(GateHadamard.matrix * top.ket), bottom).matrix
+    private fun hadamardEntanglement(top: Qubit, bottom: Qubit): Register {
+        return GateCNot * Register(GateHadamard * top, bottom)
     }
 }

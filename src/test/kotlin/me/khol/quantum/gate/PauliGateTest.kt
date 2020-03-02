@@ -10,7 +10,7 @@ class PauliGateTest {
     @DisplayName("Pauli gates magic")
     @Test
     fun pauliGatesMagic() {
-        val result = -GateX.matrix * GateY.matrix * GateZ.matrix * Complex.I
-        assertEquals(Gate.identity(1), result)
+        val result = -(GateX * GateY * GateZ).matrix * Complex.I
+        assertEquals(GateIdentity1.matrix, result)
     }
 }

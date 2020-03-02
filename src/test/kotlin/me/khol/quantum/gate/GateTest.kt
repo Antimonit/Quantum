@@ -22,7 +22,7 @@ class GateTest {
         val gate = clazz.kotlin.objectInstance!!
         val matrix = gate.matrix
         val squared = matrix * matrix
-        assertEquals(Gate.identity(gate.qubits), squared)
+        assertEquals(Gate.identity(gate.qubits).matrix, squared)
     }
 
     @DisplayName("Gates should be normal")
@@ -65,7 +65,7 @@ class GateTest {
         val gate = clazz.kotlin.objectInstance!!
         val matrix = gate.matrix
         val adjoint = matrix.conjugate().transpose()
-        assertEquals(Gate.identity(gate.qubits), matrix * adjoint)
-        assertEquals(Gate.identity(gate.qubits), adjoint * matrix)
+        assertEquals(Gate.identity(gate.qubits).matrix, matrix * adjoint)
+        assertEquals(Gate.identity(gate.qubits).matrix, adjoint * matrix)
     }
 }

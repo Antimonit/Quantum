@@ -61,15 +61,15 @@ internal class QubitBraKetTest {
         @DisplayName("(|0><1|)*|1> = |0>")
         @Test
         fun mapsToZeroQubit() = assertEquals(
-            ZERO,
-            (ZERO cross ONE) * ONE
+            ZERO.ket,
+            (ZERO cross ONE) * ONE.ket
         )
 
         @DisplayName("(|0><1|)*|0> = 0")
         @Test
         fun mapsToZero() = assertEquals(
             Matrix(2, 1, Complex.ZERO, Complex.ZERO),
-            (ZERO cross ONE) * ZERO
+            (ZERO cross ONE) * ZERO.ket
         )
 
         @DisplayName("(|x><x|)*|x> = |x>*(<x|x>)")
@@ -77,8 +77,8 @@ internal class QubitBraKetTest {
         fun associativeQubits() {
             val qubit = Qubit(Complex(0.8, 0.0), Complex(0.0, 0.6))
             assertEquals(
-                (qubit cross qubit) * qubit,
-                qubit * (qubit dot qubit)
+                (qubit cross qubit) * qubit.ket,
+                qubit.ket * (qubit dot qubit)
             )
         }
     }

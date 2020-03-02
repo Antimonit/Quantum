@@ -22,7 +22,7 @@ import kotlin.random.Random
 class Qubit(
     val alpha: Complex,
     val beta: Complex
-) : Matrix(2, 1, alpha, beta) {
+) {
 
     companion object {
         val ZERO = Qubit(Complex.ONE, Complex.ZERO)
@@ -51,12 +51,12 @@ class Qubit(
     val probabilityOne: Double
         get() = beta.square
 
-    val ket by lazy { this }
-    val bra by lazy { transpose() }
+    val ket by lazy { Matrix(2, 1, alpha, beta) }
+    val bra by lazy { Matrix(1, 2, alpha, beta) }
 
     /**
      * Calculates the dot product of this and [other] qubits.
-     * This results into 1x1 matrix.
+     * This corresponds to <0|0> and results into 1x1 matrix.
      */
     infix fun dot(other: Qubit): Matrix {
         return this.bra * other.ket
@@ -64,7 +64,7 @@ class Qubit(
 
     /**
      * Calculates the cross product of this and [other] qubits.
-     * This results into 2x2 matrix.
+     * This corresponds to |0><0| and results into 2x2 matrix.
      */
     infix fun cross(other: Qubit): Matrix {
         return this.ket * other.bra
@@ -72,7 +72,7 @@ class Qubit(
 
     /**
      * Calculates the tensor product of this and [other] qubits
-     * This results into 4x1 matrix.
+     * This corresponds to |0>|0> and results into 4x1 matrix.
      */
     infix fun x(other: Qubit): Matrix {
         return this.ket tensor other.ket

@@ -5,14 +5,14 @@ import org.ejml.dense.row.CommonOps_ZDRM
 import org.ejml.dense.row.CommonOps_ZDRM.*
 import kotlin.math.abs
 
-open class Matrix : Iterable<Complex> {
+class Matrix : Iterable<Complex> {
 
     companion object {
 
         fun identity(size: Int) = Matrix(CommonOps_ZDRM.identity(size))
     }
 
-    protected val matrix: ZMatrixRMaj
+    private val matrix: ZMatrixRMaj
 
     val cols: Int get() = matrix.numCols
     val rows: Int get() = matrix.numRows

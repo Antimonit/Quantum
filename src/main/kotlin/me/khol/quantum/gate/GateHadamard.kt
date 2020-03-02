@@ -4,7 +4,7 @@ import me.khol.quantum.math.Complex.Companion.ONE
 import me.khol.quantum.math.Matrix
 import kotlin.math.sqrt
 
-object GateHadamard : Gate {
+object GateHadamard : Gate() {
 
     override val qubits = 1
     override val matrix = Matrix(

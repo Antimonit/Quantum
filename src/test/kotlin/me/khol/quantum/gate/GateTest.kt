@@ -20,9 +20,8 @@ class GateTest {
     ])
     fun <T: Gate> isGateReversible(clazz: Class<T>) {
         val gate = clazz.kotlin.objectInstance!!
-        val matrix = gate.matrix
-        val squared = matrix * matrix
-        assertEquals(Gate.identity(gate.qubits).matrix, squared)
+        val squared = gate * gate
+        assertEquals(Gate.identity(gate.qubits), squared)
     }
 
     @DisplayName("Gates should be normal")

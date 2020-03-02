@@ -15,13 +15,13 @@ class GateTest {
         GateY::class,
         GateZ::class,
         GateHadamard::class,
-        GateIdentity1::class,
+        GateIdentity::class,
         GateCNot::class
     ])
     fun <T: Gate> isGateReversible(clazz: Class<T>) {
         val gate = clazz.kotlin.objectInstance!!
         val squared = gate * gate
-        assertEquals(Gate.identity(gate.qubits), squared)
+        assertEquals(GateIdentity(gate.qubits), squared)
     }
 
     @DisplayName("Gates should be normal")
@@ -31,7 +31,7 @@ class GateTest {
         GateY::class,
         GateZ::class,
         GateHadamard::class,
-        GateIdentity1::class,
+        GateIdentity::class,
         GateCNot::class
     ])
     fun <T: Gate> isGateNormal(clazz: Class<T>) {
@@ -57,14 +57,14 @@ class GateTest {
         GateY::class,
         GateZ::class,
         GateHadamard::class,
-        GateIdentity1::class,
+        GateIdentity::class,
         GateCNot::class
     ])
     fun <T: Gate> isGateUnitary(clazz: Class<T>) {
         val gate = clazz.kotlin.objectInstance!!
         val matrix = gate.matrix
         val adjoint = matrix.conjugate().transpose()
-        assertEquals(Gate.identity(gate.qubits).matrix, matrix * adjoint)
-        assertEquals(Gate.identity(gate.qubits).matrix, adjoint * matrix)
+        assertEquals(GateIdentity(gate.qubits).matrix, matrix * adjoint)
+        assertEquals(GateIdentity(gate.qubits).matrix, adjoint * matrix)
     }
 }

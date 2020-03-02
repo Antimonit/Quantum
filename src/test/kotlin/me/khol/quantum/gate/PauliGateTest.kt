@@ -11,6 +11,6 @@ class PauliGateTest {
     @Test
     fun pauliGatesMagic() {
         val result = -(GateX * GateY * GateZ).matrix * Complex.I
-        assertEquals(GateIdentity1.matrix, result)
+        assertEquals(GateIdentity.matrix, result)
     }
 }

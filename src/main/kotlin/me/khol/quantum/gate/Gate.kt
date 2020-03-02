@@ -1,17 +1,8 @@
 package me.khol.quantum.gate
 
 import me.khol.quantum.math.Matrix
-import kotlin.math.pow
 
 abstract class Gate {
-
-    companion object {
-
-        fun identity(qubits: Int): Gate = object : Gate() {
-            override val qubits: Int = qubits
-            override val matrix: Matrix = Matrix.identity(2 pow qubits)
-        }
-    }
 
     abstract val qubits: Int
     abstract val matrix: Matrix
@@ -41,8 +32,4 @@ abstract class Gate {
         result = 31 * result + matrix.hashCode()
         return result
     }
-}
-
-infix fun Int.pow(exponent: Int): Int {
-    return toDouble().pow(exponent).toInt()
 }

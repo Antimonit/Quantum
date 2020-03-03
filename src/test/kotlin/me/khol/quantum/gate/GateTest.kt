@@ -15,6 +15,8 @@ class GateTest {
         GateX::class,
         GateY::class,
         GateZ::class,
+//        GateS::class, // does not perform full 180° rotation
+//        GateT::class, // does not perform full 180° rotation
         GateHadamard::class,
         GateIdentity::class,
         GateCNot::class,
@@ -32,6 +34,8 @@ class GateTest {
         GateX::class,
         GateY::class,
         GateZ::class,
+        GateS::class,
+        GateT::class,
         GateHadamard::class,
         GateIdentity::class,
         GateCNot::class,
@@ -59,6 +63,8 @@ class GateTest {
         GateX::class,
         GateY::class,
         GateZ::class,
+        GateS::class,
+        GateT::class,
         GateHadamard::class,
         GateIdentity::class,
         GateCNot::class,

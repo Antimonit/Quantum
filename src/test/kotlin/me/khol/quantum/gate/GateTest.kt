@@ -17,7 +17,8 @@ class GateTest {
         GateZ::class,
         GateHadamard::class,
         GateIdentity::class,
-        GateCNot::class
+        GateCNot::class,
+        GateSwap::class
     ])
     fun <T: Gate> isGateReversible(clazz: Class<T>) {
         val gate = clazz.kotlin.objectInstance!!
@@ -33,7 +34,8 @@ class GateTest {
         GateZ::class,
         GateHadamard::class,
         GateIdentity::class,
-        GateCNot::class
+        GateCNot::class,
+        GateSwap::class
     ])
     fun <T: Gate> isGateNormal(clazz: Class<T>) {
         val gate = clazz.kotlin.objectInstance!!
@@ -59,7 +61,8 @@ class GateTest {
         GateZ::class,
         GateHadamard::class,
         GateIdentity::class,
-        GateCNot::class
+        GateCNot::class,
+        GateSwap::class
     ])
     fun <T: Gate> isGateUnitary(clazz: Class<T>) {
         val gate = clazz.kotlin.objectInstance!!

@@ -13,41 +13,38 @@ import org.hamcrest.Matchers.not
 
 class GateCNotTest {
 
-    @DisplayName("CNot gate inverts zero if control qubit is one.")
     @Test
-    fun cNotGateInvertsZeroIfControlIsOne() {
+    fun `CNot gate inverts zero if control qubit is one`() {
         assertThat(GateCNot * Register(ONE, ZERO), equalTo(Register(ONE, ONE)))
     }
 
-    @DisplayName("CNot gate inverts one if control qubit is one.")
     @Test
-    fun cNotGateInvertsOneIfControlIsOne() {
+    fun `CNot gate inverts one if control qubit is one`() {
         assertThat(GateCNot * Register(ONE, ONE), equalTo(Register(ONE, ZERO)))
     }
 
-    @DisplayName("CNot gate inverts anything if control qubit is one.")
     @Test
-    fun cNotGateInvertsAnythingIfControlIsOne() {
+    fun `CNot gate inverts anything if control qubit is one`() {
         val qubit = Qubit.random()
         assertThat(GateCNot * Register(ONE, qubit), not(equalTo(Register(ONE, qubit))))
     }
 
-    @DisplayName("CNot gate does not invert one if control qubit is zero.")
     @Test
-    fun cNotGateDoesNotInvertOneIfControlIsZero() {
-        assertThat(GateCNot * Register(ZERO, ONE), equalTo(Register(ZERO, ONE)))
+    fun `CNot gate does not invert one if control qubit is zero`() {
+        val register = Register(ZERO, ONE)
+        assertThat(GateCNot * register, equalTo(register))
     }
 
-    @DisplayName("CNot gate does not invert zero if control qubit is zero.")
     @Test
-    fun cNotGateDoesNotInvertZeroIfControlIsZero() {
-        assertThat(GateCNot * Register(ZERO, ZERO), equalTo(Register(ZERO, ZERO)))
+    fun `CNot gate does not invert zero if control qubit is zero`() {
+        val register = Register(ZERO, ZERO)
+        assertThat(GateCNot * register, equalTo(register))
     }
 
-    @DisplayName("CNot gate does not invert anything if control qubit is zero.")
     @Test
-    fun cNotGateDoesNotInvertAnythingIfControlIsZero() {
+    fun `CNot gate does not invert anything if control qubit is zero`() {
         val qubit = Qubit.random()
-        assertThat(GateCNot * Register(ZERO, qubit), equalTo(Register(ZERO, qubit)))
+        val register = Register(ZERO, qubit)
+        assertThat(GateCNot * register, equalTo(register))
     }
 }

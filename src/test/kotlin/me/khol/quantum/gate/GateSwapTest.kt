@@ -19,4 +19,13 @@ class GateSwapTest {
         val actual = GateSwap * input
         assertEquals(expected, actual)
     }
+
+    @DisplayName("Swap gate made of CNot gates")
+    @Test
+    fun gateSwapMadeOfCNotGates() {
+        assertEquals(
+            GateSwap,
+            GateCNot * GateCNot.withOrder(1, 0) * GateCNot
+        )
+    }
 }

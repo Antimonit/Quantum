@@ -12,7 +12,9 @@ class Register private constructor(val qubits: Int, val matrix: Matrix) {
         matrix
     )
 
-    constructor(vararg qubits: Qubit) : this(
+    constructor(vararg qubits: Qubit) : this(qubits.toList())
+
+    constructor(qubits: List<Qubit>) : this(
         qubits.size,
         Matrix(qubits.fold(Matrix.identity(1)) { acc, qubit -> acc tensor qubit.ket })
     )

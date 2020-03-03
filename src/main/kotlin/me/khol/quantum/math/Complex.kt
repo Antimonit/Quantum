@@ -2,6 +2,7 @@ package me.khol.quantum.math
 
 import org.ejml.data.Complex_F64
 import java.lang.String.format
+import kotlin.math.abs
 
 class Complex {
 
@@ -44,8 +45,8 @@ class Complex {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false
         other as Complex
-        if (re != other.re) return false
-        if (im != other.im) return false
+        if (abs(re - other.re) >= 1e-10) return false
+        if (abs(im - other.im) >= 1e-10) return false
         return true
     }
 

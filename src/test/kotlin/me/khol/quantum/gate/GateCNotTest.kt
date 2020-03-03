@@ -6,8 +6,9 @@ import me.khol.quantum.Qubit.Companion.ZERO
 import me.khol.quantum.math.Matrix
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.Assertions.assertNotEquals
+import org.hamcrest.MatcherAssert.assertThat
+import org.hamcrest.Matchers.equalTo
+import org.hamcrest.Matchers.not
 
 class GateCNotTest {
 
@@ -21,38 +22,38 @@ class GateCNotTest {
     @DisplayName("CNot gate inverts zero if control qubit is one.")
     @Test
     fun cNotGateInvertsZeroIfControlIsOne() {
-        assertEquals(ONE x ONE, applyGate(control = ONE, target = ZERO))
+        assertThat(applyGate(control = ONE, target = ZERO), equalTo(ONE x ONE))
     }
 
     @DisplayName("CNot gate inverts one if control qubit is one.")
     @Test
     fun cNotGateInvertsOneIfControlIsOne() {
-        assertEquals(ONE x ZERO, applyGate(control = ONE, target = ONE))
+        assertThat(applyGate(control = ONE, target = ONE), equalTo(ONE x ZERO))
     }
 
     @DisplayName("CNot gate inverts anything if control qubit is one.")
     @Test
     fun cNotGateInvertsAnythingIfControlIsOne() {
         val qubit = Qubit.random()
-        assertNotEquals(ONE x qubit, applyGate(control = ONE, target = qubit))
+        assertThat(applyGate(control = ONE, target = qubit), not(equalTo(ONE x qubit)))
     }
 
     @DisplayName("CNot gate does not invert one if control qubit is zero.")
     @Test
     fun cNotGateDoesNotInvertOneIfControlIsZero() {
-        assertEquals(ZERO x ONE, applyGate(control = ZERO, target = ONE))
+        assertThat(applyGate(control = ZERO, target = ONE), equalTo(ZERO x ONE))
     }
 
     @DisplayName("CNot gate does not invert zero if control qubit is zero.")
     @Test
     fun cNotGateDoesNotInvertZeroIfControlIsZero() {
-        assertEquals(ZERO x ZERO, applyGate(control = ZERO, target = ZERO))
+        assertThat(applyGate(control = ZERO, target = ZERO), equalTo(ZERO x ZERO))
     }
 
     @DisplayName("CNot gate does not invert anything if control qubit is zero.")
     @Test
     fun cNotGateDoesNotInvertAnythingIfControlIsZero() {
         val qubit = Qubit.random()
-        assertEquals(ZERO x qubit, applyGate(control = ZERO, target = qubit))
+        assertThat(applyGate(control = ZERO, target = qubit), equalTo(ZERO x qubit))
     }
 }

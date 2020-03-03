@@ -1,6 +1,7 @@
 package me.khol.quantum.gate
 
-import org.junit.jupiter.api.Assertions.assertEquals
+import org.hamcrest.MatcherAssert.assertThat
+import org.hamcrest.Matchers.equalTo
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.ValueSource
@@ -21,7 +22,7 @@ class GateTest {
     fun <T: Gate> isGateReversible(clazz: Class<T>) {
         val gate = clazz.kotlin.objectInstance!!
         val squared = gate * gate
-        assertEquals(GateIdentity(gate.qubits), squared)
+        assertThat(squared, equalTo(GateIdentity(gate.qubits)))
     }
 
     @DisplayName("Gates should be normal")
@@ -38,7 +39,7 @@ class GateTest {
         val gate = clazz.kotlin.objectInstance!!
         val matrix = gate.matrix
         val adjoint = matrix.conjugate().transpose()
-        assertEquals(matrix * adjoint, adjoint * matrix)
+        assertThat(matrix * adjoint, equalTo(adjoint * matrix))
     }
 
     /**
@@ -64,7 +65,7 @@ class GateTest {
         val gate = clazz.kotlin.objectInstance!!
         val matrix = gate.matrix
         val adjoint = matrix.conjugate().transpose()
-        assertEquals(GateIdentity(gate.qubits).matrix, matrix * adjoint)
-        assertEquals(GateIdentity(gate.qubits).matrix, adjoint * matrix)
+        assertThat(matrix * adjoint, equalTo(GateIdentity(gate.qubits).matrix))
+        assertThat(adjoint * matrix, equalTo(GateIdentity(gate.qubits).matrix))
     }
 }

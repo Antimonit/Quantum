@@ -1,8 +1,9 @@
 package me.khol.quantum.math
 
-import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
+import org.hamcrest.MatcherAssert.assertThat
+import org.hamcrest.Matchers.equalTo
 
 private typealias C = Complex
 
@@ -31,7 +32,7 @@ internal class MatrixTest {
                 listOf(C(17), C(8))
             )
         )
-        assertEquals(c, a * b)
+        assertThat(a * b, equalTo(c))
     }
 
     @DisplayName("Add matrices")
@@ -43,7 +44,7 @@ internal class MatrixTest {
                 listOf(C(5), C(5))
             )
         )
-        assertEquals(c, a + b)
+        assertThat(a + b, equalTo(c))
     }
 
     @DisplayName("Subtract matrices")
@@ -55,7 +56,7 @@ internal class MatrixTest {
                 listOf(C(3), C(5))
             )
         )
-        assertEquals(c, a - b)
+        assertThat(a - b, equalTo(c))
     }
 
     @DisplayName("Multiply matrix by number")
@@ -67,7 +68,7 @@ internal class MatrixTest {
                 listOf(C(12), C(15))
             )
         )
-        assertEquals(c, a * 3)
+        assertThat(a * 3, equalTo(c))
     }
 
     @DisplayName("Multiply matrix by complex number")
@@ -79,7 +80,7 @@ internal class MatrixTest {
                 listOf(C(4, 8), C(5, 10))
             )
         )
-        assertEquals(c, a * C(1, 2))
+        assertThat(a * C(1, 2), equalTo(c))
     }
 
     @DisplayName("Transpose square matrix")
@@ -91,7 +92,7 @@ internal class MatrixTest {
                 listOf(C(3), C(5))
             )
         )
-        assertEquals(c, a.transpose())
+        assertThat(a.transpose(), equalTo(c))
     }
 
     @DisplayName("Transpose rectangular matrix")
@@ -108,15 +109,15 @@ internal class MatrixTest {
                 listOf(C(4))
             )
         )
-        assertEquals(d, c.transpose())
+        assertThat(c.transpose(), equalTo(d))
     }
 
     @DisplayName("Get returns correct values")
     @Test
     fun get() {
-        assertEquals(C(2), a[0, 0])
-        assertEquals(C(3), a[0, 1])
-        assertEquals(C(4), a[1, 0])
-        assertEquals(C(5), a[1, 1])
+        assertThat(a[0, 0], equalTo(C(2)))
+        assertThat(a[0, 1], equalTo(C(3)))
+        assertThat(a[1, 0], equalTo(C(4)))
+        assertThat(a[1, 1], equalTo(C(5)))
     }
 }

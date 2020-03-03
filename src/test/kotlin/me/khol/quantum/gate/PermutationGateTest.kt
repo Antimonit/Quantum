@@ -3,7 +3,8 @@ package me.khol.quantum.gate
 import me.khol.quantum.Qubit
 import me.khol.quantum.Register
 import me.khol.quantum.times
-import org.junit.jupiter.api.Assertions.assertEquals
+import org.hamcrest.MatcherAssert.assertThat
+import org.hamcrest.Matchers.equalTo
 import org.junit.jupiter.api.Test
 
 class PermutationGateTest {
@@ -28,10 +29,10 @@ class PermutationGateTest {
             val qubits = indices.map { Qubit.random() }
             val inputRegister = Register(qubits)
             indices.permutations().forEach { permutedIndices: List<Int> ->
-                val gate = PermutationGate(permutedIndices)
-                val actualRegister = gate * inputRegister
-                val expectedRegister = Register(permutedIndices.map { qubits[it] })
-                assertEquals(expectedRegister.matrix, actualRegister.matrix)
+                assertThat(
+                    PermutationGate(permutedIndices) * inputRegister,
+                    equalTo(Register(permutedIndices.map { qubits[it] }))
+                )
             }
         }
     }

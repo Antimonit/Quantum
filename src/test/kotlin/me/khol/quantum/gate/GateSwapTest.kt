@@ -3,7 +3,8 @@ package me.khol.quantum.gate
 import me.khol.quantum.Qubit
 import me.khol.quantum.Register
 import me.khol.quantum.times
-import org.junit.jupiter.api.Assertions.assertEquals
+import org.hamcrest.MatcherAssert.assertThat
+import org.hamcrest.Matchers.equalTo
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 
@@ -17,15 +18,15 @@ class GateSwapTest {
         val input = Register(qubitA, qubitB)
         val expected = Register(qubitB, qubitA)
         val actual = GateSwap * input
-        assertEquals(expected, actual)
+        assertThat(actual, equalTo(expected))
     }
 
     @DisplayName("Swap gate made of CNot gates")
     @Test
     fun gateSwapMadeOfCNotGates() {
-        assertEquals(
-            GateSwap,
-            GateCNot * GateCNot.withOrder(1, 0) * GateCNot
+        assertThat(
+            GateCNot * GateCNot.withOrder(1, 0) * GateCNot,
+            equalTo<Gate>(GateSwap)
         )
     }
 }

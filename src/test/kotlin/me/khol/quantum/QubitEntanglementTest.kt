@@ -4,8 +4,8 @@ import me.khol.quantum.Qubit.Companion.ONE
 import me.khol.quantum.Qubit.Companion.ZERO
 import me.khol.quantum.gate.GateCNot
 import me.khol.quantum.gate.GateHadamard
-import me.khol.quantum.math.Matrix
-import org.junit.jupiter.api.Assertions.assertEquals
+import org.hamcrest.MatcherAssert.assertThat
+import org.hamcrest.Matchers.equalTo
 import org.junit.jupiter.api.Test
 import kotlin.math.sqrt
 
@@ -33,7 +33,7 @@ internal class QubitEntanglementTest {
      */
     @Test
     fun φ_plusEntanglement() {
-        assertEquals(φ_plus, hadamardEntanglement(ZERO, ZERO))
+        assertThat(hadamardEntanglement(ZERO, ZERO), equalTo(φ_plus))
     }
 
     /**
@@ -43,7 +43,7 @@ internal class QubitEntanglementTest {
      */
     @Test
     fun φ_minusEntanglement() {
-        assertEquals(φ_minus, hadamardEntanglement(ONE, ZERO))
+        assertThat(hadamardEntanglement(ONE, ZERO), equalTo(φ_minus))
     }
 
     /**
@@ -53,7 +53,7 @@ internal class QubitEntanglementTest {
      */
     @Test
     fun ψ_plusEntanglement() {
-        assertEquals(ψ_plus, hadamardEntanglement(ZERO, ONE))
+        assertThat(hadamardEntanglement(ZERO, ONE), equalTo(ψ_plus))
     }
 
     /**
@@ -63,7 +63,7 @@ internal class QubitEntanglementTest {
      */
     @Test
     fun ψ_minusEntanglement() {
-        assertEquals(ψ_minus, hadamardEntanglement(ONE, ONE))
+        assertThat(hadamardEntanglement(ONE, ONE), equalTo(ψ_minus))
     }
 
     /**

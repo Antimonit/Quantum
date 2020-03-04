@@ -9,6 +9,12 @@ import org.junit.jupiter.params.provider.ValueSource
 @DisplayName("Mathematical properties of gates")
 class GateTest {
 
+    /**
+     * Gates typically perform a 180° about some axis on the Bloch sphere.
+     *
+     * Performing the operation twice should loop around the Bloch sphere and return to the
+     * original location, effectively negating its own effect.
+     */
     @DisplayName("Gate should be reversible")
     @ParameterizedTest
     @ValueSource(classes = [
@@ -43,19 +49,20 @@ class GateTest {
     ])
     fun <T: Gate> isGateNormal(clazz: Class<T>) {
         val gate = clazz.kotlin.objectInstance!!
-        val matrix = gate.matrix
-        val adjoint = matrix.conjugateTranspose()
-        assertThat(matrix * adjoint, equalTo(adjoint * matrix))
+        val adjoint = gate.adjoint
+        assertThat(gate * adjoint, equalTo(adjoint * gate))
     }
 
     /**
      * All linear operators that correspond to quantum logic gates must be unitary.
      *
-     * That is, if a complex matrix U is unitary, then it must be true that inverse of U is
-     * equal to conjugate transpose of U.
+     * That is, if a complex matrix U is unitary, then it must be true that inverse
+     * of U (U^-1) is equal to conjugate transpose of U (U^†). It follows that:
      *
-     * Unitary operators preserve the inner product of two vectors, geometrically
-     * preserving the lengths of the vectors and the angle between them:
+     * U^-1 * U^† == U^† * U^-1 == I
+     *
+     * Geometrically speaking, conjugate transpose (i.e. adjoint, dagger) of the
+     * gate's transformation matrix reverts the effect of the original matrix.
      */
     @DisplayName("Gates should be unitary")
     @ParameterizedTest
@@ -72,9 +79,8 @@ class GateTest {
     ])
     fun <T: Gate> isGateUnitary(clazz: Class<T>) {
         val gate = clazz.kotlin.objectInstance!!
-        val matrix = gate.matrix
-        val adjoint = matrix.conjugateTranspose()
-        assertThat(matrix * adjoint, equalTo(GateIdentity(gate.qubits).matrix))
-        assertThat(adjoint * matrix, equalTo(GateIdentity(gate.qubits).matrix))
+        val adjoint = gate.adjoint
+        assertThat(gate * adjoint, equalTo(GateIdentity(gate.qubits)))
+        assertThat(adjoint * gate, equalTo(GateIdentity(gate.qubits)))
     }
 }

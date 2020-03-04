@@ -7,6 +7,13 @@ abstract class Gate {
     abstract val qubits: Int
     abstract val matrix: Matrix
 
+    val adjoint: Gate by lazy {
+        object : Gate() {
+            override val qubits: Int = this@Gate.qubits
+            override val matrix: Matrix = this@Gate.matrix.conjugateTranspose()
+        }
+    }
+
     operator fun times(other: Gate): Gate {
         check(this.qubits == other.qubits) {
             "The gates with $qubits and ${other.qubits} qubits cannot be combined."

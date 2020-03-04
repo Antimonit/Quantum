@@ -112,6 +112,12 @@ internal class MatrixTest {
         assertThat(c.transpose(), equalTo(d))
     }
 
+    @DisplayName("Conjugate transpose operation is conjugate and transpose operations combined")
+    @Test
+    fun conjugateTranspose() {
+        assertThat(a.conjugate().transpose(), equalTo(a.conjugateTranspose()))
+    }
+
     @DisplayName("Get returns correct values")
     @Test
     fun get() {

@@ -44,7 +44,7 @@ class GateTest {
     fun <T: Gate> isGateNormal(clazz: Class<T>) {
         val gate = clazz.kotlin.objectInstance!!
         val matrix = gate.matrix
-        val adjoint = matrix.conjugate().transpose()
+        val adjoint = matrix.conjugateTranspose()
         assertThat(matrix * adjoint, equalTo(adjoint * matrix))
     }
 
@@ -73,7 +73,7 @@ class GateTest {
     fun <T: Gate> isGateUnitary(clazz: Class<T>) {
         val gate = clazz.kotlin.objectInstance!!
         val matrix = gate.matrix
-        val adjoint = matrix.conjugate().transpose()
+        val adjoint = matrix.conjugateTranspose()
         assertThat(matrix * adjoint, equalTo(GateIdentity(gate.qubits).matrix))
         assertThat(adjoint * matrix, equalTo(GateIdentity(gate.qubits).matrix))
     }

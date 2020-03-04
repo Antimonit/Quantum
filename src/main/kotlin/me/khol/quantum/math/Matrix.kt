@@ -68,6 +68,10 @@ class Matrix : Iterable<Complex> {
         conjugate(matrix, it)
     }
 
+    fun conjugateTranspose(): Matrix = new(rows, cols) {
+        transposeConjugate(matrix, it)
+    }
+
     infix fun tensor(other: Matrix): Matrix {
         return Matrix(List(this.rows * other.rows) { row ->
             List(this.cols * other.cols) { col ->

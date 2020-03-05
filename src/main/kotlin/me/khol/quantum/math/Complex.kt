@@ -3,8 +3,15 @@ package me.khol.quantum.math
 import org.ejml.data.Complex_F64
 import java.lang.String.format
 import kotlin.math.abs
+import kotlin.math.atan2
 
-class Complex {
+class Complex private constructor(
+    private val complex: Complex_F64
+) {
+
+    constructor(re: Number = 0, im: Number = 0) : this(
+        Complex_F64(re.toDouble(), im.toDouble())
+    )
 
     companion object {
         val ONE = Complex(1, 0)
@@ -12,18 +19,8 @@ class Complex {
         val I = Complex(0, 1)
     }
 
-    constructor(re: Number = 0, im: Number = 0) {
-        this.complex = Complex_F64(re.toDouble(), im.toDouble())
-    }
-
-    constructor(complex: Complex_F64) {
-        this.complex = complex
-    }
-
-    private val complex: Complex_F64
-
-    val re: Double get() = complex.real
-    val im: Double get() = complex.imaginary
+    val re: Double = complex.real
+    val im: Double = complex.imaginary
 
     operator fun unaryPlus() = Complex(re, im)
     operator fun unaryMinus() = Complex(-re, -im)
@@ -37,7 +34,15 @@ class Complex {
 
     val square: Double get() = complex.magnitude2
 
-    val module: Double get() = complex.magnitude
+    /**
+     * Radius in polar coordinates.
+     */
+    val r: Double get() = complex.magnitude
+
+    /**
+     * Angle in polar coordinates.
+     */
+    val theta: Double get() = atan2(complex.imaginary, complex.real)
 
     override fun toString(): String = format("(%.3f, %.3fj)", re, im)
 

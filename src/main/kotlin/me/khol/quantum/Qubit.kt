@@ -53,6 +53,9 @@ class Qubit(
     val probabilityOne: Double
         get() = beta.square
 
+    val relativePhase: Double
+        get() = (alpha.theta - beta.theta)
+
     val ket by lazy { Matrix(2, 1, alpha, beta) }
     val bra by lazy { Matrix(1, 2, alpha, beta) }
 
@@ -78,5 +81,26 @@ class Qubit(
      */
     infix fun x(other: Qubit): Matrix {
         return this.ket tensor other.ket
+    }
+
+    override fun toString(): String = "[$alpha, $beta]"
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+        other as Qubit
+        if (alpha == other.alpha && beta == other.beta) return true
+        // Even though two Qubits may be described by different complex numbers they may actually
+        // represent the same qubit state. There are infinitely many representations of the same
+        // qubit state which differ only by their global phase shift. Global phase shift does not
+        // alter measurement probabilities when a qubit is measured.
+        if (abs(relativePhase - other.relativePhase) < 1e-10) return true
+        return false
+    }
+
+    override fun hashCode(): Int {
+        var result = alpha.hashCode()
+        result = 31 * result + beta.hashCode()
+        return result
     }
 }

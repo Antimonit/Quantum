@@ -29,7 +29,7 @@ class PhaseShiftGatesTest {
             GateT.adjoint.matrix,
             equalTo(Matrix(listOf(
                 listOf(ONE, ZERO),
-                listOf(ZERO, Complex(cos(-PI / 4), sin(-PI / 4)))
+                listOf(ZERO, Complex.fromPolar(-PI / 4))
             )))
         )
     }
@@ -39,7 +39,7 @@ class PhaseShiftGatesTest {
             GateS.adjoint.matrix,
             equalTo(Matrix(listOf(
                 listOf(ONE, ZERO),
-                listOf(ZERO, Complex(cos(-PI / 2), sin(-PI / 2)))
+                listOf(ZERO, Complex.fromPolar(-PI / 2))
             )))
         )
     }

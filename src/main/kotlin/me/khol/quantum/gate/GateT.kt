@@ -5,8 +5,6 @@ import me.khol.quantum.math.Complex.Companion.ONE
 import me.khol.quantum.math.Complex.Companion.ZERO
 import me.khol.quantum.math.Matrix
 import kotlin.math.PI
-import kotlin.math.cos
-import kotlin.math.sin
 
 /**
  * Phase shift gate with 45° rotation.
@@ -24,7 +22,7 @@ object GateT : Gate() {
     override val matrix = Matrix(
         listOf(
             listOf(ONE, ZERO),
-            listOf(ZERO, Complex(cos(PI / 4), sin(PI / 4)))
+            listOf(ZERO, Complex.fromPolar(PI / 4))
         )
     )
 }

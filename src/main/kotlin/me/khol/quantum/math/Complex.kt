@@ -4,6 +4,8 @@ import org.ejml.data.Complex_F64
 import java.lang.String.format
 import kotlin.math.abs
 import kotlin.math.atan2
+import kotlin.math.cos
+import kotlin.math.sin
 
 class Complex private constructor(
     private val complex: Complex_F64
@@ -17,6 +19,11 @@ class Complex private constructor(
         val ONE = Complex(1, 0)
         val ZERO = Complex(0, 0)
         val I = Complex(0, 1)
+
+        fun fromPolar(theta: Number, r: Number = 1) = Complex(
+            r.toDouble() * cos(theta.toDouble()),
+            r.toDouble() * sin(theta.toDouble())
+        )
     }
 
     val re: Double = complex.real

@@ -54,7 +54,13 @@ class Qubit(
         get() = beta.square
 
     val relativePhase: Double
-        get() = (alpha.theta - beta.theta)
+        get() = (beta.theta - alpha.theta)
+
+    val normalizedGlobalPhase: Qubit
+        get() = Qubit(
+            Complex.fromPolar(r = alpha.r, theta = 0),
+            Complex.fromPolar(r = beta.r, theta = relativePhase)
+        )
 
     val ket by lazy { Matrix(2, 1, alpha, beta) }
     val bra by lazy { Matrix(1, 2, alpha, beta) }
@@ -98,7 +104,11 @@ class Qubit(
         // represent the same qubit state. There are infinitely many representations of the same
         // qubit state which differ only by their global phase shift. Global phase shift does not
         // alter measurement probabilities when a qubit is measured.
-        if (abs(relativePhase - other.relativePhase) < 1e-10) return true
+        // It is more effective just to calculate difference between qubits' relative phase shifts
+        // instead of checking equality between their global phase shift normalized counterparts.
+        if (abs(alpha.square - other.alpha.square) < 1e-10 &&
+            abs(beta.square - other.beta.square) < 1e-10 &&
+            abs(relativePhase - other.relativePhase) < 1e-10) return true
         return false
     }
 

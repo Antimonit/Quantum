@@ -94,4 +94,13 @@ internal class QubitTest {
             assertThat(phased, equalTo(qubit))
         }
     }
+
+    @Test
+    fun `Qubits with normalized global phase represent the same state`() {
+        repeat(100) {
+            val qubit = Qubit.random()
+            val phased = qubit.normalizedGlobalPhase
+            assertThat(phased, equalTo(qubit))
+        }
+    }
 }

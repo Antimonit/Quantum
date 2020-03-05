@@ -59,6 +59,10 @@ class Qubit(
     val ket by lazy { Matrix(2, 1, alpha, beta) }
     val bra by lazy { Matrix(1, 2, alpha, beta) }
 
+    operator fun times(other: Complex): Qubit {
+        return Qubit(alpha * other, beta * other)
+    }
+
     /**
      * Calculates the dot product of this and [other] qubits.
      * This corresponds to <0|0> and results into 1x1 matrix.
@@ -104,3 +108,5 @@ class Qubit(
         return result
     }
 }
+
+operator fun Complex.times(qubit: Qubit) = qubit * this

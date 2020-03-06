@@ -21,10 +21,23 @@ class Complex private constructor(
         val ZERO = Complex(0, 0)
         val I = Complex(0, 1)
 
-        fun fromPolar(theta: Number, r: Number = 1) = Complex(
-            r.toDouble() * cos(theta.toDouble()),
-            r.toDouble() * sin(theta.toDouble())
-        )
+        /**
+         * Construct a complex number from polar coordinates.
+         *
+         * If [the radius][r] is zero in length then [the angle][theta] is ignored and zero complex
+         * number is returned immediately. This allows to create a complex number even if the angle
+         * is NaN.
+         */
+        fun fromPolar(theta: Number, r: Number = 1): Complex {
+            return if (r.toDouble() == 0.0) {
+                ZERO
+            } else {
+                Complex(
+                    r.toDouble() * cos(theta.toDouble()),
+                    r.toDouble() * sin(theta.toDouble())
+                )
+            }
+        }
     }
 
     val re: Double = complex.real
@@ -48,12 +61,21 @@ class Complex private constructor(
     val r: Double get() = complex.magnitude
 
     /**
-     * Angle in polar coordinates.
+     * Angle in radians in polar coordinates.
+     * Returns NaN if the complex number has zero radius.
      */
     val theta: Double get() = if (this == ZERO) {
         NaN
     } else {
         atan2(complex.imaginary, complex.real)
+    }
+
+    /**
+     * Difference between polar angles of two complex numbers.
+     * Returns NaN if this or the other complex number has zero radius.
+     */
+    fun relativeTheta(other: Complex): Double {
+        return other.theta - this.theta
     }
 
     override fun toString(): String = format("(%.3f, %.3fj)", re, im)

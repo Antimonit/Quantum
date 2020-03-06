@@ -80,4 +80,12 @@ internal class ComplexTest {
         val c = Complex.fromPolar(1.0, radius)
         assertThat(c.r, equalTo(radius))
     }
+
+    @DisplayName("Complex number is valid even if angle is NaN")
+    @Test
+    fun complexThetaNaN() {
+        val c = Complex.fromPolar(Double.NaN, r = 0)
+        assertThat(c.re, equalTo(0.0))
+        assertThat(c.im, equalTo(0.0))
+    }
 }

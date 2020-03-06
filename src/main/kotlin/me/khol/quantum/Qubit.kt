@@ -54,7 +54,7 @@ class Qubit(
         get() = beta.square
 
     val relativePhase: Double
-        get() = (beta.theta - alpha.theta)
+        get() = alpha.relativeTheta(beta)
 
     val normalizedGlobalPhase: Qubit
         get() = Qubit(

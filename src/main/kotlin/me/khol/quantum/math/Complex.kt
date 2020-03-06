@@ -2,6 +2,7 @@ package me.khol.quantum.math
 
 import org.ejml.data.Complex_F64
 import java.lang.String.format
+import kotlin.Double.Companion.NaN
 import kotlin.math.abs
 import kotlin.math.atan2
 import kotlin.math.cos
@@ -49,7 +50,11 @@ class Complex private constructor(
     /**
      * Angle in polar coordinates.
      */
-    val theta: Double get() = atan2(complex.imaginary, complex.real)
+    val theta: Double get() = if (this == ZERO) {
+        NaN
+    } else {
+        atan2(complex.imaginary, complex.real)
+    }
 
     override fun toString(): String = format("(%.3f, %.3fj)", re, im)
 

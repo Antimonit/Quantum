@@ -1,8 +1,6 @@
 package me.khol.quantum
 
-import me.khol.quantum.gate.Gate
-import me.khol.quantum.gate.GateIdentity
-import me.khol.quantum.gate.withOrder
+import me.khol.quantum.gate.*
 
 @DslMarker
 annotation class AlgorithmTagMarker
@@ -10,17 +8,49 @@ annotation class AlgorithmTagMarker
 @AlgorithmTagMarker
 class Algorithm(private val qubitCount: Int) {
 
-    private val allSteps: MutableList<Gate> = mutableListOf()
+    private val allSteps: MutableList<Step> = mutableListOf()
 
-    val gate: Gate get() = allSteps.reduce { acc, gate -> gate * acc }
+    fun asGate(): Gate = allSteps.map { it.gate }.reduce { acc, gate -> gate * acc }
 
-    operator fun Gate.get(vararg qubits: Int) {
+    fun run(register: Register): Register = allSteps.fold(register) { acc, step -> step.gate * acc }
+
+    operator fun Gate.get(vararg qubits: Int): Step {
+        val step = Step(this, qubitCount, *qubits)
+        allSteps.add(step)
+        return step
+    }
+
+    operator fun Step.plus(other: Step): Step {
+        val step = Step(this, other)
+        allSteps.remove(this)
+        allSteps.remove(other)
+        allSteps.add(step)
+        return step
+    }
+}
+
+class Step {
+
+    val gate: Gate
+    private val qubitsUsed: Set<Int>
+
+    constructor(gate: Gate, qubitCount: Int, vararg qubits: Int) {
+        qubitsUsed = qubits.toSet()
         val order = qubits.toList() + List(qubitCount) { it }.filter { it !in qubits }
-        allSteps.add(if (this.qubits < qubitCount) {
-            this tensor GateIdentity(qubitCount - this.qubits)
+        this.gate = if (gate.qubits < qubitCount) {
+            gate tensor GateIdentity(qubitCount - gate.qubits)
         } else {
-            this
-        }.withOrder(order))
+            gate
+        }.withOrder(order)
+    }
+
+    constructor(first: Step, other: Step) {
+        val intersect = first.qubitsUsed.intersect(other.qubitsUsed)
+        check(intersect.isEmpty()) {
+            "Cannot apply a gate to qubit(s) $intersect twice in a single step."
+        }
+        qubitsUsed = first.qubitsUsed + other.qubitsUsed
+        gate = other.gate * first.gate
     }
 }
 

@@ -35,7 +35,7 @@ class Register private constructor(val qubits: Int, val matrix: Matrix) {
         // all equal to zero and the register would be invalid.
         val alpha = matrix.first { it != Complex.ZERO }
         Register(qubits, Matrix(matrix.rows, matrix.cols,
-            matrix.map { Complex.fromPolar(r = it.r, theta = alpha.relativeTheta(it)) }
+            matrix.map { Complex.fromPolar(radius = it.radius, theta = alpha.relativeTheta(it)) }
         ))
     }
 

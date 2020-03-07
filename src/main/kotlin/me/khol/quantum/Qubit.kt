@@ -60,8 +60,8 @@ class Qubit(
     val normalized: Qubit by lazy {
         val nonZero = if (alpha != Complex.ZERO) alpha else beta
         Qubit(
-            Complex.fromPolar(r = alpha.r, theta = nonZero.relativeTheta(alpha)),
-            Complex.fromPolar(r = beta.r, theta = nonZero.relativeTheta(beta))
+            Complex.fromPolar(radius = alpha.radius, theta = nonZero.relativeTheta(alpha)),
+            Complex.fromPolar(radius = beta.radius, theta = nonZero.relativeTheta(beta))
         )
     }
 

@@ -21,17 +21,17 @@ class Complex private constructor(
         /**
          * Construct a complex number from polar coordinates.
          *
-         * If [the radius][r] is zero in length then [the angle][theta] is ignored and zero complex
+         * If [the radius][radius] is zero in length then [the angle][theta] is ignored and zero complex
          * number is returned immediately. This allows to create a complex number even if the angle
          * is NaN.
          */
-        fun fromPolar(theta: Number, r: Number = 1): Complex {
-            return if (r.toDouble() == 0.0) {
+        fun fromPolar(theta: Number, radius: Number = 1): Complex {
+            return if (radius.toDouble() == 0.0) {
                 ZERO
             } else {
                 Complex(
-                    r.toDouble() * cos(theta.toDouble()),
-                    r.toDouble() * sin(theta.toDouble())
+                    radius.toDouble() * cos(theta.toDouble()),
+                    radius.toDouble() * sin(theta.toDouble())
                 )
             }
         }
@@ -55,7 +55,7 @@ class Complex private constructor(
     /**
      * Radius in polar coordinates.
      */
-    val r: Double get() = complex.magnitude
+    val radius: Double get() = complex.magnitude
 
     /**
      * Angle in radians in polar coordinates.

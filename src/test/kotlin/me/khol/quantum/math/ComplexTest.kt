@@ -53,7 +53,7 @@ internal class ComplexTest {
     @DisplayName("Radius of a complex number is correct")
     @Test
     fun radius() {
-        assertThat(Complex(-4, 3).r, equalTo(5.0))
+        assertThat(Complex(-4, 3).radius, equalTo(5.0))
     }
 
     @DisplayName("Constructing complex numbers from polar angles is correct")
@@ -78,13 +78,13 @@ internal class ComplexTest {
     fun complexRadius() {
         val radius = 42.0
         val c = Complex.fromPolar(1.0, radius)
-        assertThat(c.r, equalTo(radius))
+        assertThat(c.radius, equalTo(radius))
     }
 
     @DisplayName("Complex number is valid even if angle is NaN")
     @Test
     fun complexThetaNaN() {
-        val c = Complex.fromPolar(Double.NaN, r = 0)
+        val c = Complex.fromPolar(Double.NaN, radius = 0)
         assertThat(c.re, equalTo(0.0))
         assertThat(c.im, equalTo(0.0))
     }

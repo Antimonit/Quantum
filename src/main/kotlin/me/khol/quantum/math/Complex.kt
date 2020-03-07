@@ -3,10 +3,7 @@ package me.khol.quantum.math
 import org.ejml.data.Complex_F64
 import java.lang.String.format
 import kotlin.Double.Companion.NaN
-import kotlin.math.abs
-import kotlin.math.atan2
-import kotlin.math.cos
-import kotlin.math.sin
+import kotlin.math.*
 
 class Complex private constructor(
     private val complex: Complex_F64
@@ -75,7 +72,7 @@ class Complex private constructor(
      * Returns NaN if this or the other complex number has zero radius.
      */
     fun relativeTheta(other: Complex): Double {
-        return other.theta - this.theta
+        return (other.theta - this.theta + 2 * PI) % (2 * PI)
     }
 
     override fun toString(): String = format("(%.3f, %.3fj)", re, im)

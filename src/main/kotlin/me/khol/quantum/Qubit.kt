@@ -53,14 +53,17 @@ class Qubit(
     val probabilityOne: Double
         get() = beta.square
 
-    val relativePhase: Double
-        get() = alpha.relativeTheta(beta)
-
-    val normalizedGlobalPhase: Qubit
-        get() = Qubit(
-            Complex.fromPolar(r = alpha.r, theta = 0),
-            Complex.fromPolar(r = beta.r, theta = relativePhase)
+    /**
+     * Holds the same qubit state as this qubit but the global phase shift is eliminated.
+     * This is mostly used for verification that two qubits actually represent the same state.
+     */
+    val normalized: Qubit by lazy {
+        val nonZero = if (alpha != Complex.ZERO) alpha else beta
+        Qubit(
+            Complex.fromPolar(r = alpha.r, theta = nonZero.relativeTheta(alpha)),
+            Complex.fromPolar(r = beta.r, theta = nonZero.relativeTheta(beta))
         )
+    }
 
     val ket by lazy { Matrix(2, 1, alpha, beta) }
     val bra by lazy { Matrix(1, 2, alpha, beta) }
@@ -104,17 +107,14 @@ class Qubit(
         // represent the same qubit state. There are infinitely many representations of the same
         // qubit state which differ only by their global phase shift. Global phase shift does not
         // alter measurement probabilities when a qubit is measured.
-        // It is more effective just to calculate difference between qubits' relative phase shifts
-        // instead of checking equality between their global phase shift normalized counterparts.
-        if (abs(alpha.square - other.alpha.square) < 1e-10 &&
-            abs(beta.square - other.beta.square) < 1e-10 &&
-            abs(relativePhase - other.relativePhase) < 1e-10) return true
+        if (normalized.alpha == other.normalized.alpha &&
+            normalized.beta == other.normalized.beta) return true
         return false
     }
 
     override fun hashCode(): Int {
-        var result = alpha.hashCode()
-        result = 31 * result + beta.hashCode()
+        var result = normalized.alpha.hashCode()
+        result = 31 * result + normalized.beta.hashCode()
         return result
     }
 }

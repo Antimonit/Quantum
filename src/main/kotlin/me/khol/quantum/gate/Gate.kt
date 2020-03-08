@@ -24,6 +24,13 @@ abstract class Gate {
         }
     }
 
+    infix fun tensor(other: Gate): Gate {
+        return object : Gate() {
+            override val qubits: Int = this@Gate.qubits + other.qubits
+            override val matrix: Matrix = this@Gate.matrix tensor other.matrix
+        }
+    }
+
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (other !is Gate) return false

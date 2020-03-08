@@ -14,7 +14,7 @@ fun Gate.withOrder(vararg qubitOrder: Int) = withOrder(qubitOrder.toList())
 
 fun Gate.withOrder(qubitOrder: List<Int>): Gate {
     val permutationGate = permutationGate(*qubitOrder.toIntArray())
-    return permutationGate * this * permutationGate
+    return permutationGate.adjoint * this * permutationGate
 }
 
 private val basicSwapGates: MutableMap<Int, List<Gate>> = mutableMapOf(

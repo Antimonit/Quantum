@@ -26,7 +26,7 @@ class Matrix : Iterable<Complex> {
     }
 
     constructor(numRows: Int, numCols: Int, v: List<Complex>)
-            : this(numRows, numCols, *v.toTypedArray())
+        : this(numRows, numCols, *v.toTypedArray())
 
     constructor(numRows: Int, numCols: Int, vararg v: Complex) {
         matrix = ZMatrixRMaj(numRows, numCols, true, *v.toList().flat())
@@ -117,7 +117,13 @@ class Matrix : Iterable<Complex> {
     }
 
     override fun toString(): String {
-        return toListList().joinToString("\n") { it.joinToString(" ", "| ", " |") }
+        val real = all { it.im == 0.0 }
+        val integer = all { (it.im == 0.0 || it.im == 1.0) && (it.re == 0.0 || it.re == 1.0) }
+        return toListList().joinToString("\n") {
+            it.joinToString(" ", "| ", " |") {
+                it.toSimpleString(real, integer)
+            }
+        }
     }
 
     override fun equals(other: Any?): Boolean {

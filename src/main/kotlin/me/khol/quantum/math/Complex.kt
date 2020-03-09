@@ -75,7 +75,14 @@ class Complex private constructor(
         return (other.theta - this.theta + 2 * PI) % (2 * PI)
     }
 
-    override fun toString(): String = format("(%.3f, %.3fj)", re, im)
+    fun toSimpleString(real: Boolean, integer: Boolean): String = when {
+        real && integer -> format("%.0f", re)
+        real && !integer -> format("%.3f", re)
+        integer -> format("(%.0f, %.0f)", re, im)
+        else -> format("(%.3f, %.3fj)", re, im)
+    }
+
+    override fun toString(): String = toSimpleString(real = false, integer = false)
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true

@@ -4,6 +4,8 @@ import me.khol.quantum.math.Complex.Companion.ONE
 import me.khol.quantum.math.Complex.Companion.ZERO
 import me.khol.quantum.math.Matrix
 
+typealias GateToffoli = GateCCNot
+
 object GateCCNot : Gate() {
 
     override val qubits = 3

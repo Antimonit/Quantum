@@ -41,7 +41,7 @@ internal class ComplexTest {
     @DisplayName("Complex zero's theta should be undefined")
     @Test
     fun complexNumbersDoesNotDefineTheta() {
-        assertThat(Complex.ZERO.theta, equalTo(Double.NaN))
+        assertThat(Complex.ZERO.theta, notANumber())
     }
 
     @DisplayName("Angle of complex number is correct")

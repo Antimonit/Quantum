@@ -7,29 +7,11 @@ abstract class Gate {
     abstract val qubits: Int
     abstract val matrix: Matrix
 
-    val adjoint: Gate by lazy {
-        object : Gate() {
-            override val qubits: Int = this@Gate.qubits
-            override val matrix: Matrix = this@Gate.matrix.conjugateTranspose()
-        }
-    }
+    val adjoint: Gate by lazy { AdjointGate(this) }
 
-    operator fun times(other: Gate): Gate {
-        check(this.qubits == other.qubits) {
-            "The gates with $qubits and ${other.qubits} qubits cannot be combined."
-        }
-        return object : Gate() {
-            override val qubits: Int = this@Gate.qubits
-            override val matrix: Matrix = this@Gate.matrix * other.matrix
-        }
-    }
+    operator fun times(other: Gate): Gate = TimesGate(this, other)
 
-    infix fun tensor(other: Gate): Gate {
-        return object : Gate() {
-            override val qubits: Int = this@Gate.qubits + other.qubits
-            override val matrix: Matrix = this@Gate.matrix tensor other.matrix
-        }
-    }
+    infix fun tensor(other: Gate): Gate = TensorGate(this, other)
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
@@ -46,4 +28,28 @@ abstract class Gate {
         result = 31 * result + matrix.hashCode()
         return result
     }
+}
+
+private class TimesGate(gate: Gate, other: Gate) : Gate() {
+
+    init {
+        check(gate.qubits == other.qubits) {
+            "The gates with $qubits and ${other.qubits} qubits cannot be combined."
+        }
+    }
+
+    override val qubits: Int = gate.qubits
+    override val matrix: Matrix = gate.matrix * other.matrix
+}
+
+private class TensorGate(gate: Gate, other: Gate) : Gate() {
+
+    override val qubits: Int = gate.qubits + other.qubits
+    override val matrix: Matrix = gate.matrix tensor other.matrix
+}
+
+private class AdjointGate(gate: Gate) : Gate() {
+
+    override val qubits: Int = gate.qubits
+    override val matrix: Matrix = gate.matrix.conjugateTranspose()
 }

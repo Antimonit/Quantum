@@ -1,5 +1,7 @@
 package me.khol.quantum.gate
 
+import me.khol.quantum.math.pow
+
 /**
  * Swaps bits of [this] integer at positions [a] and [b] (least significant digit has position 0).
  */

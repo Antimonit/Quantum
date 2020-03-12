@@ -19,7 +19,8 @@ private val permutationVectorsCache: MutableMap<Permutation, List<Int>> = mutabl
 
 fun permutationVector(order: Permutation): List<Int> {
     check(order.sorted() == List(order.size) { it }) {
-        "Permutation must contain all numbers between 0 and ${order.size - 1}"
+        "Invalid permutation $order. " +
+            "Permutation must contain every and only indices between 0 and ${order.size - 1}."
     }
 
     return permutationVectorsCache.getOrPut(order) {

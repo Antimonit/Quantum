@@ -16,6 +16,6 @@ fun GateIdentity(qubits: Int): Gate = object : Gate() {
     override val matrix: Matrix = Matrix.identity(2 pow qubits)
 }
 
-private infix fun Int.pow(exponent: Int): Int {
+infix fun Int.pow(exponent: Int): Int {
     return toDouble().pow(exponent).toInt()
 }

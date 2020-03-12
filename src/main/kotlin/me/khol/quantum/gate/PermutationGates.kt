@@ -1,5 +1,10 @@
 package me.khol.quantum.gate
 
+import me.khol.quantum.math.Complex
+import me.khol.quantum.math.Matrix
+
+typealias Permutation = List<Int>
+
 /**
  * Reorders input and output qubits of [this] gate.
  *
@@ -12,25 +17,12 @@ package me.khol.quantum.gate
  */
 fun Gate.withOrder(vararg qubitOrder: Int) = withOrder(qubitOrder.toList())
 
-fun Gate.withOrder(qubitOrder: List<Int>): Gate {
+fun Gate.withOrder(qubitOrder: Permutation): Gate {
     val permutationGate = permutationGate(*qubitOrder.toIntArray())
     return permutationGate.adjoint * this * permutationGate
 }
 
-private val basicSwapGates: MutableMap<Int, List<Gate>> = mutableMapOf(
-    1 to listOf(),
-    2 to listOf(GateSwap)
-)
-
-private fun basicSwapGates(size: Int): List<Gate> {
-    check(size > 0)
-    return basicSwapGates.getOrPut(size) {
-        val previous = basicSwapGates(size - 1)
-        previous.map { it tensor GateIdentity } + (GateIdentity tensor previous.last())
-    }
-}
-
-private val permutationsCache: MutableMap<List<Int>, Gate> = mutableMapOf()
+private val permutationsCache: MutableMap<Permutation, Gate> = mutableMapOf()
 
 /**
  * Generates a Gate with permutation matrix that reorders input qubits.
@@ -40,23 +32,20 @@ private val permutationsCache: MutableMap<List<Int>, Gate> = mutableMapOf()
  */
 fun permutationGate(vararg order: Int) = permutationGate(order.toList())
 
-fun permutationGate(order: List<Int>): Gate {
+fun permutationGate(order: Permutation): Gate {
     check(order.sorted() == List(order.size) { it }) {
         "Permutation must contain all numbers between 0 and ${order.size - 1}"
     }
+    return permutationsCache.getOrPut(order) { PermutationGate(order) }
+}
 
-    return permutationsCache.getOrPut(order) {
-        val swapGates = basicSwapGates(order.size)
-        var gate = GateIdentity(order.size)
-        val order = order.toMutableList()
-        for (x in 0 until order.size - 1) {
-            for (y in 0 until order.size - x - 1) {
-                if (order[y] >= order[y + 1]) {
-                    order[y] = order[y + 1].also { order[y + 1] = order[y] }
-                    gate *= swapGates[y]
-                }
-            }
-        }
-        gate
+private class PermutationGate(order: Permutation) : Gate() {
+
+    override val qubits = order.size
+    override val matrix: Matrix = run {
+        val permutation = permutationVector(order)
+        Matrix(permutation.map { permutedIndex ->
+            List(permutation.size) { if (it == permutedIndex) Complex.ONE else Complex.ZERO }
+        })
     }
 }

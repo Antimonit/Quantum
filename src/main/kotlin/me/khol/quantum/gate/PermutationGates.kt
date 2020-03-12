@@ -33,9 +33,6 @@ private val permutationsCache: MutableMap<Permutation, Gate> = mutableMapOf()
 fun permutationGate(vararg order: Int) = permutationGate(order.toList())
 
 fun permutationGate(order: Permutation): Gate {
-    check(order.sorted() == List(order.size) { it }) {
-        "Permutation must contain all numbers between 0 and ${order.size - 1}"
-    }
     return permutationsCache.getOrPut(order) { PermutationGate(order) }
 }
 

@@ -20,4 +20,9 @@ class GateControlledTest {
     fun `Controlled Controlled Not is CCNot`() {
         assertThat(GateControlled(GateControlled(GateNot)), equalTo<Gate>(GateCCNot))
     }
+
+    @Test
+    fun `Controlled Swap is CSwap`() {
+        assertThat(GateControlled(GateSwap), equalTo<Gate>(GateCSwap))
+    }
 }

@@ -15,6 +15,7 @@ import kotlin.math.PI
  *
  * @see GateS Phase shift gate with 90° rotation
  * @see GateZ Phase shift gate with 180° rotation
+ * @see GatePhase Phase shift gate with custom rotation
  */
 object GateT : Gate() {
 

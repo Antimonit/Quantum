@@ -14,6 +14,7 @@ import me.khol.quantum.math.Matrix
  *
  * @see GateT Phase shift gate with 45° rotation
  * @see GateZ Phase shift gate with 180° rotation
+ * @see GatePhase Phase shift gate with custom rotation
  */
 object GateS : Gate() {
 

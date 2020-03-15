@@ -13,6 +13,7 @@ import me.khol.quantum.gate.GateZ
 import me.khol.quantum.math.Complex
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.equalTo
+import org.hamcrest.Matchers.everyItem
 import org.junit.jupiter.api.Test
 import kotlin.random.Random
 
@@ -32,12 +33,22 @@ internal class QubitPhaseTest {
     }
 
     @Test
-    fun `Global phase shifted qubits represent the same state`() {
+    fun `Random global phase shifted qubits represent the same state`() {
         repeat(100) {
             val qubit = Qubit.random()
             val phased = qubit * Complex.fromPolar(Random.nextDouble())
             assertThat(phased, equalTo(qubit))
         }
+    }
+
+    @Test
+    fun `Global phase shifted qubits represent the same state`() {
+        val a = Qubit(Complex(re = 0.8), Complex(im = 0.6))
+        val b = Qubit(Complex(im = 0.8), Complex(re = -0.6))
+        val c = Qubit(Complex(re = -0.8), Complex(im = -0.6))
+        val d = Qubit(Complex(re = 0.64, im = 0.48), Complex(re = -0.36, im = 0.48))
+        val e = Qubit(Complex(re = 0.48, im = 0.64), Complex(re = -0.48, im = 0.36))
+        assertThat(listOf(a,b,c,d,e), everyItem(equalTo(a)))
     }
 
     @Test

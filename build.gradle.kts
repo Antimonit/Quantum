@@ -24,6 +24,10 @@ tasks.test {
 tasks.withType<KotlinCompile> {
     kotlinOptions {
         jvmTarget = "1.8"
-        freeCompilerArgs = listOf("-XXLanguage:+InlineClasses")
+        freeCompilerArgs = listOf(
+            "-XXLanguage:+InlineClasses",
+            "-Xopt-in=kotlin.ExperimentalStdlibApi",
+            "-Xopt-in=kotlin.RequiresOptIn"
+        )
     }
 }

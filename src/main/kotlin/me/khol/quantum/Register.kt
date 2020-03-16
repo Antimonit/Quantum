@@ -3,8 +3,10 @@ package me.khol.quantum
 import me.khol.quantum.gate.Gate
 import me.khol.quantum.math.Complex
 import me.khol.quantum.math.Matrix
+import me.khol.quantum.math.toBinaryDigits
 import kotlin.math.abs
 import kotlin.math.log
+import kotlin.random.Random
 
 class Register private constructor(val qubits: Int, val matrix: Matrix) {
 
@@ -37,6 +39,22 @@ class Register private constructor(val qubits: Int, val matrix: Matrix) {
         Register(qubits, Matrix(matrix.rows, matrix.cols,
             matrix.map { Complex.fromPolar(radius = it.radius, theta = alpha.relativeTheta(it)) }
         ))
+    }
+
+    /**
+     * Returns qubits of the register in the standard { |0>, |1> } basis collapsed into one of the
+     * possible states (with respect to their probabilities).
+     *
+     * Does not alter the state of this register.
+     */
+    fun measure(): List<Qubit> {
+        val shot = Random.nextDouble()
+        return matrix.col(0)
+            .map(Complex::square)
+            .scanReduce(Double::plus)
+            .indexOfFirst { shot < it }
+            .toBinaryDigits(qubits)
+            .map { if (it == 0) Qubit.ZERO else Qubit.ONE }
     }
 
     operator fun times(other: Complex) = Register(qubits, matrix * other)

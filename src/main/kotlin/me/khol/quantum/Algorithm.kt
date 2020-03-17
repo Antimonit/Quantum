@@ -16,9 +16,9 @@ interface Algorithm {
  * Every gate applied via [Gate.get] or [step] is directly applied to [register].
  */
 @AlgorithmTagMarker
-class RunnableAlgorithm(
-    private var register: Register
-) : Algorithm {
+class RunnableAlgorithm(private var register: Register) : Algorithm {
+
+    fun resultRegister(): Register = register
 
     override operator fun Gate.get(vararg qubits: Int) = step { get(*qubits) }
 
@@ -38,7 +38,7 @@ class PrecomputedAlgorithm(private val qubitCount: Int) : Algorithm {
 
     private var gate: Gate = GateIdentity(qubitCount)
 
-    fun asGate(): Gate = gate
+    fun resultGate(): Gate = gate
 
     override operator fun Gate.get(vararg qubits: Int) = step { get(*qubits) }
 
@@ -48,9 +48,7 @@ class PrecomputedAlgorithm(private val qubitCount: Int) : Algorithm {
 }
 
 @AlgorithmTagMarker
-class Step(
-    private val qubitCount: Int
-) {
+class Step(private val qubitCount: Int) {
 
     var gate = GateIdentity(qubitCount)
     private val qubitsUsed = mutableSetOf<Int>()
@@ -69,20 +67,14 @@ class Step(
     }
 }
 
-fun runnableAlgorithm(
-    register: Register,
-    action: RunnableAlgorithm.() -> Unit
-): RunnableAlgorithm {
+fun runnableAlgorithm(register: Register, action: RunnableAlgorithm.() -> Unit): Register {
     return RunnableAlgorithm(register).apply {
         action()
-    }
+    }.resultRegister()
 }
 
-fun algorithm(
-    qubitCount: Int,
-    action: PrecomputedAlgorithm.() -> Unit
-): PrecomputedAlgorithm {
+fun gateAlgorithm(qubitCount: Int, action: PrecomputedAlgorithm.() -> Unit): Gate {
     return PrecomputedAlgorithm(qubitCount).apply {
         action()
-    }
+    }.resultGate()
 }

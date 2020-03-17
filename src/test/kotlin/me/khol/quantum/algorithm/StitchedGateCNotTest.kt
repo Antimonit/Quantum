@@ -11,9 +11,9 @@ class StitchedGateCNotTest {
     @Test
     fun `CNot gate control and target switched using Hadamard gates`() {
         assertThat(algorithm(2) {
-            GateHadamard[0] + GateHadamard[1]
+            step { GateHadamard[0]; GateHadamard[1] }
             GateCNot[0, 1]
-            GateHadamard[0] + GateHadamard[1]
+            step { GateHadamard[0]; GateHadamard[1] }
         }.asGate().matrix, equalTo(algorithm(2) {
             GateCNot[1, 0]
         }.asGate().matrix))

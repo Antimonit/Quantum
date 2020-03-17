@@ -5,57 +5,84 @@ import me.khol.quantum.gate.*
 @DslMarker
 annotation class AlgorithmTagMarker
 
+interface Algorithm {
+
+    operator fun Gate.get(vararg qubits: Int)
+
+    fun step(action: Step.() -> Unit)
+}
+
+/**
+ * Every gate applied via [Gate.get] or [step] is directly applied to [register].
+ */
 @AlgorithmTagMarker
-class Algorithm(private val qubitCount: Int) {
+class RunnableAlgorithm(
+    private var register: Register
+) : Algorithm {
 
-    private val allSteps: MutableList<Step> = mutableListOf()
+    override operator fun Gate.get(vararg qubits: Int) = step { get(*qubits) }
 
-    fun asGate(): Gate = allSteps.map { it.gate }.reduce { acc, gate -> gate * acc }
-
-    fun run(register: Register): Register = allSteps.fold(register) { acc, step -> step.gate * acc }
-
-    operator fun Gate.get(vararg qubits: Int): Step {
-        val step = Step(this, qubitCount, *qubits)
-        allSteps.add(step)
-        return step
-    }
-
-    operator fun Step.plus(other: Step): Step {
-        val step = Step(this, other)
-        allSteps.remove(this)
-        allSteps.remove(other)
-        allSteps.add(step)
-        return step
+    override fun step(action: Step.() -> Unit) {
+        register = Step(register.qubits).apply { action() }.gate * register
     }
 }
 
-class Step {
+/**
+ * Combines all gates applied via [Gate.get] or [step] into a single gate.
+ *
+ * Useful for verification of algorithms that they do the same operation as another algorithm
+ * or a single gate.
+ */
+@AlgorithmTagMarker
+class PrecomputedAlgorithm(private val qubitCount: Int) : Algorithm {
 
-    val gate: Gate
-    private val qubitsUsed: Set<Int>
+    private var gate: Gate = GateIdentity(qubitCount)
 
-    constructor(gate: Gate, qubitCount: Int, vararg qubits: Int) {
-        qubitsUsed = qubits.toSet()
-        val order = qubits.toList() + List(qubitCount) { it }.filter { it !in qubits }
-        this.gate = if (gate.qubits < qubitCount) {
-            gate tensor GateIdentity(qubitCount - gate.qubits)
-        } else {
-            gate
-        }.withOrder(order)
+    fun asGate(): Gate = gate
+
+    override operator fun Gate.get(vararg qubits: Int) = step { get(*qubits) }
+
+    override fun step(action: Step.() -> Unit) {
+        gate *= Step(qubitCount).apply { action() }.gate
     }
+}
 
-    constructor(first: Step, other: Step) {
-        val intersect = first.qubitsUsed.intersect(other.qubitsUsed)
+@AlgorithmTagMarker
+class Step(
+    private val qubitCount: Int
+) {
+
+    var gate = GateIdentity(qubitCount)
+    private val qubitsUsed = mutableSetOf<Int>()
+
+    operator fun Gate.get(vararg qubits: Int) {
+        val intersect = qubitsUsed.intersect(qubits.toSet())
         check(intersect.isEmpty()) {
             "Cannot apply a gate to qubit(s) $intersect twice in a single step."
         }
-        qubitsUsed = first.qubitsUsed + other.qubitsUsed
-        gate = other.gate * first.gate
+        qubitsUsed += qubits.toSet()
+        gate *= if (this.qubits < qubitCount) {
+            this tensor GateIdentity(qubitCount - this.qubits)
+        } else {
+            this
+        }.withOrder(qubits.toList() + List(qubitCount) { it }.filter { it !in qubits })
     }
 }
 
-fun algorithm(qubitCount: Int, action: Algorithm.() -> Unit): Algorithm {
-    return Algorithm(qubitCount).apply {
+fun runnableAlgorithm(
+    register: Register,
+    action: RunnableAlgorithm.() -> Unit
+): RunnableAlgorithm {
+    return RunnableAlgorithm(register).apply {
+        action()
+    }
+}
+
+fun algorithm(
+    qubitCount: Int,
+    action: PrecomputedAlgorithm.() -> Unit
+): PrecomputedAlgorithm {
+    return PrecomputedAlgorithm(qubitCount).apply {
         action()
     }
 }

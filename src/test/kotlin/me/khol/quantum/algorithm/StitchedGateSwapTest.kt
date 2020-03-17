@@ -33,9 +33,9 @@ class StitchedGateSwapTest {
     fun `Swap gate made of CNot and Hadamard gates`() {
         assertThat(algorithm(2) {
             GateCNot[0, 1]
-            GateHadamard[0] + GateHadamard[1]
+            step { GateHadamard[0]; GateHadamard[1] }
             GateCNot[0, 1]
-            GateHadamard[0] + GateHadamard[1]
+            step { GateHadamard[0]; GateHadamard[1] }
             GateCNot[0, 1]
         }.asGate(), equalTo<Gate>(GateSwap))
     }

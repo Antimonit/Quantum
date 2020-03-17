@@ -42,7 +42,10 @@ internal class AlgorithmTest {
     @Test
     fun `Apply two gates in a single step`() {
         assertThat(algorithm(2) {
-            GateHadamard[0] + GateHadamard[1]
+            step {
+                GateHadamard[0]
+                GateHadamard[1]
+            }
         }.asGate(), equalTo(GateHadamard tensor GateHadamard))
     }
 
@@ -50,7 +53,10 @@ internal class AlgorithmTest {
     fun `Applying two gates to a single qubit in a single step fails`() {
         assertThrows<IllegalStateException> {
             algorithm(1) {
-                GateHadamard[0] + GateHadamard[0]
+                step {
+                    GateHadamard[0]
+                    GateHadamard[0]
+                }
             }.asGate()
         }
     }

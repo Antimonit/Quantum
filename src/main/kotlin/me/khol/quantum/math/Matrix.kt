@@ -60,6 +60,14 @@ class Matrix : Iterable<Complex> {
         elementMultiply(matrix, other.re, other.im, it)
     }
 
+    operator fun div(other: Number): Matrix = new(rows, cols) {
+        elementDivide(matrix, other.toDouble(), 0.0, it)
+    }
+
+    operator fun div(other: Complex): Matrix = new(rows, cols) {
+        elementDivide(matrix, other.re, other.im, it)
+    }
+
     fun transpose(): Matrix = new(cols, rows) {
         transpose(matrix, it)
     }

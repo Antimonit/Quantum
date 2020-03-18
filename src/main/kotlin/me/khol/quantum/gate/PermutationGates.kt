@@ -1,5 +1,6 @@
 package me.khol.quantum.gate
 
+import me.khol.quantum.util.WeakCache
 import me.khol.quantum.math.Complex
 import me.khol.quantum.math.Matrix
 
@@ -22,7 +23,7 @@ fun Gate.withOrder(qubitOrder: Permutation): Gate {
     return permutationGate.adjoint * this * permutationGate
 }
 
-private val permutationsCache: MutableMap<Permutation, Gate> = mutableMapOf()
+private val permutationsCache: WeakCache<Permutation, Gate> = WeakCache()
 
 /**
  * Generates a Gate with permutation matrix that reorders input qubits.

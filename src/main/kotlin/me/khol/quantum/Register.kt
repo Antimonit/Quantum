@@ -3,7 +3,7 @@ package me.khol.quantum
 import me.khol.quantum.gate.Gate
 import me.khol.quantum.math.Complex
 import me.khol.quantum.math.Matrix
-import me.khol.quantum.math.toBinaryDigits
+import me.khol.quantum.math.toQubits
 import kotlin.math.abs
 import kotlin.math.log
 import kotlin.random.Random
@@ -53,8 +53,7 @@ class Register private constructor(val qubits: Int, val matrix: Matrix) {
             .map(Complex::square)
             .scanReduce(Double::plus)
             .indexOfFirst { shot < it }
-            .toBinaryDigits(qubits)
-            .map { if (it == 0) Qubit.ZERO else Qubit.ONE }
+            .toQubits(qubits)
     }
 
     operator fun times(other: Complex) = Register(qubits, matrix * other)

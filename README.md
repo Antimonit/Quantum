@@ -161,3 +161,52 @@ GateX * Qubit.ONE // Qubit.ZERO
 
 GateSwap * Register(Qubit.ONE, Qubit.ZERO) // Register(Qubit.ZERO, Qubit.ONE)
 ``` 
+
+### [Algorithms](src/main/kotlin/me/khol/quantum/Algorithm.kt)
+Instead of manually applying gates to registers and qubits like this:
+```kotlin
+val bellState = CNot * Register(Hadamard * ZERO, ZERO)
+```
+algorithm classes provide a less cluttered and more natural way to 
+* combine multiple gates into one,
+* reorder inputs of a gate,
+* apply gates to registers with different sizes and
+* apply multiple gates to a register.
+
+#### GateAlgorithm
+Pre-computes application of multiple gates as a standalone gate. As we apply gates 
+within the algorithm their transformation matrices are combined.
+It allows us to pre-compute a part of an algorithm that is executed repeatedly and 
+apply the result gate instead.
+    
+```kotlin
+// Swap gate made using CNot gates 
+val swap: Gate = gateAlgorithm(2) {
+    CNot[0, 1]
+    CNot[1, 0]
+    CNot[0, 1]
+}
+```
+
+#### RunnableAlgorithm
+Applies multiple gates to a register, changing the state of its qubits with each step.
+
+```kotlin
+// Fully entangled Bell state (∣00⟩ + ∣11⟩) / sqrt(2)  
+val bellState: Register = runnableAlgorithm(2) {
+    GateHadamard[0]
+    GateCNot[0, 1]
+}
+```
+
+Compared to `gateAlgorithm` that does not have any state per se, `runnableAlgorithm` has a register
+that we can measure at any point. 
+
+```kotlin
+fun measureAndCollapse(vararg qubitIndices: Int): List<Qubit>
+```
+
+Doing so will collapse the state of specified qubits to ∣0⟩ or ∣1⟩ based on their probabilities. 
+Other qubits in the register entangled with any of the measured qubits will have their probabilities
+updated as well to satisfy constraints imposed by entangled states before the measurement.
+

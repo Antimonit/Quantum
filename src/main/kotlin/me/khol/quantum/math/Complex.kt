@@ -75,6 +75,10 @@ class Complex private constructor(
         return (other.theta - this.theta + 2 * PI) % (2 * PI)
     }
 
+    fun isReal(): Boolean = im == 0.0
+
+    fun isInteger(): Boolean = (im == 0.0 || im == 1.0) && (re == 0.0 || re == 1.0)
+
     fun toSimpleString(real: Boolean, integer: Boolean): String = when {
         real && integer -> format("%.0f", re)
         real && !integer -> format("%.3f", re)

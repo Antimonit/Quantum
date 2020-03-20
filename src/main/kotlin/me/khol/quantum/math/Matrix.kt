@@ -125,12 +125,10 @@ class Matrix : Iterable<Complex> {
     }
 
     override fun toString(): String {
-        val real = all { it.im == 0.0 }
-        val integer = all { (it.im == 0.0 || it.im == 1.0) && (it.re == 0.0 || it.re == 1.0) }
+        val real = all(Complex::isReal)
+        val integer = all(Complex::isInteger)
         return toListList().joinToString("\n") {
-            it.joinToString(" ", "| ", " |") {
-                it.toSimpleString(real, integer)
-            }
+            it.joinToString(" ", "| ", " |") { it.toSimpleString(real, integer) }
         }
     }
 

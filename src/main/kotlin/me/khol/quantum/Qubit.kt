@@ -96,7 +96,15 @@ class Qubit(
         return this.ket tensor other.ket
     }
 
-    override fun toString(): String = "[$alpha, $beta]"
+    override fun toString(): String = when (this) {
+        ZERO -> "ZERO"
+        ONE -> "ONE"
+        else -> "Q" + with(listOf(alpha, beta)) {
+            val real = all(Complex::isReal)
+            val integer = all(Complex::isInteger)
+            joinToString("; ", "[", "]") { it.toSimpleString(real, integer) }
+        }
+    }
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true

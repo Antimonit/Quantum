@@ -28,6 +28,10 @@ abstract class Gate {
         result = 31 * result + matrix.hashCode()
         return result
     }
+
+    override fun toString(): String {
+        return matrix.toString()
+    }
 }
 
 private class TimesGate(gate: Gate, other: Gate) : Gate() {

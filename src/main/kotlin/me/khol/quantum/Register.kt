@@ -74,7 +74,11 @@ class Register private constructor(val qubits: Int, val matrix: Matrix) {
     }
 
     override fun toString(): String {
-        return "Register ${super.toString()}:\n$matrix\n"
+        return with(matrix.col(0)) {
+            val real = all(Complex::isReal)
+            val integer = all(Complex::isInteger)
+            joinToString(" | ", "R{ ", " }") { it.toSimpleString(real, integer) }
+        }
     }
 }
 

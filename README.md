@@ -210,3 +210,59 @@ Doing so will collapse the state of specified qubits to ∣0⟩ or ∣1⟩ based
 Other qubits in the register entangled with any of the measured qubits will have their probabilities
 updated as well to satisfy constraints imposed by entangled states before the measurement.
 
+
+## Algorithm examples
+
+### Grover's Algorithm
+```kotlin
+val oracle: Gate = oracleGate(ONE, ONE, ZERO)
+
+runnableAlgorithm(3) {
+    // Initialization
+    step { H[0]; H[1]; H[2] }
+
+    repeat(2) {
+        // Oracle
+        oracle[0, 1, 2]
+
+        // Diffusion
+        step { H[0]; H[1]; H[2] }
+        step { X[0]; X[1]; X[2] }
+        step { C(C(Z))[0, 1, 2] }
+        step { X[0]; X[1]; X[2] }
+        step { H[0]; H[1]; H[2] }
+    }
+
+    // Measurement
+}.measure() // Returns [ONE, ONE, ZERO] with high probability
+```
+
+### Quantum Teleportation
+
+```kotlin
+val message = ZERO // or ONE or random()
+
+runnableAlgorithm(Register(message, ZERO, ZERO)) {
+    // Entangle qubits q1 and q2 to form a fully entangled bell state
+    GateHadamard[2]
+    GateCNot[2, 1]
+
+    // Entangle message/state held by q0 with the rest.
+    GateCNot[0, 1]
+    GateHadamard[0]
+
+    // Measuring the first two qubits will change the state of the third qubit because
+    // of the entanglement. This will teleport the message from the first qubit to the
+    // third qubit.
+    val (secret, shared) = measureAndCollapse(0, 1)
+
+    // The last qubit can be in one of four superpositions now. We can use qubits
+    // measured in the previous step to conditionally apply some gates to put it
+    // into one specific superposition.
+    if (shared == ONE) GateX[2]
+    if (secret == ONE) GateZ[2]
+}
+
+// At this point the third qubit will be in the same superposition as the message
+// defined at the beginning.
+```

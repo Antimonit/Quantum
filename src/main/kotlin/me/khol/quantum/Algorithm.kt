@@ -10,7 +10,9 @@ annotation class AlgorithmTagMarker
 
 interface Algorithm {
 
-    operator fun Gate.get(vararg qubits: Int)
+    operator fun Gate.get(vararg qubits: Int) = step { get(*qubits) }
+
+    operator fun Gate.get(range: IntRange) = step { get(range) }
 
     fun step(action: Step.() -> Unit)
 }
@@ -22,8 +24,6 @@ interface Algorithm {
 class RunnableAlgorithm(private var register: Register) : Algorithm {
 
     fun resultRegister(): Register = register
-
-    override operator fun Gate.get(vararg qubits: Int) = step { get(*qubits) }
 
     override fun step(action: Step.() -> Unit) {
         register = Step(register.qubits).apply { action() }.gate * register
@@ -89,8 +89,6 @@ class PrecomputedAlgorithm(private val qubitCount: Int) : Algorithm {
 
     fun resultGate(): Gate = gate
 
-    override operator fun Gate.get(vararg qubits: Int) = step { get(*qubits) }
-
     override fun step(action: Step.() -> Unit) {
         gate = Step(qubitCount).apply { action() }.gate * gate
     }
@@ -101,6 +99,10 @@ class Step(private val qubitCount: Int) {
 
     var gate = GateIdentity(qubitCount)
     private val qubitsUsed = mutableSetOf<Int>()
+
+    operator fun Gate.get(range: IntRange) {
+        return get(*range.toList().toIntArray())
+    }
 
     operator fun Gate.get(vararg qubits: Int) {
         val intersect = qubitsUsed.intersect(qubits.toSet())

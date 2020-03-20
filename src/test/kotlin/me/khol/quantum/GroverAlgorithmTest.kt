@@ -7,6 +7,7 @@ import me.khol.quantum.math.toIndex
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.*
 import org.junit.jupiter.api.Test
+import kotlin.math.*
 import me.khol.quantum.gate.GateControlled as C
 import me.khol.quantum.gate.GateHadamard as H
 import me.khol.quantum.gate.GateX as X
@@ -83,5 +84,46 @@ internal class GroverAlgorithmTest {
 
     private fun Register.probabilityOf(vararg state: Qubit): Double {
         return matrix[state.toList().toIndex(), 0].square
+    }
+
+    @Test
+    fun `Complex Grover's algorithm`() {
+        assertThat(probabilityOfSuccessfulGrover(2), closeTo(1.0000, 0.0001))
+        assertThat(probabilityOfSuccessfulGrover(3), closeTo(0.9453, 0.0001))
+        assertThat(probabilityOfSuccessfulGrover(4), closeTo(0.9613, 0.0001))
+        assertThat(probabilityOfSuccessfulGrover(5), closeTo(0.9991, 0.0001))
+        assertThat(probabilityOfSuccessfulGrover(6), closeTo(0.9966, 0.0001))
+    }
+
+    private fun probabilityOfSuccessfulGrover(size: Int): Double {
+        val state = Array(size) { ZERO }
+
+        val oracle = gateAlgorithm(size) {
+            step { state.forEachIndexed { index, qubit -> if (qubit == ZERO) X[index] } }
+            step { (1 until size).fold(Z as Gate) { acc, _ -> C(acc) }[0 until size] }
+            step { state.forEachIndexed { index, qubit -> if (qubit == ZERO) X[index] } }
+        }
+
+        // Pre-compute the gate once to greatly speed up the repeated section
+        val repeatedSection = gateAlgorithm(size) {
+            // Oracle
+            oracle[0 until size]
+
+            // Diffusion
+            step { repeat(size) { H[it] } }
+            step { repeat(size) { X[it] } }
+            step { (1 until size).fold(Z as Gate) { acc, _ -> C(acc) }[0 until size] }
+            step { repeat(size) { X[it] } }
+            step { repeat(size) { H[it] } }
+        }
+
+        return runnableAlgorithm(size) {
+            // Initialization
+            step { repeat(size) { H[it] } }
+
+            repeat(optimalRepetitions(size)) {
+                repeatedSection[0 until size]
+            }
+        }.probabilityOf(*state)
     }
 }

@@ -68,3 +68,23 @@ respectively).
 ![\begin{bmatrix} 0.8 \\ -0.6i \end{bmatrix}](https://render.githubusercontent.com/render/math?math=%5Cbegin%7Bbmatrix%7D%200.8%20%5C%5C%20-0.6i%20%5Cend%7Bbmatrix%7D)
 ≠
 ![\begin{bmatrix} 0.48+0.64i \\ 0.48+0.36i \end{bmatrix}](https://render.githubusercontent.com/render/math?math=%5Cbegin%7Bbmatrix%7D%200.48%2B0.64i%20%5C%5C%200.48%2B0.36i%20%5Cend%7Bbmatrix%7D)
+
+## Usage
+
+### [Complex numbers](src/main/kotlin/me/khol/quantum/math/Complex.kt)
+Complex numbers can be created either from cartesian coordinates:
+```kotlin
+Complex(re: Number = 0, im: Number = 0)
+```
+or from polar coordinates:
+```kotlin
+Complex.fromPolar(theta: Number, radius: Number = 1)
+```
+For most commonly used Complex numbers there are three predefined values:
+```kotlin
+val ONE = Complex(1, 0)
+val ZERO = Complex(0, 0)
+val I = Complex(0, 1)
+```
+There are several overloaded operators that allow for easier addition, subtraction, multiplication 
+and division of complex numbers.

@@ -13,6 +13,31 @@ import me.khol.quantum.gate.GateHadamard as H
 import me.khol.quantum.gate.GateX as X
 import me.khol.quantum.gate.GateZ as Z
 
+/**
+ * Although the purpose of Grover's algorithm is usually described as "searching a database", it
+ * may be more accurate to describe it as "inverting a function". Roughly speaking, if a function
+ * `y=f(x)` can be evaluated on a quantum computer, Grover's algorithm calculates `x` when given
+ * `y`.
+ *
+ * The Grover's algorithm consists of four stages:
+ *
+ * 1) **Initialization**: Creates an equal superposition of all states. All the states are equally
+ * likely to be observed when measured.
+ *
+ * 2) **Oracle**: Marks the solution by negating the amplitude of that state’s amplitude. This does
+ * not change the measurement probabilities but lowers the mean amplitude.
+ *
+ * 3) **Amplification**: Performs a reflection about the mean, thus increasing the amplitude of
+ * the marked state and decreasing amplitudes of other states.
+ *
+ * 4) **Measurement**: With higher than random probability we will observe the state marked by the
+ * Oracle.
+ *
+ * To maximize the probability of measuring the correct state we can repeat stages 2 and 3 multiple
+ * times. Each repetition brings the probability closer to 1. It turns out that we need to repeat
+ * those stages [O(N^1/2) times][optimalRepetitions]. Further repetitions don't increase the
+ * probability anymore but instead bring it down.
+ */
 internal class GroverAlgorithmTest {
 
     /**

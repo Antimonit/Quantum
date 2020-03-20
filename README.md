@@ -123,3 +123,14 @@ and *tensor* products.
 Because two qubits may have different alpha and beta values although they represent the same
 physical state they can be *normalized* so that two qubits can be programmatically compared.
 This cannot be observed in the physical world but is invaluable in testing.
+
+### [Registers](src/main/kotlin/me/khol/quantum/Register.kt)
+Registers are created from a list of qubits:
+```kotlin
+Register(vararg qubits: Qubit)
+```
+
+In contrast to a simple `List<Qubit>` that can only hold independent qubits, a `Register` can
+also hold *entangled* qubits, such as *Bell states*.
+
+With the same reasoning as for qubits, registers can be *normalized* for testing purposes.

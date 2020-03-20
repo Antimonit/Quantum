@@ -92,7 +92,7 @@ class PrecomputedAlgorithm(private val qubitCount: Int) : Algorithm {
     override operator fun Gate.get(vararg qubits: Int) = step { get(*qubits) }
 
     override fun step(action: Step.() -> Unit) {
-        gate *= Step(qubitCount).apply { action() }.gate
+        gate = Step(qubitCount).apply { action() }.gate * gate
     }
 }
 
@@ -108,11 +108,11 @@ class Step(private val qubitCount: Int) {
             "Cannot apply a gate to qubit(s) $intersect twice in a single step."
         }
         qubitsUsed += qubits.toSet()
-        gate *= if (this.qubits < qubitCount) {
+        gate = if (this.qubits < qubitCount) {
             this tensor GateIdentity(qubitCount - this.qubits)
         } else {
             this
-        }.withOrder(qubits.toList() + List(qubitCount) { it }.filter { it !in qubits })
+        }.withOrder(qubits.toList() + List(qubitCount) { it }.filter { it !in qubits }) * gate
     }
 }
 

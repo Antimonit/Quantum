@@ -116,6 +116,10 @@ class Step(private val qubitCount: Int) {
     }
 }
 
+fun runnableAlgorithm(qubitCount: Int, action: RunnableAlgorithm.() -> Unit): Register {
+    return runnableAlgorithm(Register(List(qubitCount) { Qubit.ZERO }), action)
+}
+
 fun runnableAlgorithm(register: Register, action: RunnableAlgorithm.() -> Unit): Register {
     return RunnableAlgorithm(register).apply {
         action()

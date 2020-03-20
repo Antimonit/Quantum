@@ -45,7 +45,7 @@ internal class GroverAlgorithmTest {
     fun `Grover's algorithm`() {
         val oracle = oracleGate(ONE, ONE, ZERO)
 
-        val result = runnableAlgorithm(Register(ZERO, ZERO, ZERO)) {
+        val result = runnableAlgorithm(3) {
             // Initialization
             step { H[0]; H[1]; H[2] }
 
@@ -55,9 +55,9 @@ internal class GroverAlgorithmTest {
 
                 // Diffusion
                 step { H[0]; H[1]; H[2] }
-                step { X[1]; X[0]; X[2] }
+                step { X[0]; X[1]; X[2] }
                 C(C(Z))[0, 1, 2]
-                step { X[1]; X[0]; X[2] }
+                step { X[0]; X[1]; X[2] }
                 step { H[0]; H[1]; H[2] }
             }
 

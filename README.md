@@ -134,3 +134,30 @@ In contrast to a simple `List<Qubit>` that can only hold independent qubits, a `
 also hold *entangled* qubits, such as *Bell states*.
 
 With the same reasoning as for qubits, registers can be *normalized* for testing purposes.
+
+### [Gates](src/main/kotlin/me/khol/quantum/gate/Gate.kt)
+Most of the commonly used gates are predefined:
+
+* [Identity](src/main/kotlin/me/khol/quantum/gate/GateIdentity.kt)
+* [Hadamard](src/main/kotlin/me/khol/quantum/gate/GateHadamard.kt)
+* [X (Not)](src/main/kotlin/me/khol/quantum/gate/GateX.kt)
+* [Y](src/main/kotlin/me/khol/quantum/gate/GateY.kt)
+* [Z](src/main/kotlin/me/khol/quantum/gate/GateZ.kt)
+* [S](src/main/kotlin/me/khol/quantum/gate/GateS.kt)
+* [T](src/main/kotlin/me/khol/quantum/gate/GateT.kt)
+* [Phase](src/main/kotlin/me/khol/quantum/gate/GatePhase.kt)
+* [Swap](src/main/kotlin/me/khol/quantum/gate/GateSwap.kt)
+* [CNot (CX)](src/main/kotlin/me/khol/quantum/gate/GateCNot.kt)
+* [Toffoli (CCNot)](src/main/kotlin/me/khol/quantum/gate/GateCCNot.kt)
+* [Fredkin (CSwap)](src/main/kotlin/me/khol/quantum/gate/GateCSwap.kt)
+* [Custom controlled gate](src/main/kotlin/me/khol/quantum/gate/GateControlled.kt)
+
+It should be straightforward to create custom gates.
+
+Gates can be applied to a single Qubit or Register. 
+The size of the gate must match the number of qubits stored by Register or 1 in the case of Qubit.
+```kotlin
+GateX * Qubit.ONE // Qubit.ZERO
+
+GateSwap * Register(Qubit.ONE, Qubit.ZERO) // Register(Qubit.ZERO, Qubit.ONE)
+``` 

@@ -16,7 +16,7 @@ internal class GroverAlgorithmTest {
 
     /**
      * Generates a 3-qubit oracle for use within Grover's algorithm that negates the amplitude of
-     * one specific state but leaving amplitude of any other state intact. 
+     * one specific state but leaving amplitude of any other state intact.
      */
     private fun oracleGate(vararg state: Qubit): Gate {
         return gateAlgorithm(3) {
@@ -25,6 +25,14 @@ internal class GroverAlgorithmTest {
             step { state.forEachIndexed { index, qubit -> if (qubit == ZERO) X[index] } }
         }
     }
+
+    /**
+     * Gives the most optimal number of iterations given the number of qubits in a register.
+     *
+     * Running the algorithm with more iterations than given by this function will decrease
+     * the probability of finding marked state instead.
+     */
+    private fun optimalRepetitions(qubitCount: Int) = (PI * sqrt(2.0.pow(qubitCount)) / 4).toInt()
 
     @Test
     fun `Grover's oracle gate negates amplitude only of one specific state`() {
@@ -49,7 +57,7 @@ internal class GroverAlgorithmTest {
             // Initialization
             step { H[0]; H[1]; H[2] }
 
-            repeat(2) {
+            repeat(optimalRepetitions(3)) {
                 // Oracle
                 oracle[0, 1, 2]
 

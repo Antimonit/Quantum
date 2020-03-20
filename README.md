@@ -105,3 +105,21 @@ Matrix.identity(size: Int)
 There are many overloaded operators that allow for easier *addition* and *subtraction* of two 
 matrices, *multiplication* and *division* by a number, complex number or another matrix, 
 *conjugate transpose* and *tensor* product. 
+
+### [Qubits](src/main/kotlin/me/khol/quantum/Qubit.kt) 
+Qubits are defined by two complex numbers which define their probability amplitudes:
+```kotlin
+Qubit(alpha: Complex, beta: Complex)
+```
+Two commonly used qubit states are predefined:
+```kotlin
+val ZERO = Qubit(Complex.ONE, Complex.ZERO)
+val ONE = Qubit(Complex.ZERO, Complex.ONE)
+```
+
+Qubits can be converted to *bra* ⟨&phi;∣ or *ket* ∣&phi;⟩ matrices and define *dot*, *cross* 
+and *tensor* products.
+
+Because two qubits may have different alpha and beta values although they represent the same
+physical state they can be *normalized* so that two qubits can be programmatically compared.
+This cannot be observed in the physical world but is invaluable in testing.

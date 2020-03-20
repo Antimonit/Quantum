@@ -88,3 +88,20 @@ val I = Complex(0, 1)
 ```
 There are several overloaded operators that allow for easier addition, subtraction, multiplication 
 and division of complex numbers.
+
+### [Matrices](src/main/kotlin/me/khol/quantum/math/Matrix.kt)
+Matrices can be created from number of rows and cols and 1D array of complex numbers:
+```kotlin
+Matrix(rows: Int, cols: Int, vararg values: Complex)
+```
+or directly from 2D array of complex numbers:
+```kotlin
+Matrix(m: List<List<Complex>>)
+```
+Identity matrix n×n can be created using:
+```kotlin
+Matrix.identity(size: Int)
+```
+There are many overloaded operators that allow for easier *addition* and *subtraction* of two 
+matrices, *multiplication* and *division* by a number, complex number or another matrix, 
+*conjugate transpose* and *tensor* product. 

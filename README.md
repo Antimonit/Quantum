@@ -72,6 +72,9 @@ respectively).
 ## Usage
 
 ### [Complex numbers](src/main/kotlin/me/khol/quantum/math/Complex.kt)
+<details>
+<summary>Details</summary>
+
 Complex numbers can be created either from cartesian coordinates:
 ```kotlin
 Complex(re: Number = 0, im: Number = 0)
@@ -88,8 +91,12 @@ val I = Complex(0, 1)
 ```
 There are several overloaded operators that allow for easier addition, subtraction, multiplication 
 and division of complex numbers.
+</details>  
 
 ### [Matrices](src/main/kotlin/me/khol/quantum/math/Matrix.kt)
+<details>
+<summary>Details</summary>
+
 Matrices can be created from number of rows and cols and 1D array of complex numbers:
 ```kotlin
 Matrix(rows: Int, cols: Int, vararg values: Complex)
@@ -105,6 +112,7 @@ Matrix.identity(size: Int)
 There are many overloaded operators that allow for easier *addition* and *subtraction* of two 
 matrices, *multiplication* and *division* by a number, complex number or another matrix, 
 *conjugate transpose* and *tensor* product. 
+</details>  
 
 ### [Qubits](src/main/kotlin/me/khol/quantum/Qubit.kt) 
 Qubits are defined by two complex numbers which define their probability amplitudes:

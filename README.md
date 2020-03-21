@@ -59,7 +59,7 @@ val ONE = Qubit(Complex.ZERO, Complex.ONE)
 Qubits can be converted to *bra* ⟨&phi;∣ or *ket* ∣&phi;⟩ matrices and define *dot*, *cross* 
 and *tensor* products.
 
-Because two qubits may have different alpha and beta values although they represent the same
+> Because two qubits may have different alpha and beta values although they represent the same
 physical state they can be *normalized* so that two qubits can be programmatically compared.
 This cannot be observed in the physical world but is invaluable in testing.
 
@@ -70,9 +70,10 @@ Register(vararg qubits: Qubit)
 ```
 
 In contrast to a simple `List<Qubit>` that can only hold independent qubits, a `Register` can
-also hold *entangled* qubits, such as *Bell states*.
+also hold *entangled* qubits, such as *Bell states*. This is crucial for creation of more 
+complex algorithms that depend on entanglement.
 
-With the same reasoning as for qubits, registers can be *normalized* for testing purposes.
+> Just like single qubits, registers can be *normalized* for testing purposes.
 
 ## [Gates](src/main/kotlin/me/khol/quantum/gate/Gate.kt)
 Most of the commonly used gates are already predefined:

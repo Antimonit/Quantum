@@ -69,9 +69,9 @@ respectively).
 ≠
 ![\begin{bmatrix} 0.48+0.64i \\ 0.48+0.36i \end{bmatrix}](https://render.githubusercontent.com/render/math?math=%5Cbegin%7Bbmatrix%7D%200.48%2B0.64i%20%5C%5C%200.48%2B0.36i%20%5Cend%7Bbmatrix%7D)
 
-## Usage
+# Building blocks
 
-### [Complex numbers](src/main/kotlin/me/khol/quantum/math/Complex.kt)
+## [Complex numbers](src/main/kotlin/me/khol/quantum/math/Complex.kt)
 <details>
 <summary>Details</summary>
 
@@ -93,7 +93,7 @@ There are several overloaded operators that allow for easier addition, subtracti
 and division of complex numbers.
 </details>  
 
-### [Matrices](src/main/kotlin/me/khol/quantum/math/Matrix.kt)
+## [Matrices](src/main/kotlin/me/khol/quantum/math/Matrix.kt)
 <details>
 <summary>Details</summary>
 
@@ -114,7 +114,7 @@ matrices, *multiplication* and *division* by a number, complex number or another
 *conjugate transpose* and *tensor* product. 
 </details>  
 
-### [Qubits](src/main/kotlin/me/khol/quantum/Qubit.kt) 
+## [Qubits](src/main/kotlin/me/khol/quantum/Qubit.kt) 
 Qubits are defined by two complex numbers which define their probability amplitudes:
 ```kotlin
 Qubit(alpha: Complex, beta: Complex)
@@ -132,7 +132,7 @@ Because two qubits may have different alpha and beta values although they repres
 physical state they can be *normalized* so that two qubits can be programmatically compared.
 This cannot be observed in the physical world but is invaluable in testing.
 
-### [Registers](src/main/kotlin/me/khol/quantum/Register.kt)
+## [Registers](src/main/kotlin/me/khol/quantum/Register.kt)
 Registers are created from a list of qubits:
 ```kotlin
 Register(vararg qubits: Qubit)
@@ -143,7 +143,7 @@ also hold *entangled* qubits, such as *Bell states*.
 
 With the same reasoning as for qubits, registers can be *normalized* for testing purposes.
 
-### [Gates](src/main/kotlin/me/khol/quantum/gate/Gate.kt)
+## [Gates](src/main/kotlin/me/khol/quantum/gate/Gate.kt)
 Most of the commonly used gates are already predefined:
 
 | [Identity][_Identity] | [Hadamard][_Hadamard] | [X (Not)][_X] | [Y][_Y] | [Z][_Z] |
@@ -210,7 +210,7 @@ GateX * Qubit.ONE // Qubit.ZERO
 GateSwap * Register(Qubit.ONE, Qubit.ZERO) // Register(Qubit.ZERO, Qubit.ONE)
 ``` 
 
-### [Algorithms](src/main/kotlin/me/khol/quantum/Algorithm.kt)
+## [Algorithms](src/main/kotlin/me/khol/quantum/Algorithm.kt)
 Instead of manually applying gates to registers and qubits like this:
 ```kotlin
 val bellState = CNot * Register(Hadamard * ZERO, ZERO)
@@ -221,7 +221,7 @@ algorithm classes provide a less cluttered and more natural way to
 * apply gates to registers with different sizes and
 * apply multiple gates to a register.
 
-#### GateAlgorithm
+### GateAlgorithm
 Pre-computes application of multiple gates as a standalone gate. As we apply gates 
 within the algorithm their transformation matrices are combined.
 It allows us to pre-compute a part of an algorithm that is executed repeatedly and 
@@ -236,7 +236,7 @@ val swap: Gate = gateAlgorithm(2) {
 }
 ```
 
-#### RunnableAlgorithm
+### RunnableAlgorithm
 Applies multiple gates to a register, changing the state of its qubits with each step.
 
 ```kotlin
@@ -258,10 +258,9 @@ Doing so will collapse the state of specified qubits to ∣0⟩ or ∣1⟩ based
 Other qubits in the register entangled with any of the measured qubits will have their probabilities
 updated as well to satisfy constraints imposed by entangled states before the measurement.
 
+# Algorithm examples
 
-## Algorithm examples
-
-### Grover's Algorithm
+## Grover's Algorithm
 
 ![Grover's Algorithm](images/grover.svg)
 
@@ -288,7 +287,7 @@ runnableAlgorithm(3) {
 }.measure() // Returns [ONE, ONE, ZERO] with high probability
 ```
 
-### Quantum Teleportation
+## Quantum Teleportation
 
 ![Quantum Teleportation](images/quantum_teleportation.svg)
 

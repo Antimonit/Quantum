@@ -1,0 +1,265 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="800" height="225" viewBox="0 0 800 225">
+  <defs>
+    <clipPath id="clip-Grover_s_Algorithm">
+      <rect width="800" height="225"/>
+    </clipPath>
+  </defs>
+  <g id="Grover_s_Algorithm" data-name="Grover&apos;s Algorithm" clip-path="url(#clip-Grover_s_Algorithm)">
+    <rect width="800" height="225" fill="#fff"/>
+    <line id="Line_1" data-name="Line 1" x2="700" transform="translate(50 100)" fill="none" stroke="#000" stroke-width="1"/>
+    <line id="Line_2" data-name="Line 2" x2="700" transform="translate(50 150)" fill="none" stroke="#000" stroke-width="1"/>
+    <line id="Line_3" data-name="Line 3" x2="700" transform="translate(50 200)" fill="none" stroke="#000" stroke-width="1"/>
+    <text id="_0_" data-name="∣0⟩" transform="translate(46 156)" font-size="20" font-family="CambriaMath, Cambria Math"><tspan x="-24.121" y="0">∣0⟩</tspan></text>
+    <text id="_0_2" data-name="∣0⟩" transform="translate(46 206)" font-size="20" font-family="CambriaMath, Cambria Math"><tspan x="-24.121" y="0">∣0⟩</tspan></text>
+    <text id="_0_3" data-name="∣0⟩" transform="translate(46 106)" font-size="20" font-family="CambriaMath, Cambria Math"><tspan x="-24.121" y="0">∣0⟩</tspan></text>
+    <g id="Control" transform="translate(495 95)">
+      <g id="Ellipse_1" data-name="Ellipse 1" stroke="#000" stroke-width="1">
+        <circle cx="5" cy="5" r="5" stroke="none"/>
+        <circle cx="5" cy="5" r="4.5" fill="none"/>
+      </g>
+    </g>
+    <line id="Line_7" data-name="Line 7" y2="100" transform="translate(500 100)" fill="none" stroke="#000" stroke-width="1"/>
+    <g id="Z" transform="translate(480 180)">
+      <g id="Gate_border" data-name="Gate border">
+        <g id="Rectangle_1" data-name="Rectangle 1" fill="#fff" stroke="#000" stroke-width="1">
+          <rect width="40" height="40" stroke="none"/>
+          <rect x="0.5" y="0.5" width="39" height="39" fill="none"/>
+        </g>
+      </g>
+      <text id="Z-2" data-name="Z" transform="translate(20 27)" font-size="20" font-family="CambriaMath, Cambria Math"><tspan x="-5.376" y="0">Z</tspan></text>
+    </g>
+    <g id="Hadamard" transform="translate(380 130)">
+      <g id="Gate_border-2" data-name="Gate border">
+        <g id="Rectangle_1-2" data-name="Rectangle 1" fill="#fff" stroke="#000" stroke-width="1">
+          <rect width="40" height="40" stroke="none"/>
+          <rect x="0.5" y="0.5" width="39" height="39" fill="none"/>
+        </g>
+      </g>
+      <text id="H" transform="translate(20 27)" font-size="20" font-family="CambriaMath, Cambria Math"><tspan x="-6.865" y="0">H</tspan></text>
+    </g>
+    <g id="Hadamard-2" data-name="Hadamard" transform="translate(380 80)">
+      <g id="Gate_border-3" data-name="Gate border">
+        <g id="Rectangle_1-3" data-name="Rectangle 1" fill="#fff" stroke="#000" stroke-width="1">
+          <rect width="40" height="40" stroke="none"/>
+          <rect x="0.5" y="0.5" width="39" height="39" fill="none"/>
+        </g>
+      </g>
+      <text id="H-2" data-name="H" transform="translate(20 27)" font-size="20" font-family="CambriaMath, Cambria Math"><tspan x="-6.865" y="0">H</tspan></text>
+    </g>
+    <g id="Hadamard-3" data-name="Hadamard" transform="translate(380 180)">
+      <g id="Gate_border-4" data-name="Gate border">
+        <g id="Rectangle_1-4" data-name="Rectangle 1" fill="#fff" stroke="#000" stroke-width="1">
+          <rect width="40" height="40" stroke="none"/>
+          <rect x="0.5" y="0.5" width="39" height="39" fill="none"/>
+        </g>
+      </g>
+      <text id="H-3" data-name="H" transform="translate(20 27)" font-size="20" font-family="CambriaMath, Cambria Math"><tspan x="-6.865" y="0">H</tspan></text>
+    </g>
+    <g id="Hadamard-4" data-name="Hadamard" transform="translate(430 80)">
+      <g id="Gate_border-5" data-name="Gate border">
+        <g id="Rectangle_1-5" data-name="Rectangle 1" fill="#fff" stroke="#000" stroke-width="1">
+          <rect width="40" height="40" stroke="none"/>
+          <rect x="0.5" y="0.5" width="39" height="39" fill="none"/>
+        </g>
+      </g>
+      <text id="X" transform="translate(20 27)" font-size="20" font-family="CambriaMath, Cambria Math"><tspan x="-5.713" y="0">X</tspan></text>
+    </g>
+    <g id="Hadamard-5" data-name="Hadamard" transform="translate(430 130)">
+      <g id="Gate_border-6" data-name="Gate border">
+        <g id="Rectangle_1-6" data-name="Rectangle 1" fill="#fff" stroke="#000" stroke-width="1">
+          <rect width="40" height="40" stroke="none"/>
+          <rect x="0.5" y="0.5" width="39" height="39" fill="none"/>
+        </g>
+      </g>
+      <text id="X-2" data-name="X" transform="translate(20 27)" font-size="20" font-family="CambriaMath, Cambria Math"><tspan x="-5.713" y="0">X</tspan></text>
+    </g>
+    <g id="Hadamard-6" data-name="Hadamard" transform="translate(430 180)">
+      <g id="Gate_border-7" data-name="Gate border">
+        <g id="Rectangle_1-7" data-name="Rectangle 1" fill="#fff" stroke="#000" stroke-width="1">
+          <rect width="40" height="40" stroke="none"/>
+          <rect x="0.5" y="0.5" width="39" height="39" fill="none"/>
+        </g>
+      </g>
+      <text id="X-3" data-name="X" transform="translate(20 27)" font-size="20" font-family="CambriaMath, Cambria Math"><tspan x="-5.713" y="0">X</tspan></text>
+    </g>
+    <g id="Hadamard-7" data-name="Hadamard" transform="translate(580 130)">
+      <g id="Gate_border-8" data-name="Gate border">
+        <g id="Rectangle_1-8" data-name="Rectangle 1" fill="#fff" stroke="#000" stroke-width="1">
+          <rect width="40" height="40" stroke="none"/>
+          <rect x="0.5" y="0.5" width="39" height="39" fill="none"/>
+        </g>
+      </g>
+      <text id="H-4" data-name="H" transform="translate(20 27)" font-size="20" font-family="CambriaMath, Cambria Math"><tspan x="-6.865" y="0">H</tspan></text>
+    </g>
+    <g id="Hadamard-8" data-name="Hadamard" transform="translate(580 80)">
+      <g id="Gate_border-9" data-name="Gate border">
+        <g id="Rectangle_1-9" data-name="Rectangle 1" fill="#fff" stroke="#000" stroke-width="1">
+          <rect width="40" height="40" stroke="none"/>
+          <rect x="0.5" y="0.5" width="39" height="39" fill="none"/>
+        </g>
+      </g>
+      <text id="H-5" data-name="H" transform="translate(20 27)" font-size="20" font-family="CambriaMath, Cambria Math"><tspan x="-6.865" y="0">H</tspan></text>
+    </g>
+    <g id="Hadamard-9" data-name="Hadamard" transform="translate(580 180)">
+      <g id="Gate_border-10" data-name="Gate border">
+        <g id="Rectangle_1-10" data-name="Rectangle 1" fill="#fff" stroke="#000" stroke-width="1">
+          <rect width="40" height="40" stroke="none"/>
+          <rect x="0.5" y="0.5" width="39" height="39" fill="none"/>
+        </g>
+      </g>
+      <text id="H-6" data-name="H" transform="translate(20 27)" font-size="20" font-family="CambriaMath, Cambria Math"><tspan x="-6.865" y="0">H</tspan></text>
+    </g>
+    <g id="Hadamard-10" data-name="Hadamard" transform="translate(530 80)">
+      <g id="Gate_border-11" data-name="Gate border">
+        <g id="Rectangle_1-11" data-name="Rectangle 1" fill="#fff" stroke="#000" stroke-width="1">
+          <rect width="40" height="40" stroke="none"/>
+          <rect x="0.5" y="0.5" width="39" height="39" fill="none"/>
+        </g>
+      </g>
+      <text id="X-4" data-name="X" transform="translate(20 27)" font-size="20" font-family="CambriaMath, Cambria Math"><tspan x="-5.713" y="0">X</tspan></text>
+    </g>
+    <g id="Hadamard-11" data-name="Hadamard" transform="translate(530 130)">
+      <g id="Gate_border-12" data-name="Gate border">
+        <g id="Rectangle_1-12" data-name="Rectangle 1" fill="#fff" stroke="#000" stroke-width="1">
+          <rect width="40" height="40" stroke="none"/>
+          <rect x="0.5" y="0.5" width="39" height="39" fill="none"/>
+        </g>
+      </g>
+      <text id="X-5" data-name="X" transform="translate(20 27)" font-size="20" font-family="CambriaMath, Cambria Math"><tspan x="-5.713" y="0">X</tspan></text>
+    </g>
+    <g id="Hadamard-12" data-name="Hadamard" transform="translate(530 180)">
+      <g id="Gate_border-13" data-name="Gate border">
+        <g id="Rectangle_1-13" data-name="Rectangle 1" fill="#fff" stroke="#000" stroke-width="1">
+          <rect width="40" height="40" stroke="none"/>
+          <rect x="0.5" y="0.5" width="39" height="39" fill="none"/>
+        </g>
+      </g>
+      <text id="X-6" data-name="X" transform="translate(20 27)" font-size="20" font-family="CambriaMath, Cambria Math"><tspan x="-5.713" y="0">X</tspan></text>
+    </g>
+    <g id="Hadamard-13" data-name="Hadamard" transform="translate(80 130)">
+      <g id="Gate_border-14" data-name="Gate border">
+        <g id="Rectangle_1-14" data-name="Rectangle 1" fill="#fff" stroke="#000" stroke-width="1">
+          <rect width="40" height="40" stroke="none"/>
+          <rect x="0.5" y="0.5" width="39" height="39" fill="none"/>
+        </g>
+      </g>
+      <text id="H-7" data-name="H" transform="translate(20 27)" font-size="20" font-family="CambriaMath, Cambria Math"><tspan x="-6.865" y="0">H</tspan></text>
+    </g>
+    <g id="Hadamard-14" data-name="Hadamard" transform="translate(80 80)">
+      <g id="Gate_border-15" data-name="Gate border">
+        <g id="Rectangle_1-15" data-name="Rectangle 1" fill="#fff" stroke="#000" stroke-width="1">
+          <rect width="40" height="40" stroke="none"/>
+          <rect x="0.5" y="0.5" width="39" height="39" fill="none"/>
+        </g>
+      </g>
+      <text id="H-8" data-name="H" transform="translate(20 27)" font-size="20" font-family="CambriaMath, Cambria Math"><tspan x="-6.865" y="0">H</tspan></text>
+    </g>
+    <g id="Hadamard-15" data-name="Hadamard" transform="translate(80 180)">
+      <g id="Gate_border-16" data-name="Gate border">
+        <g id="Rectangle_1-16" data-name="Rectangle 1" fill="#fff" stroke="#000" stroke-width="1">
+          <rect width="40" height="40" stroke="none"/>
+          <rect x="0.5" y="0.5" width="39" height="39" fill="none"/>
+        </g>
+      </g>
+      <text id="H-9" data-name="H" transform="translate(20 27)" font-size="20" font-family="CambriaMath, Cambria Math"><tspan x="-6.865" y="0">H</tspan></text>
+    </g>
+    <g id="Control-2" data-name="Control" transform="translate(245 95)">
+      <g id="Ellipse_1-2" data-name="Ellipse 1" stroke="#000" stroke-width="1">
+        <circle cx="5" cy="5" r="5" stroke="none"/>
+        <circle cx="5" cy="5" r="4.5" fill="none"/>
+      </g>
+    </g>
+    <line id="Line_17" data-name="Line 17" y2="100" transform="translate(250 100)" fill="none" stroke="#000" stroke-width="1"/>
+    <g id="Hadamard-16" data-name="Hadamard" transform="translate(230 180)">
+      <g id="Gate_border-17" data-name="Gate border">
+        <g id="Rectangle_1-17" data-name="Rectangle 1" fill="#fff" stroke="#000" stroke-width="1">
+          <rect width="40" height="40" stroke="none"/>
+          <rect x="0.5" y="0.5" width="39" height="39" fill="none"/>
+        </g>
+      </g>
+      <text id="Z-3" data-name="Z" transform="translate(20 27)" font-size="20" font-family="CambriaMath, Cambria Math"><tspan x="-5.376" y="0">Z</tspan></text>
+    </g>
+    <g id="Hadamard-17" data-name="Hadamard" transform="translate(180 180)">
+      <g id="Gate_border-18" data-name="Gate border">
+        <g id="Rectangle_1-18" data-name="Rectangle 1" fill="#fff" stroke="#000" stroke-width="1">
+          <rect width="40" height="40" stroke="none"/>
+          <rect x="0.5" y="0.5" width="39" height="39" fill="none"/>
+        </g>
+      </g>
+      <text id="X-7" data-name="X" transform="translate(20 27)" font-size="20" font-family="CambriaMath, Cambria Math"><tspan x="-5.713" y="0">X</tspan></text>
+    </g>
+    <g id="Hadamard-18" data-name="Hadamard" transform="translate(280 180)">
+      <g id="Gate_border-19" data-name="Gate border">
+        <g id="Rectangle_1-19" data-name="Rectangle 1" fill="#fff" stroke="#000" stroke-width="1">
+          <rect width="40" height="40" stroke="none"/>
+          <rect x="0.5" y="0.5" width="39" height="39" fill="none"/>
+        </g>
+      </g>
+      <text id="X-8" data-name="X" transform="translate(20 27)" font-size="20" font-family="CambriaMath, Cambria Math"><tspan x="-5.713" y="0">X</tspan></text>
+    </g>
+    <text id="Init" transform="translate(100 66)" font-size="20" font-family="CambriaMath, Cambria Math"><tspan x="-14.985" y="0">Init</tspan></text>
+    <text id="Oracle" transform="translate(250 66)" font-size="20" font-family="CambriaMath, Cambria Math"><tspan x="-27.383" y="0">Oracle</tspan></text>
+    <text id="Diffusion" transform="translate(500 66)" font-size="20" font-family="CambriaMath, Cambria Math"><tspan x="-38.936" y="0">Diffusion</tspan></text>
+    <text id="Oracle-2" data-name="Oracle" transform="translate(250 66)" font-size="20" font-family="CambriaMath, Cambria Math"><tspan x="-27.383" y="0">Oracle</tspan></text>
+    <text id="Repeat_2x" data-name="Repeat 2x" transform="translate(400 26)" font-size="20" font-family="CambriaMath, Cambria Math"><tspan x="-42.188" y="0">Repeat 2x</tspan></text>
+    <text id="_1_" data-name="∣1⟩" transform="translate(778 106)" font-size="20" font-family="CambriaMath, Cambria Math"><tspan x="-24.121" y="0">∣1⟩</tspan></text>
+    <text id="_1_2" data-name="∣1⟩" transform="translate(778 156)" font-size="20" font-family="CambriaMath, Cambria Math"><tspan x="-24.121" y="0">∣1⟩</tspan></text>
+    <text id="_0_4" data-name="∣0⟩" transform="translate(778 206)" font-size="20" font-family="CambriaMath, Cambria Math"><tspan x="-24.121" y="0">∣0⟩</tspan></text>
+    <path id="Path_3" data-name="Path 3" d="M170,250v-9.5H629.5V250" transform="translate(0 -200)" fill="none" stroke="#000" stroke-width="1"/>
+    <g id="Measure" transform="translate(680 80)">
+      <g id="Group_8" data-name="Group 8" transform="translate(-50 -35)">
+        <g id="Gate_border-20" data-name="Gate border" transform="translate(50 35)">
+          <g id="Rectangle_1-20" data-name="Rectangle 1" fill="#fff" stroke="#000" stroke-width="1">
+            <rect width="40" height="40" stroke="none"/>
+            <rect x="0.5" y="0.5" width="39" height="39" fill="none"/>
+          </g>
+        </g>
+      </g>
+      <g id="Group_11" data-name="Group 11" transform="translate(-265 -7)">
+        <path id="Path_1" data-name="Path 1" d="M345,50h0c5.022-5,15-5,20,0" transform="translate(-70 -15)" fill="none" stroke="#000" stroke-width="1"/>
+        <line id="Line_8" data-name="Line 8" y1="19" x2="7" transform="translate(286 18)" fill="none" stroke="#000" stroke-width="1"/>
+      </g>
+    </g>
+    <g id="Measure-2" data-name="Measure" transform="translate(680 130)">
+      <g id="Group_8-2" data-name="Group 8" transform="translate(-50 -35)">
+        <g id="Gate_border-21" data-name="Gate border" transform="translate(50 35)">
+          <g id="Rectangle_1-21" data-name="Rectangle 1" fill="#fff" stroke="#000" stroke-width="1">
+            <rect width="40" height="40" stroke="none"/>
+            <rect x="0.5" y="0.5" width="39" height="39" fill="none"/>
+          </g>
+        </g>
+      </g>
+      <g id="Group_11-2" data-name="Group 11" transform="translate(-265 -7)">
+        <path id="Path_1-2" data-name="Path 1" d="M345,50h0c5.022-5,15-5,20,0" transform="translate(-70 -15)" fill="none" stroke="#000" stroke-width="1"/>
+        <line id="Line_8-2" data-name="Line 8" y1="19" x2="7" transform="translate(286 18)" fill="none" stroke="#000" stroke-width="1"/>
+      </g>
+    </g>
+    <g id="Measure-3" data-name="Measure" transform="translate(680 180)">
+      <g id="Group_8-3" data-name="Group 8" transform="translate(-50 -35)">
+        <g id="Gate_border-22" data-name="Gate border" transform="translate(50 35)">
+          <g id="Rectangle_1-22" data-name="Rectangle 1" fill="#fff" stroke="#000" stroke-width="1">
+            <rect width="40" height="40" stroke="none"/>
+            <rect x="0.5" y="0.5" width="39" height="39" fill="none"/>
+          </g>
+        </g>
+      </g>
+      <g id="Group_11-3" data-name="Group 11" transform="translate(-265 -7)">
+        <path id="Path_1-3" data-name="Path 1" d="M345,50h0c5.022-5,15-5,20,0" transform="translate(-70 -15)" fill="none" stroke="#000" stroke-width="1"/>
+        <line id="Line_8-3" data-name="Line 8" y1="19" x2="7" transform="translate(286 18)" fill="none" stroke="#000" stroke-width="1"/>
+      </g>
+    </g>
+    <text id="Measurement" transform="translate(700 66)" font-size="20" font-family="CambriaMath, Cambria Math"><tspan x="-58.765" y="0">Measurement</tspan></text>
+    <g id="Control-3" data-name="Control" transform="translate(245 145)">
+      <g id="Ellipse_1-3" data-name="Ellipse 1" stroke="#000" stroke-width="1">
+        <circle cx="5" cy="5" r="5" stroke="none"/>
+        <circle cx="5" cy="5" r="4.5" fill="none"/>
+      </g>
+    </g>
+    <g id="Control-4" data-name="Control" transform="translate(495 145)">
+      <g id="Ellipse_1-4" data-name="Ellipse 1" stroke="#000" stroke-width="1">
+        <circle cx="5" cy="5" r="5" stroke="none"/>
+        <circle cx="5" cy="5" r="4.5" fill="none"/>
+      </g>
+    </g>
+  </g>
+</svg>

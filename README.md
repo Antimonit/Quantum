@@ -254,6 +254,9 @@ updated as well to satisfy constraints imposed by entangled states before the me
 ## Algorithm examples
 
 ### Grover's Algorithm
+
+![Grover's Algorithm](images/grover.svg)
+
 ```kotlin
 val oracle: Gate = oracleGate(ONE, ONE, ZERO)
 
@@ -278,6 +281,8 @@ runnableAlgorithm(3) {
 ```
 
 ### Quantum Teleportation
+
+![Quantum Teleportation](images/quantum_teleportation.svg)
 
 ```kotlin
 val message = ZERO // or ONE or random()

@@ -47,6 +47,8 @@ class Complex private constructor(
     operator fun minus(s: Complex) = Complex(complex.minus(s.complex))
     operator fun times(s: Complex) = Complex(complex.times(s.complex))
     operator fun div(s: Complex) = Complex(complex.divide(s.complex))
+    operator fun times(s: Number) = this * Complex(s)
+    operator fun div(s: Number) = this / Complex(s)
 
     fun conjugate() = Complex(re, -im)
 

@@ -1,0 +1,253 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="700" height="150" viewBox="0 0 700 150">
+  <defs>
+    <clipPath id="clip-Toffoli">
+      <rect width="700" height="150"/>
+    </clipPath>
+  </defs>
+  <g id="Toffoli" clip-path="url(#clip-Toffoli)">
+    <rect width="700" height="150" fill="#fff"/>
+    <line id="Line_1" data-name="Line 1" x2="700" transform="translate(0 25)" fill="none" stroke="#000" stroke-width="1"/>
+    <line id="Line_2" data-name="Line 2" x2="700" transform="translate(0 75)" fill="none" stroke="#000" stroke-width="1"/>
+    <line id="Line_3" data-name="Line 3" x2="700" transform="translate(0 125)" fill="none" stroke="#000" stroke-width="1"/>
+    <g id="Hadamard" transform="translate(480 105)">
+      <g id="Gate_border" data-name="Gate border">
+        <g id="Rectangle_1" data-name="Rectangle 1" fill="#fff" stroke="#000" stroke-width="1">
+          <rect width="40" height="40" stroke="none"/>
+          <rect x="0.5" y="0.5" width="39" height="39" fill="none"/>
+        </g>
+      </g>
+      <text id="H" transform="translate(20 27)" font-size="20" font-family="CambriaMath, Cambria Math"><tspan x="-6.865" y="0">H</tspan></text>
+    </g>
+    <g id="Hadamard-2" data-name="Hadamard" transform="translate(30 105)">
+      <g id="Gate_border-2" data-name="Gate border">
+        <g id="Rectangle_1-2" data-name="Rectangle 1" fill="#fff" stroke="#000" stroke-width="1">
+          <rect width="40" height="40" stroke="none"/>
+          <rect x="0.5" y="0.5" width="39" height="39" fill="none"/>
+        </g>
+      </g>
+      <text id="H-2" data-name="H" transform="translate(20 27)" font-size="20" font-family="CambriaMath, Cambria Math"><tspan x="-6.865" y="0">H</tspan></text>
+    </g>
+    <g id="Control" transform="translate(195 20)">
+      <g id="Ellipse_1" data-name="Ellipse 1" stroke="#000" stroke-width="1">
+        <circle cx="5" cy="5" r="5" stroke="none"/>
+        <circle cx="5" cy="5" r="4.5" fill="none"/>
+      </g>
+    </g>
+    <line id="Line_17" data-name="Line 17" y2="100" transform="translate(200 25)" fill="none" stroke="#000" stroke-width="1"/>
+    <g id="T_dagger" data-name="T dagger" transform="translate(130 105)">
+      <g id="Gate_border-3" data-name="Gate border">
+        <g id="Rectangle_1-3" data-name="Rectangle 1" fill="#fff" stroke="#000" stroke-width="1">
+          <rect width="40" height="40" stroke="none"/>
+          <rect x="0.5" y="0.5" width="39" height="39" fill="none"/>
+        </g>
+      </g>
+      <text id="T_" data-name="T†" transform="translate(20 27)" font-size="20" font-family="CambriaMath, Cambria Math"><tspan x="-8.941" y="0">T</tspan><tspan y="0" font-size="11.666" baseline-shift="6.666000209254424">†</tspan></text>
+    </g>
+    <g id="T" transform="translate(230 105)">
+      <g id="Gate_border-4" data-name="Gate border">
+        <g id="Rectangle_1-4" data-name="Rectangle 1" fill="#fff" stroke="#000" stroke-width="1">
+          <rect width="40" height="40" stroke="none"/>
+          <rect x="0.5" y="0.5" width="39" height="39" fill="none"/>
+        </g>
+      </g>
+      <text id="T-2" data-name="T" transform="translate(20 27)" font-size="20" font-family="CambriaMath, Cambria Math"><tspan x="-5.928" y="0">T</tspan></text>
+    </g>
+    <g id="Control-2" data-name="Control" transform="translate(95 70)">
+      <g id="Ellipse_1-2" data-name="Ellipse 1" stroke="#000" stroke-width="1">
+        <circle cx="5" cy="5" r="5" stroke="none"/>
+        <circle cx="5" cy="5" r="4.5" fill="none"/>
+      </g>
+    </g>
+    <g id="X-target" transform="translate(90 115)">
+      <g id="Ellipse_2" data-name="Ellipse 2" fill="#fff" stroke="#000" stroke-width="1">
+        <circle cx="10" cy="10" r="10" stroke="none"/>
+        <circle cx="10" cy="10" r="9.5" fill="none"/>
+      </g>
+      <line id="Line_4" data-name="Line 4" y1="18" transform="translate(10 1)" fill="none" stroke="#000" stroke-width="1"/>
+      <line id="Line_5" data-name="Line 5" x1="18" transform="translate(1 10)" fill="none" stroke="#000" stroke-width="1"/>
+    </g>
+    <line id="Line_6" data-name="Line 6" y2="50" transform="translate(100 75)" fill="none" stroke="#000" stroke-width="1"/>
+    <g id="X-target-2" data-name="X-target" transform="translate(190 115)">
+      <g id="Ellipse_2-2" data-name="Ellipse 2" fill="#fff" stroke="#000" stroke-width="1">
+        <circle cx="10" cy="10" r="10" stroke="none"/>
+        <circle cx="10" cy="10" r="9.5" fill="none"/>
+      </g>
+      <line id="Line_4-2" data-name="Line 4" y1="18" transform="translate(10 1)" fill="none" stroke="#000" stroke-width="1"/>
+      <line id="Line_5-2" data-name="Line 5" x1="18" transform="translate(1 10)" fill="none" stroke="#000" stroke-width="1"/>
+    </g>
+    <g id="Control-3" data-name="Control" transform="translate(95 70)">
+      <g id="Ellipse_1-3" data-name="Ellipse 1" stroke="#000" stroke-width="1">
+        <circle cx="5" cy="5" r="5" stroke="none"/>
+        <circle cx="5" cy="5" r="4.5" fill="none"/>
+      </g>
+    </g>
+    <g id="X-target-3" data-name="X-target" transform="translate(90 115)">
+      <g id="Ellipse_2-3" data-name="Ellipse 2" fill="#fff" stroke="#000" stroke-width="1">
+        <circle cx="10" cy="10" r="10" stroke="none"/>
+        <circle cx="10" cy="10" r="9.5" fill="none"/>
+      </g>
+      <line id="Line_4-3" data-name="Line 4" y1="18" transform="translate(10 1)" fill="none" stroke="#000" stroke-width="1"/>
+      <line id="Line_5-3" data-name="Line 5" x1="18" transform="translate(1 10)" fill="none" stroke="#000" stroke-width="1"/>
+    </g>
+    <line id="Line_18" data-name="Line 18" y2="50" transform="translate(100 75)" fill="none" stroke="#000" stroke-width="1"/>
+    <g id="Control-4" data-name="Control" transform="translate(395 20)">
+      <g id="Ellipse_1-4" data-name="Ellipse 1" stroke="#000" stroke-width="1">
+        <circle cx="5" cy="5" r="5" stroke="none"/>
+        <circle cx="5" cy="5" r="4.5" fill="none"/>
+      </g>
+    </g>
+    <line id="Line_19" data-name="Line 19" y2="100" transform="translate(400 25)" fill="none" stroke="#000" stroke-width="1"/>
+    <g id="T_dagger-2" data-name="T dagger" transform="translate(330 105)">
+      <g id="Gate_border-5" data-name="Gate border">
+        <g id="Rectangle_1-5" data-name="Rectangle 1" fill="#fff" stroke="#000" stroke-width="1">
+          <rect width="40" height="40" stroke="none"/>
+          <rect x="0.5" y="0.5" width="39" height="39" fill="none"/>
+        </g>
+      </g>
+      <text id="T_2" data-name="T†" transform="translate(20 27)" font-size="20" font-family="CambriaMath, Cambria Math"><tspan x="-8.941" y="0">T</tspan><tspan y="0" font-size="11.666" baseline-shift="6.666000209254424">†</tspan></text>
+    </g>
+    <g id="T-3" data-name="T" transform="translate(430 105)">
+      <g id="Gate_border-6" data-name="Gate border">
+        <g id="Rectangle_1-6" data-name="Rectangle 1" fill="#fff" stroke="#000" stroke-width="1">
+          <rect width="40" height="40" stroke="none"/>
+          <rect x="0.5" y="0.5" width="39" height="39" fill="none"/>
+        </g>
+      </g>
+      <text id="T-4" data-name="T" transform="translate(20 27)" font-size="20" font-family="CambriaMath, Cambria Math"><tspan x="-5.928" y="0">T</tspan></text>
+    </g>
+    <g id="Control-5" data-name="Control" transform="translate(295 70)">
+      <g id="Ellipse_1-5" data-name="Ellipse 1" stroke="#000" stroke-width="1">
+        <circle cx="5" cy="5" r="5" stroke="none"/>
+        <circle cx="5" cy="5" r="4.5" fill="none"/>
+      </g>
+    </g>
+    <g id="X-target-4" data-name="X-target" transform="translate(290 115)">
+      <g id="Ellipse_2-4" data-name="Ellipse 2" fill="#fff" stroke="#000" stroke-width="1">
+        <circle cx="10" cy="10" r="10" stroke="none"/>
+        <circle cx="10" cy="10" r="9.5" fill="none"/>
+      </g>
+      <line id="Line_4-4" data-name="Line 4" y1="18" transform="translate(10 1)" fill="none" stroke="#000" stroke-width="1"/>
+      <line id="Line_5-4" data-name="Line 5" x1="18" transform="translate(1 10)" fill="none" stroke="#000" stroke-width="1"/>
+    </g>
+    <line id="Line_20" data-name="Line 20" y2="50" transform="translate(300 75)" fill="none" stroke="#000" stroke-width="1"/>
+    <g id="X-target-5" data-name="X-target" transform="translate(390 115)">
+      <g id="Ellipse_2-5" data-name="Ellipse 2" fill="#fff" stroke="#000" stroke-width="1">
+        <circle cx="10" cy="10" r="10" stroke="none"/>
+        <circle cx="10" cy="10" r="9.5" fill="none"/>
+      </g>
+      <line id="Line_4-5" data-name="Line 4" y1="18" transform="translate(10 1)" fill="none" stroke="#000" stroke-width="1"/>
+      <line id="Line_5-5" data-name="Line 5" x1="18" transform="translate(1 10)" fill="none" stroke="#000" stroke-width="1"/>
+    </g>
+    <g id="Control-6" data-name="Control" transform="translate(295 70)">
+      <g id="Ellipse_1-6" data-name="Ellipse 1" stroke="#000" stroke-width="1">
+        <circle cx="5" cy="5" r="5" stroke="none"/>
+        <circle cx="5" cy="5" r="4.5" fill="none"/>
+      </g>
+    </g>
+    <g id="X-target-6" data-name="X-target" transform="translate(290 115)">
+      <g id="Ellipse_2-6" data-name="Ellipse 2" fill="#fff" stroke="#000" stroke-width="1">
+        <circle cx="10" cy="10" r="10" stroke="none"/>
+        <circle cx="10" cy="10" r="9.5" fill="none"/>
+      </g>
+      <line id="Line_4-6" data-name="Line 4" y1="18" transform="translate(10 1)" fill="none" stroke="#000" stroke-width="1"/>
+      <line id="Line_5-6" data-name="Line 5" x1="18" transform="translate(1 10)" fill="none" stroke="#000" stroke-width="1"/>
+    </g>
+    <line id="Line_21" data-name="Line 21" y2="50" transform="translate(300 75)" fill="none" stroke="#000" stroke-width="1"/>
+    <g id="T_dagger-3" data-name="T dagger" transform="translate(430 55)">
+      <g id="Gate_border-7" data-name="Gate border">
+        <g id="Rectangle_1-7" data-name="Rectangle 1" fill="#fff" stroke="#000" stroke-width="1">
+          <rect width="40" height="40" stroke="none"/>
+          <rect x="0.5" y="0.5" width="39" height="39" fill="none"/>
+        </g>
+      </g>
+      <text id="T_3" data-name="T†" transform="translate(20 27)" font-size="20" font-family="CambriaMath, Cambria Math"><tspan x="-8.941" y="0">T</tspan><tspan y="0" font-size="11.666" baseline-shift="6.666000209254424">†</tspan></text>
+    </g>
+    <g id="Control-7" data-name="Control" transform="translate(495 20)">
+      <g id="Ellipse_1-7" data-name="Ellipse 1" stroke="#000" stroke-width="1">
+        <circle cx="5" cy="5" r="5" stroke="none"/>
+        <circle cx="5" cy="5" r="4.5" fill="none"/>
+      </g>
+    </g>
+    <g id="X-target-7" data-name="X-target" transform="translate(490 65)">
+      <g id="Ellipse_2-7" data-name="Ellipse 2" fill="#fff" stroke="#000" stroke-width="1">
+        <circle cx="10" cy="10" r="10" stroke="none"/>
+        <circle cx="10" cy="10" r="9.5" fill="none"/>
+      </g>
+      <line id="Line_4-7" data-name="Line 4" y1="18" transform="translate(10 1)" fill="none" stroke="#000" stroke-width="1"/>
+      <line id="Line_5-7" data-name="Line 5" x1="18" transform="translate(1 10)" fill="none" stroke="#000" stroke-width="1"/>
+    </g>
+    <line id="Line_22" data-name="Line 22" y2="50" transform="translate(500 25)" fill="none" stroke="#000" stroke-width="1"/>
+    <g id="Control-8" data-name="Control" transform="translate(495 20)">
+      <g id="Ellipse_1-8" data-name="Ellipse 1" stroke="#000" stroke-width="1">
+        <circle cx="5" cy="5" r="5" stroke="none"/>
+        <circle cx="5" cy="5" r="4.5" fill="none"/>
+      </g>
+    </g>
+    <g id="X-target-8" data-name="X-target" transform="translate(490 65)">
+      <g id="Ellipse_2-8" data-name="Ellipse 2" fill="#fff" stroke="#000" stroke-width="1">
+        <circle cx="10" cy="10" r="10" stroke="none"/>
+        <circle cx="10" cy="10" r="9.5" fill="none"/>
+      </g>
+      <line id="Line_4-8" data-name="Line 4" y1="18" transform="translate(10 1)" fill="none" stroke="#000" stroke-width="1"/>
+      <line id="Line_5-8" data-name="Line 5" x1="18" transform="translate(1 10)" fill="none" stroke="#000" stroke-width="1"/>
+    </g>
+    <line id="Line_23" data-name="Line 23" y2="50" transform="translate(500 25)" fill="none" stroke="#000" stroke-width="1"/>
+    <g id="T_dagger-4" data-name="T dagger" transform="translate(530 55)">
+      <g id="Gate_border-8" data-name="Gate border">
+        <g id="Rectangle_1-8" data-name="Rectangle 1" fill="#fff" stroke="#000" stroke-width="1">
+          <rect width="40" height="40" stroke="none"/>
+          <rect x="0.5" y="0.5" width="39" height="39" fill="none"/>
+        </g>
+      </g>
+      <text id="T_4" data-name="T†" transform="translate(20 27)" font-size="20" font-family="CambriaMath, Cambria Math"><tspan x="-8.941" y="0">T</tspan><tspan y="0" font-size="11.666" baseline-shift="6.666000209254424">†</tspan></text>
+    </g>
+    <g id="S" transform="translate(630 55)">
+      <g id="Gate_border-9" data-name="Gate border">
+        <g id="Rectangle_1-9" data-name="Rectangle 1" fill="#fff" stroke="#000" stroke-width="1">
+          <rect width="40" height="40" stroke="none"/>
+          <rect x="0.5" y="0.5" width="39" height="39" fill="none"/>
+        </g>
+      </g>
+      <text id="S-2" data-name="S" transform="translate(20 27)" font-size="20" font-family="CambriaMath, Cambria Math"><tspan x="-4.961" y="0">S</tspan></text>
+    </g>
+    <g id="T-5" data-name="T" transform="translate(630 5)">
+      <g id="Gate_border-10" data-name="Gate border">
+        <g id="Rectangle_1-10" data-name="Rectangle 1" fill="#fff" stroke="#000" stroke-width="1">
+          <rect width="40" height="40" stroke="none"/>
+          <rect x="0.5" y="0.5" width="39" height="39" fill="none"/>
+        </g>
+      </g>
+      <text id="T-6" data-name="T" transform="translate(20 27)" font-size="20" font-family="CambriaMath, Cambria Math"><tspan x="-5.928" y="0">T</tspan></text>
+    </g>
+    <g id="Control-9" data-name="Control" transform="translate(595 20)">
+      <g id="Ellipse_1-9" data-name="Ellipse 1" stroke="#000" stroke-width="1">
+        <circle cx="5" cy="5" r="5" stroke="none"/>
+        <circle cx="5" cy="5" r="4.5" fill="none"/>
+      </g>
+    </g>
+    <g id="X-target-9" data-name="X-target" transform="translate(590 65)">
+      <g id="Ellipse_2-9" data-name="Ellipse 2" fill="#fff" stroke="#000" stroke-width="1">
+        <circle cx="10" cy="10" r="10" stroke="none"/>
+        <circle cx="10" cy="10" r="9.5" fill="none"/>
+      </g>
+      <line id="Line_4-9" data-name="Line 4" y1="18" transform="translate(10 1)" fill="none" stroke="#000" stroke-width="1"/>
+      <line id="Line_5-9" data-name="Line 5" x1="18" transform="translate(1 10)" fill="none" stroke="#000" stroke-width="1"/>
+    </g>
+    <line id="Line_24" data-name="Line 24" y2="50" transform="translate(600 25)" fill="none" stroke="#000" stroke-width="1"/>
+    <g id="Control-10" data-name="Control" transform="translate(595 20)">
+      <g id="Ellipse_1-10" data-name="Ellipse 1" stroke="#000" stroke-width="1">
+        <circle cx="5" cy="5" r="5" stroke="none"/>
+        <circle cx="5" cy="5" r="4.5" fill="none"/>
+      </g>
+    </g>
+    <g id="X-target-10" data-name="X-target" transform="translate(590 65)">
+      <g id="Ellipse_2-10" data-name="Ellipse 2" fill="#fff" stroke="#000" stroke-width="1">
+        <circle cx="10" cy="10" r="10" stroke="none"/>
+        <circle cx="10" cy="10" r="9.5" fill="none"/>
+      </g>
+      <line id="Line_4-10" data-name="Line 4" y1="18" transform="translate(10 1)" fill="none" stroke="#000" stroke-width="1"/>
+      <line id="Line_5-10" data-name="Line 5" x1="18" transform="translate(1 10)" fill="none" stroke="#000" stroke-width="1"/>
+    </g>
+    <line id="Line_25" data-name="Line 25" y2="50" transform="translate(600 25)" fill="none" stroke="#000" stroke-width="1"/>
+  </g>
+</svg>

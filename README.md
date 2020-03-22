@@ -1,4 +1,92 @@
-# Quantum computing simulator
+# Quantum computing in Kotlin
+Kotlin framework for writing quantum algorithms using QASM-like syntax.
+
+Because the code is still compiled by Kotlin compiler we are not limited by QASM language features.
+We can use classical variables, loops, functions, etc. There is no need for binary-controlled gates
+as we can utilize standard `if` condition.
+
+# Examples
+
+## Quantum Teleportation
+
+![Quantum Teleportation](images/quantum_teleportation.svg)
+
+```kotlin
+val message = ZERO // or ONE or random()
+
+runnableAlgorithm(Register(message, ZERO, ZERO)) {
+    // Entangle qubits q1 and q2 to form a fully entangled bell state
+    Hadamard[2]
+    CNot[2, 1]
+
+    // Entangle message/state held by q0 with the rest.
+    CNot[0, 1]
+    Hadamard[0]
+
+    // Measuring the first two qubits will change the state of the third qubit because
+    // of the entanglement. This will teleport the message from the first qubit to the
+    // third qubit.
+    val (secret, shared) = measureAndCollapse(0, 1)
+
+    // The last qubit can be in one of four superpositions now. We can use qubits
+    // measured in the previous step to conditionally apply some gates to put it
+    // into one specific superposition.
+    if (shared == ONE) X[2]
+    if (secret == ONE) Z[2]
+}
+
+// At this point the third qubit will be in the same superposition as the message
+// defined at the beginning.
+```
+
+## Grover's Algorithm
+
+![Grover's Algorithm](images/grover.svg)
+
+```kotlin
+val oracle: Gate = oracleGate(ONE, ONE, ZERO)
+
+runnableAlgorithm(3) {
+    // Initialization
+    step { H[0]; H[1]; H[2] }
+
+    repeat(2) {
+        // Oracle
+        oracle[0, 1, 2]
+
+        // Diffusion
+        step { H[0]; H[1]; H[2] }
+        step { X[0]; X[1]; X[2] }
+        step { C(C(Z))[0, 1, 2] }
+        step { X[0]; X[1]; X[2] }
+        step { H[0]; H[1]; H[2] }
+    }
+
+    // Measurement
+}.measure() // Returns [ONE, ONE, ZERO] with high probability
+```
+
+## Toffoli gate made of 2-qubit gates
+
+![Toffoli](images/toffoli.svg)
+
+```kotlin
+gateAlgorithm(3) {
+    H[2]
+    CNot[1, 2]
+    T.adjoint[2]
+    CNot[0, 2]
+    T[2]
+    CNot[1, 2]
+    T.adjoint[2]
+    CNot[0, 2]
+    step { T.adjoint[1]; T[2] }
+    step { CNot[0, 1]; H[2] }
+    T.adjoint[1]
+    CNot[0, 1]
+    step { T[0]; S[1] }
+}
+```
 
 # Building blocks
 
@@ -134,28 +222,28 @@ Most of the commonly used gates are already predefined:
 
 It should be rather straightforward to create custom gates.
 
-Gates can be applied to a single Qubit or Register. 
-The size of the gate must match the number of qubits stored by Register or 1 in the case of Qubit.
+Gates can be applied to a register. The size of the gate must match the number of qubits stored by
+the register.
 ```kotlin
-GateX * Qubit.ONE // Qubit.ZERO
-
 GateSwap * Register(Qubit.ONE, Qubit.ZERO) // Register(Qubit.ZERO, Qubit.ONE)
 ``` 
+Gates that act on a single qubit can be also applied to qubits.
+```kotlin
+GateX * Qubit.ONE // Qubit.ZERO
+```
 
 ## [Algorithms](src/main/kotlin/me/khol/quantum/Algorithm.kt)
 Instead of manually applying gates to registers and qubits like this:
 ```kotlin
 val bellState = CNot * Register(Hadamard * ZERO, ZERO)
 ```
-algorithm classes provide a less cluttered and more natural way to 
-* combine multiple gates into one,
-* reorder inputs of a gate,
-* apply gates to registers with different sizes and
-* apply multiple gates to a register.
+algorithm classes provide a less cluttered and more natural way to combine multiple gates into one,
+reorder inputs of a gate, apply gates to registers with different sizes and apply multiple gates 
+to a register.
 
 ### GateAlgorithm
-Pre-computes application of multiple gates as a standalone gate. As we apply gates 
-within the algorithm their transformation matrices are combined.
+Pre-computes transformations of multiple gates as a standalone gate. As we apply gates 
+within the algorithm, their transformation matrices are combined.
 It allows us to pre-compute a part of an algorithm that is executed repeatedly and 
 apply the result gate instead.
     
@@ -174,8 +262,8 @@ Applies multiple gates to a register, changing the state of its qubits with each
 ```kotlin
 // Fully entangled Bell state (∣00⟩ + ∣11⟩) / sqrt(2)  
 val bellState: Register = runnableAlgorithm(2) {
-    GateHadamard[0]
-    GateCNot[0, 1]
+    Hadamard[0]
+    CNot[0, 1]
 }
 ```
 
@@ -189,64 +277,3 @@ fun measureAndCollapse(vararg qubitIndices: Int): List<Qubit>
 Doing so will collapse the state of specified qubits to ∣0⟩ or ∣1⟩ based on their probabilities. 
 Other qubits in the register entangled with any of the measured qubits will have their probabilities
 updated as well to satisfy constraints imposed by entangled states before the measurement.
-
-# Algorithm examples
-
-## Grover's Algorithm
-
-![Grover's Algorithm](images/grover.svg)
-
-```kotlin
-val oracle: Gate = oracleGate(ONE, ONE, ZERO)
-
-runnableAlgorithm(3) {
-    // Initialization
-    step { H[0]; H[1]; H[2] }
-
-    repeat(2) {
-        // Oracle
-        oracle[0, 1, 2]
-
-        // Diffusion
-        step { H[0]; H[1]; H[2] }
-        step { X[0]; X[1]; X[2] }
-        step { C(C(Z))[0, 1, 2] }
-        step { X[0]; X[1]; X[2] }
-        step { H[0]; H[1]; H[2] }
-    }
-
-    // Measurement
-}.measure() // Returns [ONE, ONE, ZERO] with high probability
-```
-
-## Quantum Teleportation
-
-![Quantum Teleportation](images/quantum_teleportation.svg)
-
-```kotlin
-val message = ZERO // or ONE or random()
-
-runnableAlgorithm(Register(message, ZERO, ZERO)) {
-    // Entangle qubits q1 and q2 to form a fully entangled bell state
-    GateHadamard[2]
-    GateCNot[2, 1]
-
-    // Entangle message/state held by q0 with the rest.
-    GateCNot[0, 1]
-    GateHadamard[0]
-
-    // Measuring the first two qubits will change the state of the third qubit because
-    // of the entanglement. This will teleport the message from the first qubit to the
-    // third qubit.
-    val (secret, shared) = measureAndCollapse(0, 1)
-
-    // The last qubit can be in one of four superpositions now. We can use qubits
-    // measured in the previous step to conditionally apply some gates to put it
-    // into one specific superposition.
-    if (shared == ONE) GateX[2]
-    if (secret == ONE) GateZ[2]
-}
-
-// At this point the third qubit will be in the same superposition as the message
-// defined at the beginning.
-```

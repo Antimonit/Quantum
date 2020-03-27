@@ -9,7 +9,7 @@ as we can utilize standard `if` condition.
 
 ## Quantum Teleportation
 
-![Quantum Teleportation](images/quantum_teleportation.svg)
+![Quantum Teleportation](images/Quantum%20Teleportation.svg)
 
 ```kotlin
 val message = ZERO // or ONE or random()
@@ -41,7 +41,7 @@ runnableAlgorithm(Register(message, ZERO, ZERO)) {
 
 ## Grover's Algorithm
 
-![Grover's Algorithm](images/grover.svg)
+![Grover's Algorithm](images/Grover's%20Algorithm.svg)
 
 ```kotlin
 val oracle: Gate = oracleGate(ONE, ONE, ZERO)
@@ -66,26 +66,31 @@ runnableAlgorithm(3) {
 }.measure() // Returns [ONE, ONE, ZERO] with high probability
 ```
 
-## Toffoli gate made of 2-qubit gates
+## Quantum Adder
 
-![Toffoli](images/toffoli.svg)
+![Quantum Adder](images/Quantum%20Adder.svg)
 
 ```kotlin
-gateAlgorithm(3) {
-    H[2]
-    CNot[1, 2]
-    T.adjoint[2]
-    CNot[0, 2]
-    T[2]
-    CNot[1, 2]
-    T.adjoint[2]
-    CNot[0, 2]
-    step { T.adjoint[1]; T[2] }
-    step { CNot[0, 1]; H[2] }
-    T.adjoint[1]
+// We can even utilize entanglement to calculate two separate additions at the same time.
+
+runnableAlgorithm(4) {
+    // Prepare input
+    H[0]
     CNot[0, 1]
-    step { T[0]; S[1] }
+
+    // Encode two combinations of input into an entangled pair.
+    // By passing ∣00⟩ + ∣11⟩ / sqrt(2) as input to the adder
+    // we are essentially calculating both 0 + 0 and 1 + 1.
+
+    // Full Adder
+    CCNot[0, 1, 3]
+    CNot[0, 1]
+    CCNot[1, 2, 3]
+    CNot[1, 2]
+    CNot[0, 1]
 }
+
+// At this point it is equally likely to observe result of 0 + 0 = 00 and 1 + 1 = 10.
 ```
 
 # Building blocks

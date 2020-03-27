@@ -171,17 +171,21 @@ complex algorithms that depend on entanglement.
 ## [Gates](src/main/kotlin/me/khol/quantum/gate/Gate.kt)
 Most of the commonly used gates are already predefined:
 
-| [Identity][_Identity] | [Hadamard][_Hadamard] | [X (Not)][_X] | [Y][_Y] | [Z][_Z] | [S][_S] | [T][_T] |
-|-----------------------|-----------------------|---------------|---------|---------|---------|---------|
-| ![Identity][Identity] | ![Hadamard][Hadamard] | ![X (Not)][X] | ![Y][Y] | ![Z][Z] | ![S][S] | ![T][T] |
+| [Identity][_Identity] | [X (Not)][_X] | [Y][_Y] | [Z][_Z] | [S][_S] | [T][_T] |
+|-----------------------|---------------|---------|---------|---------|---------|
+| ![Identity][Identity] | ![X (Not)][X] | ![Y][Y] | ![Z][Z] | ![S][S] | ![T][T] |
 
-| [Rx][_Rx] | [Ry][_Ry] | [Rz][_Rz] | [Phase][_Phase] | [Swap][_Swap] | [CNot (CX)][_CNot] |
-|-----------|-----------|-----------|-----------------|---------------|--------------------|
-| ![Rx][Rx] | ![Ry][Ry] | ![Rz][Rz] | ![Phase][Phase] | ![Swap][Swap] | ![CNot (CX)][CNot] |
+| [Hadamard][_Hadamard] | [Rx][_Rx] | [Ry][_Ry] | [Rz][_Rz] | [Phase][_Phase] |
+|-----------------------|-----------|-----------|-----------|-----------------|
+| ![Hadamard][Hadamard] | ![Rx][Rx] | ![Ry][Ry] | ![Rz][Rz] | ![Phase][Phase] |
 
-| [Toffoli (CCNot)][_CCNot] | [Fredkin (CSwap)][_CSwap] | [Controlled][_Controlled] |
-|---------------------------|---------------------------|---------------------------|
-| ![Toffoli (CCNot)][CCNot] | ![Fredkin (CSwap)][CSwap] | ![Controlled][Controlled] |
+| [CNot (CX)][_CNot] | [Swap][_Swap] | [Square Root of Swap][_SwapRoot] | [Controlled][_Controlled] |
+|--------------------|---------------|----------------------------------|---------------------------|
+| ![CNot (CX)][CNot] | ![Swap][Swap] | ![Square Root of Swap][SwapRoot] | ![Controlled][Controlled] |
+
+| [Toffoli (CCNot)][_CCNot] | [Fredkin (CSwap)][_CSwap] |
+|---------------------------|---------------------------|
+| ![Toffoli (CCNot)][CCNot] | ![Fredkin (CSwap)][CSwap] |
 
 [//]: https://alexanderrodin.com/github-latex-markdown/
 
@@ -221,6 +225,9 @@ Most of the commonly used gates are already predefined:
 [//]: <>  ( \begin{bmatrix} 1 & 0 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 0 & 1 \end{bmatrix} )
 [Swap]: https://render.githubusercontent.com/render/math?math=%5Cbegin%7Bbmatrix%7D%201%20%26%200%20%26%200%20%26%200%20%5C%5C%200%20%26%200%20%26%201%20%26%200%20%5C%5C%200%20%26%201%20%26%200%20%26%200%20%5C%5C%200%20%26%200%20%26%200%20%26%201%20%5Cend%7Bbmatrix%7D
 [_Swap]: src/main/kotlin/me/khol/quantum/gate/GateSwap.kt
+[//]: <>  (  )
+[SwapRoot]: https://render.githubusercontent.com/render/math?math=%5Cbegin%7Bbmatrix%7D%201%20%26%200%20%26%200%20%26%200%20%5C%5C%200%20%26%20%5Cfrac%7B1%7D%7B2%7D(1%2Bi)%20%26%20%5Cfrac%7B1%7D%7B2%7D(1-i)%20%26%200%20%5C%5C%200%20%26%20%5Cfrac%7B1%7D%7B2%7D(1-i)%20%26%20%5Cfrac%7B1%7D%7B2%7D(1%2Bi)%20%26%200%20%5C%5C%200%20%26%200%20%26%200%20%26%201%20%5Cend%7Bbmatrix%7D
+[_SwapRoot]: src/main/kotlin/me/khol/quantum/gate/GateSwapRoot.kt
 [//]: <>  ( \begin{bmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 0 & 1 \\ 0 & 0 & 1 & 0 \end{bmatrix} )
 [CNot]: https://render.githubusercontent.com/render/math?math=%5Cbegin%7Bbmatrix%7D%201%20%26%200%20%26%200%20%26%200%20%5C%5C%200%20%26%201%20%26%200%20%26%200%20%5C%5C%200%20%26%200%20%26%200%20%26%201%20%5C%5C%200%20%26%200%20%26%201%20%26%200%20%5Cend%7Bbmatrix%7D
 [_CNot]: src/main/kotlin/me/khol/quantum/gate/GateCNot.kt

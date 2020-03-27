@@ -88,4 +88,12 @@ internal class ComplexTest {
         assertThat(c.re, equalTo(0.0))
         assertThat(c.im, equalTo(0.0))
     }
+
+    @DisplayName("Complex number is valid even if angle is NaN and radius negative zero.")
+    @Test
+    fun complexThetaNaNNegativeZeroRadius() {
+        val c = Complex.fromPolar(Double.NaN, radius = -0.0)
+        assertThat(c.re, equalTo(0.0))
+        assertThat(c.im, equalTo(0.0))
+    }
 }

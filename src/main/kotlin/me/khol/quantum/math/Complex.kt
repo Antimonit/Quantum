@@ -26,7 +26,7 @@ class Complex private constructor(
          * is NaN.
          */
         fun fromPolar(theta: Number, radius: Number = 1): Complex {
-            return if (radius.toDouble() == 0.0) {
+            return if (abs(radius.toDouble()) <= 1e-10) {
                 ZERO
             } else {
                 Complex(

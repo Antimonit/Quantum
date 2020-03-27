@@ -2,15 +2,15 @@ package me.khol.quantum
 
 import me.khol.quantum.Qubit.Companion.ONE
 import me.khol.quantum.Qubit.Companion.ZERO
-import org.hamcrest.MatcherAssert.assertThat
 import me.khol.quantum.gate.GateCNot
 import me.khol.quantum.gate.GateHadamard
 import me.khol.quantum.gate.GateX
 import me.khol.quantum.gate.GateZ
-import org.hamcrest.Matchers.*
+import org.hamcrest.MatcherAssert.assertThat
+import org.hamcrest.Matchers.equalTo
 import org.junit.jupiter.api.Test
 
-internal class MeasurementTest {
+internal class QuantumTeleportationTest {
 
     @Test
     fun `Quantum teleportation`() {

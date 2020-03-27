@@ -171,13 +171,13 @@ complex algorithms that depend on entanglement.
 ## [Gates](src/main/kotlin/me/khol/quantum/gate/Gate.kt)
 Most of the commonly used gates are already predefined:
 
-| [Identity][_Identity] | [Hadamard][_Hadamard] | [X (Not)][_X] | [Y][_Y] | [Z][_Z] |
-|-----------------------|-----------------------|---------------|---------|---------|
-| ![Identity][Identity] | ![Hadamard][Hadamard] | ![X (Not)][X] | ![Y][Y] | ![Z][Z] |
+| [Identity][_Identity] | [Hadamard][_Hadamard] | [X (Not)][_X] | [Y][_Y] | [Z][_Z] | [S][_S] | [T][_T] |
+|-----------------------|-----------------------|---------------|---------|---------|---------|---------|
+| ![Identity][Identity] | ![Hadamard][Hadamard] | ![X (Not)][X] | ![Y][Y] | ![Z][Z] | ![S][S] | ![T][T] |
 
-| [S][_S] | [T][_T] | [Phase][_Phase] | [Swap][_Swap] | [CNot (CX)][_CNot] |
-|---------|---------|-----------------|---------------|--------------------|
-| ![S][S] | ![T][T] | ![Phase][Phase] | ![Swap][Swap] | ![CNot (CX)][CNot] |
+| [Rx][_Rx] | [Ry][_Ry] | [Rz][_Rz] | [Phase][_Phase] | [Swap][_Swap] | [CNot (CX)][_CNot] |
+|-----------|-----------|-----------|-----------------|---------------|--------------------|
+| ![Rx][Rx] | ![Ry][Ry] | ![Rz][Rz] | ![Phase][Phase] | ![Swap][Swap] | ![CNot (CX)][CNot] |
 
 | [Toffoli (CCNot)][_CCNot] | [Fredkin (CSwap)][_CSwap] | [Controlled][_Controlled] |
 |---------------------------|---------------------------|---------------------------|
@@ -206,6 +206,15 @@ Most of the commonly used gates are already predefined:
 [//]: <>  ( \begin{bmatrix} 1 & 0 \\ 0 & e^{i\pi/4} \end{bmatrix} )
 [T]: https://render.githubusercontent.com/render/math?math=%5Cbegin%7Bbmatrix%7D%201%20%26%200%20%5C%5C%200%20%26%20e%5E%7Bi%5Cpi%2F4%7D%20%5Cend%7Bbmatrix%7D
 [_T]: src/main/kotlin/me/khol/quantum/gate/GateT.kt
+[//]: <>  (  )
+[Rx]: https://render.githubusercontent.com/render/math?math=%5Cbegin%7Bbmatrix%7D%20%5Cphantom%7B-i%20%7Dcos(%5Cfrac%7B%5Ctheta%7D%7B2%7D)%20%26%20-i%20sin(%5Cfrac%7B%5Ctheta%7D%7B2%7D)%20%5C%5C%20-i%20sin(%5Cfrac%7B%5Ctheta%7D%7B2%7D)%20%26%20%5Cphantom%7B-i%20%7Dcos(%5Cfrac%7B%5Ctheta%7D%7B2%7D)%20%5Cend%7Bbmatrix%7D
+[_Rx]: src/main/kotlin/me/khol/quantum/gate/GateRx.kt
+[//]: <>  (  )
+[Ry]: https://render.githubusercontent.com/render/math?math=%5Cbegin%7Bbmatrix%7D%20cos(%5Cfrac%7B%5Ctheta%7D%7B2%7D)%20%26%20-sin(%5Cfrac%7B%5Ctheta%7D%7B2%7D)%20%5C%5C%20sin(%5Cfrac%7B%5Ctheta%7D%7B2%7D)%20%26%20%5Cphantom%7B-%7Dcos(%5Cfrac%7B%5Ctheta%7D%7B2%7D)%20%5Cend%7Bbmatrix%7D
+[_Ry]: src/main/kotlin/me/khol/quantum/gate/GateRy.kt
+[//]: <>  ( \begin{bmatrix} e^{-i\frac{\theta}{2}} & 0 \\ 0 & e^{i\frac{\theta}{2}} \end{bmatrix} )
+[Rz]: https://render.githubusercontent.com/render/math?math=%5Cbegin%7Bbmatrix%7D%20e%5E%7B-i%5Cfrac%7B%5Ctheta%7D%7B2%7D%7D%20%26%200%20%5C%5C%200%20%26%20e%5E%7Bi%5Cfrac%7B%5Ctheta%7D%7B2%7D%7D%20%5Cend%7Bbmatrix%7D
+[_Rz]: src/main/kotlin/me/khol/quantum/gate/GateRz.kt
 [//]: <>  ( \begin{bmatrix} 1 & 0 \\ 0 & e^{i\theta} \end{bmatrix} )
 [Phase]: https://render.githubusercontent.com/render/math?math=%5Cbegin%7Bbmatrix%7D%201%20%26%200%20%5C%5C%200%20%26%20e%5E%7Bi%5Ctheta%7D%20%5Cend%7Bbmatrix%7D
 [_Phase]: src/main/kotlin/me/khol/quantum/gate/GatePhase.kt

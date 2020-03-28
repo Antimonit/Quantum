@@ -17,7 +17,7 @@ internal class QuantumAdderTest {
      * Input qubits: [A, B, carryIn, ∣0⟩]
      * Output qubits: [A, B, sum, carryOut]
      */
-    private val fullAdder = gateAlgorithm(4) {
+    private val fullAdder = gate(4) {
         CCNot[0, 1, 3]
         CNot[0, 1]
         CCNot[1, 2, 3]
@@ -43,7 +43,7 @@ internal class QuantumAdderTest {
 
     @Test
     fun `Quantum adder with superposed qubits`() {
-        val register = runnableAlgorithm(4) {
+        val register = program(4) {
             H[0]
             H[1]
             fullAdder[0..3]
@@ -64,7 +64,7 @@ internal class QuantumAdderTest {
     fun `Quantum adder with entangled qubits`() {
         // Utilize etanglement to calculate two separate additions at the same time.
 
-        val register = runnableAlgorithm(4) {
+        val register = program(4) {
             // Encode two combinations of input into an entangled pair.
             // By passing ∣00⟩ + ∣11⟩ / sqrt(2) as input to the adder
             // we are essentially calculating both 0 + 0 and 1 + 1.

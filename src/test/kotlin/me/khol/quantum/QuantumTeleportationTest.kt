@@ -18,7 +18,7 @@ internal class QuantumTeleportationTest {
 
         val initialRegister = Register(message, ZERO, ZERO)
 
-        val register = runnableAlgorithm(initialRegister) {
+        val register = program(initialRegister) {
             // Entangle qubits q1 and q2 to form a fully entangled bell state
             GateHadamard[2]
             GateCNot[2, 1]

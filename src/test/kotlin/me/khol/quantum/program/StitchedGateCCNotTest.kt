@@ -1,6 +1,6 @@
-package me.khol.quantum.algorithm
+package me.khol.quantum.program
 
-import me.khol.quantum.gateAlgorithm
+import me.khol.quantum.gate
 import me.khol.quantum.gate.*
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.equalTo
@@ -15,7 +15,7 @@ class StitchedGateCCNotTest {
 
     @Test
     fun `CCNot gate made of 2-qubit gates`() {
-        val gate = gateAlgorithm(3) {
+        val gate = gate(3) {
             H[2]
             CNot[1, 2]
             T.adjoint[2]
@@ -34,7 +34,7 @@ class StitchedGateCCNotTest {
 
     @Test
     fun `CCNot gate made of 2-qubit gates v3`() {
-        val gate = gateAlgorithm(3) {
+        val gate = gate(3) {
             H[2]
             CNot[1, 2]
             T.adjoint[2]
@@ -54,7 +54,7 @@ class StitchedGateCCNotTest {
 
     @Test
     fun `CCNot gate made of 2-qubit gates v2`() {
-        val gate = gateAlgorithm(3) {
+        val gate = gate(3) {
             step { T.adjoint[0]; T.adjoint[1]; H[2] }
             step { CNot[2, 0] }
             step { T[0]; CNot[1, 2] }

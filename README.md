@@ -14,7 +14,7 @@ as we can utilize standard `if` condition.
 ```kotlin
 val message = ZERO // or ONE or random()
 
-runnableAlgorithm(Register(message, ZERO, ZERO)) {
+program(Register(message, ZERO, ZERO)) {
     // Entangle qubits q1 and q2 to form a fully entangled bell state
     Hadamard[2]
     CNot[2, 1]
@@ -46,7 +46,7 @@ runnableAlgorithm(Register(message, ZERO, ZERO)) {
 ```kotlin
 val oracle: Gate = oracleGate(ONE, ONE, ZERO)
 
-runnableAlgorithm(3) {
+program(3) {
     // Initialization
     step { H[0]; H[1]; H[2] }
 
@@ -73,7 +73,7 @@ runnableAlgorithm(3) {
 ```kotlin
 // We can even utilize entanglement to calculate two separate additions at the same time.
 
-runnableAlgorithm(4) {
+program(4) {
     // Prepare input
     H[0]
     CNot[0, 1]
@@ -253,42 +253,42 @@ Gates that act on a single qubit can be also applied to qubits.
 GateX * Qubit.ONE // Qubit.ZERO
 ```
 
-## [Algorithms](src/main/kotlin/me/khol/quantum/Algorithm.kt)
+## [Programs](src/main/kotlin/me/khol/quantum/Program.kt)
 Instead of manually applying gates to registers and qubits like this:
 ```kotlin
 val bellState = CNot * Register(Hadamard * ZERO, ZERO)
 ```
-algorithm classes provide a less cluttered and more natural way to combine multiple gates into one,
+program classes provide a less cluttered and more natural way to combine multiple gates into one,
 reorder inputs of a gate, apply gates to registers with different sizes and apply multiple gates 
 to a register.
 
-### GateAlgorithm
+### Precomputed Program
 Pre-computes transformations of multiple gates as a standalone gate. As we apply gates 
-within the algorithm, their transformation matrices are combined.
-It allows us to pre-compute a part of an algorithm that is executed repeatedly and 
+within the program, their transformation matrices are combined.
+It allows us to pre-compute a part of a larger program that is executed repeatedly and 
 apply the result gate instead.
     
 ```kotlin
 // Swap gate made using CNot gates 
-val swap: Gate = gateAlgorithm(2) {
+val swap: Gate = gate(2) {
     CNot[0, 1]
     CNot[1, 0]
     CNot[0, 1]
 }
 ```
 
-### RunnableAlgorithm
+### Runnable Program
 Applies multiple gates to a register, changing the state of its qubits with each step.
 
 ```kotlin
 // Fully entangled Bell state (∣00⟩ + ∣11⟩) / sqrt(2)  
-val bellState: Register = runnableAlgorithm(2) {
+val bellState: Register = program(2) {
     Hadamard[0]
     CNot[0, 1]
 }
 ```
 
-Compared to `gateAlgorithm` that does not have any state per se, `runnableAlgorithm` has a register
+Compared to `gate` that does not have any state per se, `program` has a register
 that we can measure at any point. 
 
 ```kotlin

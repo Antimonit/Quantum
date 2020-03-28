@@ -45,7 +45,7 @@ internal class GroverAlgorithmTest {
      * one specific state but leaving amplitude of any other state intact.
      */
     private fun oracleGate(vararg state: Qubit): Gate {
-        return gateAlgorithm(3) {
+        return gate(3) {
             step { state.forEachIndexed { index, qubit -> if (qubit == ZERO) X[index] } }
             step { C(C(Z))[0, 1, 2] }
             step { state.forEachIndexed { index, qubit -> if (qubit == ZERO) X[index] } }
@@ -79,7 +79,7 @@ internal class GroverAlgorithmTest {
     fun `Grover's algorithm`() {
         val oracle = oracleGate(ONE, ONE, ZERO)
 
-        val result = runnableAlgorithm(3) {
+        val result = program(3) {
             // Initialization
             step { H[0]; H[1]; H[2] }
 
@@ -123,14 +123,14 @@ internal class GroverAlgorithmTest {
     private fun probabilityOfSuccessfulGrover(size: Int): Double {
         val state = Array(size) { ZERO }
 
-        val oracle = gateAlgorithm(size) {
+        val oracle = gate(size) {
             step { state.forEachIndexed { index, qubit -> if (qubit == ZERO) X[index] } }
             step { (1 until size).fold(Z as Gate) { acc, _ -> C(acc) }[0 until size] }
             step { state.forEachIndexed { index, qubit -> if (qubit == ZERO) X[index] } }
         }
 
         // Pre-compute the gate once to greatly speed up the repeated section
-        val repeatedSection = gateAlgorithm(size) {
+        val repeatedSection = gate(size) {
             // Oracle
             oracle[0 until size]
 
@@ -142,7 +142,7 @@ internal class GroverAlgorithmTest {
             step { repeat(size) { H[it] } }
         }
 
-        return runnableAlgorithm(size) {
+        return program(size) {
             // Initialization
             step { repeat(size) { H[it] } }
 

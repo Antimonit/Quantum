@@ -6,9 +6,9 @@ import me.khol.quantum.math.Matrix
 import kotlin.math.sqrt
 
 @DslMarker
-annotation class AlgorithmTagMarker
+annotation class ProgramTagMarker
 
-interface Algorithm {
+interface Program {
 
     operator fun Gate.get(vararg qubits: Int) = step { get(*qubits) }
 
@@ -20,8 +20,8 @@ interface Algorithm {
 /**
  * Every gate applied via [Gate.get] or [step] is directly applied to [register].
  */
-@AlgorithmTagMarker
-class RunnableAlgorithm(private val qubitCount: Int) : Algorithm {
+@ProgramTagMarker
+class RunnableProgram(private val qubitCount: Int) : Program {
 
     var register = Register(List(qubitCount) { Qubit.ZERO })
         private set
@@ -84,11 +84,11 @@ class RunnableAlgorithm(private val qubitCount: Int) : Algorithm {
 /**
  * Combines all gates applied via [Gate.get] or [step] into a single gate.
  *
- * Useful for verification of algorithms that they do the same operation as another algorithm
+ * Useful for verification of programs that they do the same operation as another program
  * or a single gate.
  */
-@AlgorithmTagMarker
-class PrecomputedAlgorithm(private val qubitCount: Int) : Algorithm {
+@ProgramTagMarker
+class PrecomputedProgram(private val qubitCount: Int) : Program {
 
     var gate: Gate = GateIdentity(qubitCount)
         private set
@@ -98,7 +98,7 @@ class PrecomputedAlgorithm(private val qubitCount: Int) : Algorithm {
     }
 }
 
-@AlgorithmTagMarker
+@ProgramTagMarker
 class Step(private val qubitCount: Int) {
 
     var gate = GateIdentity(qubitCount)
@@ -122,20 +122,20 @@ class Step(private val qubitCount: Int) {
     }
 }
 
-fun runnableAlgorithm(qubitCount: Int, action: RunnableAlgorithm.() -> Unit): Register {
-    return RunnableAlgorithm(qubitCount).apply {
+fun program(qubitCount: Int, action: RunnableProgram.() -> Unit): Register {
+    return RunnableProgram(qubitCount).apply {
         action()
     }.register
 }
 
-fun runnableAlgorithm(register: Register, action: RunnableAlgorithm.() -> Unit): Register {
-    return RunnableAlgorithm(register).apply {
+fun program(register: Register, action: RunnableProgram.() -> Unit): Register {
+    return RunnableProgram(register).apply {
         action()
     }.register
 }
 
-fun gateAlgorithm(qubitCount: Int, action: PrecomputedAlgorithm.() -> Unit): Gate {
-    return PrecomputedAlgorithm(qubitCount).apply {
+fun gate(qubitCount: Int, action: PrecomputedProgram.() -> Unit): Gate {
+    return PrecomputedProgram(qubitCount).apply {
         action()
     }.gate
 }

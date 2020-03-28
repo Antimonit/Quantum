@@ -95,7 +95,7 @@ program(4) {
 
 # Building blocks
 
-## [Complex numbers](src/main/kotlin/me/khol/quantum/math/Complex.kt)
+## [Complex numbers](quantum/src/main/kotlin/me/khol/quantum/math/Complex.kt)
 <details>
 <summary>Details</summary>
 
@@ -117,7 +117,7 @@ There are several overloaded operators that allow for easier addition, subtracti
 and division of complex numbers.
 </details>  
 
-## [Matrices](src/main/kotlin/me/khol/quantum/math/Matrix.kt)
+## [Matrices](quantum/src/main/kotlin/me/khol/quantum/math/Matrix.kt)
 <details>
 <summary>Details</summary>
 
@@ -138,7 +138,7 @@ matrices, *multiplication* and *division* by a number, complex number or another
 *conjugate transpose* and *tensor* product. 
 </details>  
 
-## [Qubits](src/main/kotlin/me/khol/quantum/Qubit.kt) 
+## [Qubits](quantum/src/main/kotlin/me/khol/quantum/Qubit.kt) 
 Qubits are defined by two complex numbers which define their probability amplitudes:
 ```kotlin
 Qubit(alpha: Complex, beta: Complex)
@@ -156,7 +156,7 @@ and *tensor* products.
 physical state they can be *normalized* so that two qubits can be programmatically compared.
 This cannot be observed in the physical world but is invaluable in testing.
 
-## [Registers](src/main/kotlin/me/khol/quantum/Register.kt)
+## [Registers](quantum/src/main/kotlin/me/khol/quantum/Register.kt)
 Registers are created from a list of qubits:
 ```kotlin
 Register(vararg qubits: Qubit)
@@ -168,7 +168,7 @@ complex algorithms that depend on entanglement.
 
 > Just like single qubits, registers can be *normalized* for testing purposes.
 
-## [Gates](src/main/kotlin/me/khol/quantum/gate/Gate.kt)
+## [Gates](quantum/src/main/kotlin/me/khol/quantum/gate/Gate.kt)
 Most of the commonly used gates are already predefined:
 
 | [Identity][_Identity] | [X (Not)][_X] | [Y][_Y] | [Z][_Z] | [S][_S] | [T][_T] |
@@ -191,55 +191,55 @@ Most of the commonly used gates are already predefined:
 
 [//]: <> ( \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix} )
 [Identity]: https://render.githubusercontent.com/render/math?math=%5Cbegin%7Bbmatrix%7D%201%20%26%200%20%5C%5C%200%20%26%201%20%5Cend%7Bbmatrix%7D
-[_Identity]: src/main/kotlin/me/khol/quantum/gate/GateIdentity.kt
+[_Identity]: quantum/src/main/kotlin/me/khol/quantum/gate/GateIdentity.kt
 [//]: <> ( \frac{1}{\sqrt{2}} \begin{bmatrix} 1 & \phantom{-}1 \\ 1 & -1 \end{bmatrix} )
 [Hadamard]: https://render.githubusercontent.com/render/math?math=%5Cfrac%7B1%7D%7B%5Csqrt%7B2%7D%7D%20%5Cbegin%7Bbmatrix%7D%201%20%26%20%5Cphantom%7B-%7D1%20%5C%5C%201%20%26%20-1%20%5Cend%7Bbmatrix%7D
-[_Hadamard]: src/main/kotlin/me/khol/quantum/gate/GateHadamard.kt
+[_Hadamard]: quantum/src/main/kotlin/me/khol/quantum/gate/GateHadamard.kt
 [X//]: <> ( \begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix} )
 [X]: https://render.githubusercontent.com/render/math?math=%5Cbegin%7Bbmatrix%7D%200%20%26%201%20%5C%5C%201%20%26%200%20%5Cend%7Bbmatrix%7D
-[_X]: src/main/kotlin/me/khol/quantum/gate/GateX.kt
+[_X]: quantum/src/main/kotlin/me/khol/quantum/gate/GateX.kt
 [Y//]: <> ( \begin{bmatrix} 0 & -i \\ i & \phantom{-}0 \end{bmatrix} )
 [Y]: https://render.githubusercontent.com/render/math?math=%5Cbegin%7Bbmatrix%7D%200%20%26%20-i%20%5C%5C%20i%20%26%20%5Cphantom%7B-%7D0%20%5Cend%7Bbmatrix%7D
-[_Y]: src/main/kotlin/me/khol/quantum/gate/GateY.kt
+[_Y]: quantum/src/main/kotlin/me/khol/quantum/gate/GateY.kt
 [Z//]: <> ( \begin{bmatrix} 1 & \phantom{-}0 \\ 0 & -1 \end{bmatrix} )
 [Z]: https://render.githubusercontent.com/render/math?math=%5Cbegin%7Bbmatrix%7D%201%20%26%20%5Cphantom%7B-%7D0%20%5C%5C%200%20%26%20-1%20%5Cend%7Bbmatrix%7D
-[_Z]: src/main/kotlin/me/khol/quantum/gate/GateZ.kt
+[_Z]: quantum/src/main/kotlin/me/khol/quantum/gate/GateZ.kt
 [//]: <>  ( \begin{bmatrix} 1 & 0 \\ 0 & i \end{bmatrix} )
 [S]: https://render.githubusercontent.com/render/math?math=%5Cbegin%7Bbmatrix%7D%201%20%26%200%20%5C%5C%200%20%26%20i%20%5Cend%7Bbmatrix%7D
-[_S]: src/main/kotlin/me/khol/quantum/gate/GateS.kt
+[_S]: quantum/src/main/kotlin/me/khol/quantum/gate/GateS.kt
 [//]: <>  ( \begin{bmatrix} 1 & 0 \\ 0 & e^{i\pi/4} \end{bmatrix} )
 [T]: https://render.githubusercontent.com/render/math?math=%5Cbegin%7Bbmatrix%7D%201%20%26%200%20%5C%5C%200%20%26%20e%5E%7Bi%5Cpi%2F4%7D%20%5Cend%7Bbmatrix%7D
-[_T]: src/main/kotlin/me/khol/quantum/gate/GateT.kt
+[_T]: quantum/src/main/kotlin/me/khol/quantum/gate/GateT.kt
 [//]: <>  (  )
 [Rx]: https://render.githubusercontent.com/render/math?math=%5Cbegin%7Bbmatrix%7D%20%5Cphantom%7B-i%20%7Dcos(%5Cfrac%7B%5Ctheta%7D%7B2%7D)%20%26%20-i%20sin(%5Cfrac%7B%5Ctheta%7D%7B2%7D)%20%5C%5C%20-i%20sin(%5Cfrac%7B%5Ctheta%7D%7B2%7D)%20%26%20%5Cphantom%7B-i%20%7Dcos(%5Cfrac%7B%5Ctheta%7D%7B2%7D)%20%5Cend%7Bbmatrix%7D
-[_Rx]: src/main/kotlin/me/khol/quantum/gate/GateRx.kt
+[_Rx]: quantum/src/main/kotlin/me/khol/quantum/gate/GateRx.kt
 [//]: <>  (  )
 [Ry]: https://render.githubusercontent.com/render/math?math=%5Cbegin%7Bbmatrix%7D%20cos(%5Cfrac%7B%5Ctheta%7D%7B2%7D)%20%26%20-sin(%5Cfrac%7B%5Ctheta%7D%7B2%7D)%20%5C%5C%20sin(%5Cfrac%7B%5Ctheta%7D%7B2%7D)%20%26%20%5Cphantom%7B-%7Dcos(%5Cfrac%7B%5Ctheta%7D%7B2%7D)%20%5Cend%7Bbmatrix%7D
-[_Ry]: src/main/kotlin/me/khol/quantum/gate/GateRy.kt
+[_Ry]: quantum/src/main/kotlin/me/khol/quantum/gate/GateRy.kt
 [//]: <>  ( \begin{bmatrix} e^{-i\frac{\theta}{2}} & 0 \\ 0 & e^{i\frac{\theta}{2}} \end{bmatrix} )
 [Rz]: https://render.githubusercontent.com/render/math?math=%5Cbegin%7Bbmatrix%7D%20e%5E%7B-i%5Cfrac%7B%5Ctheta%7D%7B2%7D%7D%20%26%200%20%5C%5C%200%20%26%20e%5E%7Bi%5Cfrac%7B%5Ctheta%7D%7B2%7D%7D%20%5Cend%7Bbmatrix%7D
-[_Rz]: src/main/kotlin/me/khol/quantum/gate/GateRz.kt
+[_Rz]: quantum/src/main/kotlin/me/khol/quantum/gate/GateRz.kt
 [//]: <>  ( \begin{bmatrix} 1 & 0 \\ 0 & e^{i\theta} \end{bmatrix} )
 [Phase]: https://render.githubusercontent.com/render/math?math=%5Cbegin%7Bbmatrix%7D%201%20%26%200%20%5C%5C%200%20%26%20e%5E%7Bi%5Ctheta%7D%20%5Cend%7Bbmatrix%7D
-[_Phase]: src/main/kotlin/me/khol/quantum/gate/GatePhase.kt
+[_Phase]: quantum/src/main/kotlin/me/khol/quantum/gate/GatePhase.kt
 [//]: <>  ( \begin{bmatrix} 1 & 0 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 0 & 1 \end{bmatrix} )
 [Swap]: https://render.githubusercontent.com/render/math?math=%5Cbegin%7Bbmatrix%7D%201%20%26%200%20%26%200%20%26%200%20%5C%5C%200%20%26%200%20%26%201%20%26%200%20%5C%5C%200%20%26%201%20%26%200%20%26%200%20%5C%5C%200%20%26%200%20%26%200%20%26%201%20%5Cend%7Bbmatrix%7D
-[_Swap]: src/main/kotlin/me/khol/quantum/gate/GateSwap.kt
+[_Swap]: quantum/src/main/kotlin/me/khol/quantum/gate/GateSwap.kt
 [//]: <>  (  )
 [SwapRoot]: https://render.githubusercontent.com/render/math?math=%5Cbegin%7Bbmatrix%7D%201%20%26%200%20%26%200%20%26%200%20%5C%5C%200%20%26%20%5Cfrac%7B1%7D%7B2%7D(1%2Bi)%20%26%20%5Cfrac%7B1%7D%7B2%7D(1-i)%20%26%200%20%5C%5C%200%20%26%20%5Cfrac%7B1%7D%7B2%7D(1-i)%20%26%20%5Cfrac%7B1%7D%7B2%7D(1%2Bi)%20%26%200%20%5C%5C%200%20%26%200%20%26%200%20%26%201%20%5Cend%7Bbmatrix%7D
-[_SwapRoot]: src/main/kotlin/me/khol/quantum/gate/GateSwapRoot.kt
+[_SwapRoot]: quantum/src/main/kotlin/me/khol/quantum/gate/GateSwapRoot.kt
 [//]: <>  ( \begin{bmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 0 & 1 \\ 0 & 0 & 1 & 0 \end{bmatrix} )
 [CNot]: https://render.githubusercontent.com/render/math?math=%5Cbegin%7Bbmatrix%7D%201%20%26%200%20%26%200%20%26%200%20%5C%5C%200%20%26%201%20%26%200%20%26%200%20%5C%5C%200%20%26%200%20%26%200%20%26%201%20%5C%5C%200%20%26%200%20%26%201%20%26%200%20%5Cend%7Bbmatrix%7D
-[_CNot]: src/main/kotlin/me/khol/quantum/gate/GateCNot.kt
+[_CNot]: quantum/src/main/kotlin/me/khol/quantum/gate/GateCNot.kt
 [//]: <>  ( \begin{bmatrix} 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 \\ 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 \\ 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 \\ 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 \end{bmatrix} )
 [CCNot]: https://render.githubusercontent.com/render/math?math=%5Cbegin%7Bbmatrix%7D%201%20%26%200%20%26%200%20%26%200%20%26%200%20%26%200%20%26%200%20%26%200%20%5C%5C%200%20%26%201%20%26%200%20%26%200%20%26%200%20%26%200%20%26%200%20%26%200%20%5C%5C%200%20%26%200%20%26%201%20%26%200%20%26%200%20%26%200%20%26%200%20%26%200%20%5C%5C%200%20%26%200%20%26%200%20%26%201%20%26%200%20%26%200%20%26%200%20%26%200%20%5C%5C%200%20%26%200%20%26%200%20%26%200%20%26%201%20%26%200%20%26%200%20%26%200%20%5C%5C%200%20%26%200%20%26%200%20%26%200%20%26%200%20%26%201%20%26%200%20%26%200%20%5C%5C%200%20%26%200%20%26%200%20%26%200%20%26%200%20%26%200%20%26%200%20%26%201%20%5C%5C%200%20%26%200%20%26%200%20%26%200%20%26%200%20%26%200%20%26%201%20%26%200%20%5Cend%7Bbmatrix%7D
-[_CCNot]: src/main/kotlin/me/khol/quantum/gate/GateCCNot.kt
+[_CCNot]: quantum/src/main/kotlin/me/khol/quantum/gate/GateCCNot.kt
 [//]: <>  ( \left[\begin{bmatrix} 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 \\ 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 \\ 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 \end{bmatrix}\right] )
 [CSwap]: https://render.githubusercontent.com/render/math?math=%5Cbegin%7Bbmatrix%7D%201%20%26%200%20%26%200%20%26%200%20%26%200%20%26%200%20%26%200%20%26%200%20%5C%5C%200%20%26%201%20%26%200%20%26%200%20%26%200%20%26%200%20%26%200%20%26%200%20%5C%5C%200%20%26%200%20%26%201%20%26%200%20%26%200%20%26%200%20%26%200%20%26%200%20%5C%5C%200%20%26%200%20%26%200%20%26%201%20%26%200%20%26%200%20%26%200%20%26%200%20%5C%5C%200%20%26%200%20%26%200%20%26%200%20%26%201%20%26%200%20%26%200%20%26%200%20%5C%5C%200%20%26%200%20%26%200%20%26%200%20%26%200%20%26%200%20%26%201%20%26%200%20%5C%5C%200%20%26%200%20%26%200%20%26%200%20%26%200%20%26%201%20%26%200%20%26%200%20%5C%5C%200%20%26%200%20%26%200%20%26%200%20%26%200%20%26%200%20%26%200%20%26%201%20%5Cend%7Bbmatrix%7D
-[_CSwap]: src/main/kotlin/me/khol/quantum/gate/GateCSwap.kt
+[_CSwap]: quantum/src/main/kotlin/me/khol/quantum/gate/GateCSwap.kt
 [//]: <>  ( \begin{bmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & u_00 & u_01 \\ 0 & 0 & u_10 & u_11 \end{bmatrix} )
 [Controlled]: https://render.githubusercontent.com/render/math?math=%5Cbegin%7Bbmatrix%7D%201%20%26%200%20%26%200%20%26%200%20%5C%5C%200%20%26%201%20%26%200%20%26%200%20%5C%5C%200%20%26%200%20%26%20u_00%20%26%20u_01%20%5C%5C%200%20%26%200%20%26%20u_10%20%26%20u_11%20%5Cend%7Bbmatrix%7D
-[_Controlled]: src/main/kotlin/me/khol/quantum/gate/GateControlled.kt
+[_Controlled]: quantum/src/main/kotlin/me/khol/quantum/gate/GateControlled.kt
 
 It should be rather straightforward to create custom gates.
 
@@ -253,7 +253,7 @@ Gates that act on a single qubit can be also applied to qubits.
 GateX * Qubit.ONE // Qubit.ZERO
 ```
 
-## [Programs](src/main/kotlin/me/khol/quantum/Program.kt)
+## [Programs](quantum/src/main/kotlin/me/khol/quantum/Program.kt)
 Instead of manually applying gates to registers and qubits like this:
 ```kotlin
 val bellState = CNot * Register(Hadamard * ZERO, ZERO)

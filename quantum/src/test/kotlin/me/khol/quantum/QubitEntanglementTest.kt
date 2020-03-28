@@ -14,7 +14,7 @@ internal class QubitEntanglementTest {
     /**
      * Bell states are two-qubit states that are maximally entangled.
      *
-     * We cannot simply create a Bell state by putting two untentangled qubits into a register.
+     * We cannot simply create a Bell state by putting two unentangled qubits into a register.
      * To create a Bell state we must first apply some transformations to the qubits that will put
      * them into a superposition and then entangle them.
      *

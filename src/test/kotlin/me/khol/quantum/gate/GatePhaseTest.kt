@@ -3,7 +3,6 @@ package me.khol.quantum.gate
 import me.khol.quantum.Qubit
 import me.khol.quantum.math.Complex
 import me.khol.quantum.math.Matrix
-import me.khol.quantum.times
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.equalTo
 import org.junit.jupiter.api.Test

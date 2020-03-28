@@ -1,5 +1,7 @@
 package me.khol.quantum.gate
 
+import me.khol.quantum.Qubit
+import me.khol.quantum.Register
 import me.khol.quantum.math.Matrix
 
 abstract class Gate {
@@ -10,6 +12,10 @@ abstract class Gate {
     val adjoint: Gate by lazy { AdjointGate(this) }
 
     operator fun times(other: Gate): Gate = TimesGate(this, other)
+
+    operator fun times(register: Register): Register = Register(this.matrix * register.matrix)
+
+    operator fun times(qubit: Qubit): Qubit = Qubit(this.matrix * qubit.ket)
 
     infix fun tensor(other: Gate): Gate = TensorGate(this, other)
 

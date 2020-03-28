@@ -5,7 +5,6 @@ import me.khol.quantum.Register
 import me.khol.quantum.math.Complex.Companion.ONE
 import me.khol.quantum.math.Complex.Companion.ZERO
 import me.khol.quantum.math.Matrix
-import me.khol.quantum.times
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.equalTo
 import org.junit.jupiter.api.Test

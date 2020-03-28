@@ -126,5 +126,3 @@ class Qubit(
         return result
     }
 }
-
-operator fun Complex.times(qubit: Qubit) = qubit * this

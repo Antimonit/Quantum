@@ -2,7 +2,6 @@ package me.khol.quantum.gate
 
 import me.khol.quantum.Qubit
 import me.khol.quantum.Register
-import me.khol.quantum.times
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.equalTo
 import org.junit.jupiter.api.DisplayName

@@ -4,8 +4,6 @@ import me.khol.quantum.Qubit
 import me.khol.quantum.Qubit.Companion.ONE
 import me.khol.quantum.Qubit.Companion.ZERO
 import me.khol.quantum.Register
-import me.khol.quantum.times
-import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.equalTo

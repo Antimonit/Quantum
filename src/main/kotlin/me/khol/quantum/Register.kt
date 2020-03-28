@@ -1,6 +1,5 @@
 package me.khol.quantum
 
-import me.khol.quantum.gate.Gate
 import me.khol.quantum.math.Complex
 import me.khol.quantum.math.Matrix
 import me.khol.quantum.math.toQubits
@@ -81,13 +80,3 @@ class Register private constructor(val qubits: Int, val matrix: Matrix) {
         }
     }
 }
-
-operator fun Gate.times(register: Register): Register {
-    return Register(this.matrix * register.matrix)
-}
-
-operator fun Gate.times(qubit: Qubit): Qubit {
-    return Qubit(this.matrix * qubit.ket)
-}
-
-operator fun Complex.times(register: Register) = register * this

@@ -1,11 +1,14 @@
-package me.khol.quantum
+package me.khol.quantum.algorithm
 
+import me.khol.quantum.Qubit
 import me.khol.quantum.Qubit.Companion.ONE
 import me.khol.quantum.Qubit.Companion.ZERO
+import me.khol.quantum.Register
 import me.khol.quantum.gate.GateCNot
 import me.khol.quantum.gate.GateHadamard
 import me.khol.quantum.gate.GateX
 import me.khol.quantum.gate.GateZ
+import me.khol.quantum.program
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.equalTo
 import org.junit.jupiter.api.Test

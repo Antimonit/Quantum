@@ -1,5 +1,6 @@
-package me.khol.quantum
+package me.khol.quantum.algorithm
 
+import me.khol.quantum.*
 import me.khol.quantum.Qubit.Companion.ONE
 import me.khol.quantum.Qubit.Companion.ZERO
 import me.khol.quantum.math.toIndex

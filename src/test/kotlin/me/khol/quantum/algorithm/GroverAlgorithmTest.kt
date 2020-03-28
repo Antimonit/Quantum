@@ -1,5 +1,6 @@
-package me.khol.quantum
+package me.khol.quantum.algorithm
 
+import me.khol.quantum.*
 import me.khol.quantum.Qubit.Companion.ONE
 import me.khol.quantum.Qubit.Companion.ZERO
 import me.khol.quantum.gate.Gate
@@ -7,7 +8,9 @@ import me.khol.quantum.math.toIndex
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.*
 import org.junit.jupiter.api.Test
-import kotlin.math.*
+import kotlin.math.PI
+import kotlin.math.pow
+import kotlin.math.sqrt
 import me.khol.quantum.gate.GateControlled as C
 import me.khol.quantum.gate.GateHadamard as H
 import me.khol.quantum.gate.GateX as X

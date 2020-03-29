@@ -5,6 +5,7 @@ plugins {
     kotlin("jvm") version "1.3.71"
     id("com.jfrog.bintray") version "1.8.4"
     `maven-publish`
+    jacoco
 }
 
 dependencies {
@@ -31,6 +32,26 @@ tasks.withType<KotlinCompile> {
     }
 }
 
+// JACOCO
+tasks.register<JacocoReport>("codeCoverageReport") {
+
+    executionData(fileTree(project.rootDir.absolutePath).include("**/build/jacoco/*.exec"))
+
+    subprojects.forEach {
+        sourceSets.addLater(it.sourceSets.main)
+    }
+
+    reports {
+        xml.isEnabled = true
+        xml.destination = File("${buildDir}/reports/jacoco/report.xml")
+        html.isEnabled = false
+        csv.isEnabled = false
+    }
+
+    dependsOn(allprojects.map { it.tasks.named<Test>("test") })
+}
+
+// PUBLISHING
 java {
     withJavadocJar()
     withSourcesJar()

@@ -1,4 +1,9 @@
 # Quantum computing in Kotlin
+[![Download](https://api.bintray.com/packages/antimonit/quantum/quantum/images/download.svg?version=1.0.0)](https://bintray.com/antimonit/quantum/quantum/1.0.0/link)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![Build Status](https://travis-ci.com/Antimonit/Quantum.svg?branch=master)](https://travis-ci.com/Antimonit/Quantum)
+[![Code Coverage](https://codecov.io/gh/Antimonit/Quantum/branch/master/graph/badge.svg)](https://codecov.io/gh/Antimonit/Quantum)
+
 Kotlin framework for writing quantum algorithms using QASM-like syntax.
 
 Because the code is still compiled by Kotlin compiler we are not limited by QASM language features.
@@ -298,3 +303,11 @@ fun measureAndCollapse(vararg qubitIndices: Int): List<Qubit>
 Doing so will collapse the state of specified qubits to ∣0⟩ or ∣1⟩ based on their probabilities. 
 Other qubits in the register entangled with any of the measured qubits will have their probabilities
 updated as well to satisfy constraints imposed by entangled states before the measurement.
+
+# Download
+
+The project is also available as a maven dependency from JCenter repository:
+
+```kotlin
+implementation("me.khol:quantum:1.0.0")
+```

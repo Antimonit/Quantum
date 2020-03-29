@@ -37,9 +37,7 @@ tasks.register<JacocoReport>("codeCoverageReport") {
 
     executionData(fileTree(project.rootDir.absolutePath).include("**/build/jacoco/*.exec"))
 
-    subprojects.forEach {
-        sourceSets.addLater(it.sourceSets.main)
-    }
+    sourceSets(project.extensions.getByType(SourceSetContainer::class.java).getByName("main"))
 
     reports {
         xml.isEnabled = true

@@ -1,5 +1,4 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-import java.util.Properties
 import com.jfrog.bintray.gradle.BintrayExtension
 
 plugins {
@@ -78,12 +77,9 @@ publishing {
     }
 }
 
-val properties = Properties()
-properties.load(project.rootProject.file("local.properties").inputStream())
-
 bintray {
-    user = properties.getProperty("bintray.user")
-    key = properties.getProperty("bintray.apikey")
+    user = System.getProperty("bintray.user")
+    key = System.getProperty("bintray.key")
 
     setPublications("quantum")
 

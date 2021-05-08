@@ -50,7 +50,7 @@ class Register private constructor(val qubits: Int, val matrix: Matrix) {
         val shot = Random.nextDouble()
         return matrix.col(0)
             .map(Complex::square)
-            .scanReduce(Double::plus)
+            .runningReduce(Double::plus)
             .indexOfFirst { shot < it }
             .toQubits(qubits)
     }

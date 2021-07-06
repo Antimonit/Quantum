@@ -1,11 +1,9 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-import com.jfrog.bintray.gradle.BintrayExtension
 
 plugins {
-    kotlin("jvm") version "1.3.71"
-    id("com.jfrog.bintray") version "1.8.4"
-    `maven-publish`
+    kotlin("jvm") version "1.5.20"
     jacoco
+    id("com.vanniktech.maven.publish")
 }
 
 dependencies {
@@ -40,80 +38,6 @@ tasks.jacocoTestReport {
     dependsOn(allprojects.map { it.tasks.named<Test>("test") })
 }
 
-// PUBLISHING
-java {
-    withJavadocJar()
-    withSourcesJar()
-}
-
-val libraryVersion = "1.0.0-RC3"
-
-publishing {
-    publications {
-        create<MavenPublication>("quantum") {
-            groupId = "me.khol"
-            artifactId = "quantum"
-            version = libraryVersion
-
-            from(components["java"])
-
-            pom {
-                name.set("quantum")
-                description.set("Kotlin framework for writing quantum algorithms using QASM-like syntax")
-                url.set("https://github.com/Antimonit/Quantum")
-
-                licenses {
-                    license {
-                        name.set("The Apache License, Version 2.0")
-                        url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
-                    }
-                }
-
-                developers {
-                    developer {
-                        id.set("antimonit")
-                        name.set("David Khol")
-                        email.set("david@khol.me")
-                    }
-                }
-
-                scm {
-                    connection.set("https://github.com/Antimonit/Quantum.git")
-                    developerConnection.set("https://github.com/Antimonit/Quantum.git")
-                    url.set("https://github.com/Antimonit/Quantum")
-                }
-            }
-        }
-    }
-}
-
-bintray {
-    user = System.getProperty("bintray.user")
-    key = System.getProperty("bintray.key")
-
-    setPublications("quantum")
-
-    pkg(delegateClosureOf<BintrayExtension.PackageConfig> {
-        repo = "quantum"
-        name = "quantum"
-        desc = "Kotlin framework for writing quantum algorithms using QASM-like syntax"
-
-        websiteUrl = "https://github.com/Antimonit/Quantum"
-        issueTrackerUrl = "https://github.com/Antimonit/Quantum/issues"
-        vcsUrl = "https://github.com/Antimonit/Quantum.git"
-
-        publish = true
-        publicDownloadNumbers = true
-
-        setLicenses("Apache-2.0")
-
-        version(delegateClosureOf<BintrayExtension.VersionConfig> {
-            name = libraryVersion
-            desc = "Kotlin framework for writing quantum algorithms using QASM-like syntax"
-
-            gpg(delegateClosureOf<BintrayExtension.GpgConfig> {
-                sign = true
-            })
-        })
-    })
+mavenPublish {
+    sonatypeHost = com.vanniktech.maven.publish.SonatypeHost.S01
 }

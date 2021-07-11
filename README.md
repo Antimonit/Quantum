@@ -1,5 +1,5 @@
 # Quantum computing in Kotlin
-[![Download](https://api.bintray.com/packages/antimonit/quantum/quantum/images/download.svg?version=1.0.0)](https://bintray.com/antimonit/quantum/quantum/1.0.0/link)
+[![Download](https://maven-badges.herokuapp.com/maven-central/io.github.antimonit/quantum/badge.svg) ](https://search.maven.org/artifact/io.github.antimonit/quantum/1.0.0/jar)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Build Status](https://travis-ci.com/Antimonit/Quantum.svg?branch=master)](https://travis-ci.com/Antimonit/Quantum)
 [![Code Coverage](https://codecov.io/gh/Antimonit/Quantum/branch/master/graph/badge.svg)](https://codecov.io/gh/Antimonit/Quantum)
@@ -306,8 +306,8 @@ updated as well to satisfy constraints imposed by entangled states before the me
 
 # Download
 
-The project is also available as a maven dependency from JCenter repository:
+The project is also available as a maven dependency from MavenCentral repository:
 
 ```kotlin
-implementation("me.khol:quantum:1.0.0")
+implementation("io.github.antimonit:quantum:1.0.0")
 ```

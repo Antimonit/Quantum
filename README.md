@@ -1,7 +1,7 @@
 # Quantum computing in Kotlin
-[![Download](https://maven-badges.herokuapp.com/maven-central/io.github.antimonit/quantum/badge.svg) ](https://search.maven.org/artifact/io.github.antimonit/quantum/1.0.0/jar)
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.antimonit/quantum.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22io.github.antimonit%22%20AND%20a:%22quantum%22)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-[![Build Status](https://travis-ci.com/Antimonit/Quantum.svg?branch=master)](https://travis-ci.com/Antimonit/Quantum)
+[![CircleCI](https://circleci.com/gh/Antimonit/Quantum/tree/master.svg?style=shield)](https://circleci.com/gh/Antimonit/Quantum/tree/main)
 [![Code Coverage](https://codecov.io/gh/Antimonit/Quantum/branch/master/graph/badge.svg)](https://codecov.io/gh/Antimonit/Quantum)
 
 Kotlin framework for writing quantum algorithms using QASM-like syntax.

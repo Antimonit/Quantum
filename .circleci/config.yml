@@ -1,0 +1,24 @@
+version: 2.1
+
+orbs:
+  codecov: codecov/codecov@3.2.2
+
+jobs:
+  build:
+    docker:
+      - image: cimg/openjdk:8.0
+    working_directory: ~/repo/quantum
+    environment:
+      JVM_OPTS: -Xmx3200m
+      TERM: dumb
+    steps:
+      - checkout
+      - run: gradle check
+      - run: gradle jacocoTestReport
+      - codecov/upload:
+          file: build/reports/jacoco/test/jacocoTestReport.xml
+
+workflows:
+  test:
+    jobs:
+      - build

@@ -33,7 +33,7 @@ tasks.withType<KotlinCompile> {
 // JACOCO
 tasks.jacocoTestReport {
     reports {
-        xml.isEnabled = true
+        xml.required.set(true)
     }
     dependsOn(allprojects.map { it.tasks.named<Test>("test") })
 }

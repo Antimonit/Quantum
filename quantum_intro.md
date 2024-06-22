@@ -13,19 +13,19 @@ or **one**.
  
 Typically we represent the **zero** state as
 
-![\left\lvert 0 \right\rangle = \begin{bmatrix} 0 \\ 1 \end{bmatrix}](https://render.githubusercontent.com/render/math?math=%5Cleft%5Clvert%200%20%5Cright%5Crangle%20%3D%20%5Cbegin%7Bbmatrix%7D%200%20%5C%5C%201%20%5Cend%7Bbmatrix%7D),
+$`\left\lvert 0 \right\rangle = \begin{bmatrix} 0 \\ 1 \end{bmatrix}`$
 
 the **one** state as
 
-![\left\lvert 1 \right\rangle = \begin{bmatrix} 1 \\ 0 \end{bmatrix}](https://render.githubusercontent.com/render/math?math=%5Cleft%5Clvert%201%20%5Cright%5Crangle%20%3D%20%5Cbegin%7Bbmatrix%7D%201%20%5C%5C%200%20%5Cend%7Bbmatrix%7D),
+$`\left\lvert 1 \right\rangle = \begin{bmatrix} 1 \\ 0 \end{bmatrix}`$
 
 while **superposed** qubits can be represented as
 
-![\left\lvert \psi \right\rangle = \begin{bmatrix} \alpha \\ \beta \end{bmatrix}](https://render.githubusercontent.com/render/math?math=%5Cleft%5Clvert%20%5Cphi%20%5Cright%5Crangle%20%3D%20%5Cbegin%7Bbmatrix%7D%20%5Calpha%20%5C%5C%20%5Cbeta%20%5Cend%7Bbmatrix%7D)
+$`\left\lvert \psi \right\rangle = \begin{bmatrix} \alpha \\ \beta \end{bmatrix}`$
 
 where squares of α and β add up to 1
 
-![\left|\alpha\right|^2 + \left|\beta\right|^2 = 1](https://render.githubusercontent.com/render/math?math=%5Cleft%7C%5Calpha%5Cright%7C%5E2%20%2B%20%5Cleft%7C%5Cbeta%5Cright%7C%5E2%20%3D%201)
+$`\left|\alpha\right|^2 + \left|\beta\right|^2 = 1`$
 
 It is important to note that even though a qubit can hold any of virtually infinite states, when we
 measure it, it always collapses into one of the two basic states&mdash;**zero** or **one**. 

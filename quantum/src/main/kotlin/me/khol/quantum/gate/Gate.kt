@@ -44,7 +44,7 @@ private class TimesGate(gate: Gate, other: Gate) : Gate() {
 
     init {
         check(gate.qubits == other.qubits) {
-            "The gates with $qubits and ${other.qubits} qubits cannot be combined."
+            "The gates with ${gate.qubits} and ${other.qubits} qubits cannot be combined."
         }
     }
 

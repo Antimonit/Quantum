@@ -56,7 +56,7 @@ class RunnableProgram(private val qubitCount: Int) : Program {
         val erasedMatrix = register.matrix.mapIndexed { row: Int, col: Int, value: Complex ->
             value * erasureMask[row, col]
         }
-        val scale = sqrt(erasedMatrix.sumByDouble { it.square })
+        val scale = sqrt(erasedMatrix.sumOf { it.square })
         register = Register(erasedMatrix / scale)
         return measurement.filterIndexed { index, _ -> index in qubitIndices }
     }

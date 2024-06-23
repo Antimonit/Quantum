@@ -1,7 +1,5 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 plugins {
-    kotlin("jvm") version "1.5.20"
+    kotlin("jvm") version "2.0.0"
     jacoco
     id("com.vanniktech.maven.publish")
 }
@@ -17,17 +15,6 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
-}
-
-tasks.withType<KotlinCompile> {
-    kotlinOptions {
-        jvmTarget = "1.8"
-        freeCompilerArgs = listOf(
-            "-XXLanguage:+InlineClasses",
-            "-Xopt-in=kotlin.ExperimentalStdlibApi",
-            "-Xopt-in=kotlin.RequiresOptIn"
-        )
-    }
 }
 
 // JACOCO

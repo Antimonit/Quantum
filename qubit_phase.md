@@ -6,7 +6,7 @@ The $`\left|\alpha\right|^2 + \left|\beta\right|^2 = 1`$
 constraint removes one *degree of freedom*, and as such, there can be multiple qubit definitions 
 with different α and β values representing the same state.
 
-All of the following definitions represent the same quantum state with different *global phases* 
+All the following definitions represent the same quantum state with different *global phases* 
 (θ, θ+90°, θ+180°, θ+270° and θ+53.13° respectively). *Global phase* shift under no condition
 alters the probabilities of measuring **one** or **zero** and can be safely ignored.
 

@@ -23,7 +23,7 @@ class Register private constructor(val qubits: Int, val matrix: Matrix) {
 
     init {
         check(matrix.cols == 1) { "Register can be only result of tensor products and thus must have only one column." }
-        check(abs(matrix.sumByDouble { it.square } - 1.0) < 1e-10) { "Invalid register definition for $matrix" }
+        check(abs(matrix.sumOf { it.square } - 1.0) < 1e-10) { "Invalid register definition for $matrix" }
     }
 
     /**

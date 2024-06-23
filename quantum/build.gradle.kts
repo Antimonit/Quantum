@@ -1,7 +1,9 @@
+import com.vanniktech.maven.publish.SonatypeHost
+
 plugins {
     kotlin("jvm") version "2.0.0"
     jacoco
-    id("com.vanniktech.maven.publish")
+    id("com.vanniktech.maven.publish") version "0.29.0"
 }
 
 dependencies {
@@ -25,6 +27,6 @@ tasks.jacocoTestReport {
     dependsOn(allprojects.map { it.tasks.named<Test>("test") })
 }
 
-mavenPublish {
-    sonatypeHost = com.vanniktech.maven.publish.SonatypeHost.S01
+mavenPublishing {
+    publishToMavenCentral(SonatypeHost.S01)
 }

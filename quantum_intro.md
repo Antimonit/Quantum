@@ -11,7 +11,7 @@ Qubits are typically represented using a pair of complex numbers labeled **&alph
 These two values relate to the probabilities at which the given qubit will be measured as **zero** 
 or **one**.
  
-Typically we represent the **zero** state as
+Typically, we represent the **zero** state as
 
 $`\left\lvert 0 \right\rangle = \begin{bmatrix} 0 \\ 1 \end{bmatrix}`$
 

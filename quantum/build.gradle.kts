@@ -10,7 +10,7 @@ dependencies {
     implementation(kotlin("stdlib-jdk8"))
     implementation("org.ejml:ejml-all:0.43.1")
 
-    testImplementation("org.junit.jupiter:junit-jupiter:5.5.2")
+    testImplementation("org.junit.jupiter:junit-jupiter:5.10.2")
     testImplementation("org.hamcrest:hamcrest:2.2")
     testImplementation(kotlin("reflect"))
 }
